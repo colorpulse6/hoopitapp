@@ -116,7 +116,7 @@ team - String
 Games Model
 
 ```
-createdBy - [ObjetId<User>]
+createdBy - [ObjectId<User>]
 date - String
 location - String
 players - [ObjectId<User>]
@@ -128,9 +128,10 @@ structure - String
 Teams Model
 
 ```
-owner - [ObjetId<User>]
+owner - [ObjectId<User>]
 teamName - String
-players - [ObjetId<User>]
+players - [ObjectId<User>]
+requestedPlayers - [ObjectId<User>]
 homeTown - String
 gamesPlayed - Number
 gamesWon - Number
@@ -183,6 +184,9 @@ gamesLost - Number
 
 ### Trello
 [https://trello.com/b/fudcI5E0/basketball-app]
+
+## Wire Frames
+[https://miro.com/welcomeonboard/MW4a3RWED9e9OKUeqWq9bE6VG0qn6snInn1niT7fGu7rqM3hJWhAnZAavrZltQof]
 
 ### Git
 [https://github.com/colorpulse6/hoopitapp-server]
