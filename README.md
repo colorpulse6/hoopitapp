@@ -1,4 +1,4 @@
-# hoopitapp
+# hoopitApp
 
 ## Description
 Organize basketball games in your city
