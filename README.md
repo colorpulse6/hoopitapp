@@ -19,6 +19,9 @@ Organize basketball games in your city
 
 ## Backlog
 
+About Page:
+- Add a page with information about the site
+
 Calender:
 - Add a calender function to schedule games and save them to the game model
 
@@ -30,6 +33,12 @@ Chat:
 
 Tournaments:
 - Enable users to build their own tournaments 
+
+News:
+- Add latest basketball news
+
+Watch Party:
+- Organize watch parties for NBA games
 
 Referees: 
 - Enable users to act as referees in games
@@ -108,9 +117,7 @@ imageUrl - String
 location - String
 gamesCreated - Number
 gamesPlayed - Number
-gamesWon - Number
-gamesLost - Number
-team - String
+teams - [ObjectId<Team>]
 ```
 
 Games Model
@@ -120,9 +127,6 @@ createdBy - [ObjectId<User>]
 date - String
 location - String
 players - [ObjectId<User>]
-type - String
-structure - String
--spotsAvailable - Number
 ```
 
 Teams Model
@@ -130,17 +134,14 @@ Teams Model
 ```
 owner - [ObjectId<User>]
 teamName - String
-players - [ObjectId<User>]
-requestedPlayers - [ObjectId<User>]
+players - [ObjectId<Users>]
 homeTown - String
 gamesPlayed - Number
-gamesWon - Number
-gamesLost - Number
 ```
 
 ## API Endpoints/Backend Routes
-
-- GET /auth/user
+- GET /
+- GET /auth/signup
 - POST /auth/signup
     body:
         - username
@@ -148,12 +149,14 @@ gamesLost - Number
         - password
         - location
         - imageUrl
+- GET /auth/login   
 - POST /auth/login
     body:
         - username
         - password
 - POST /auth/logout
     body: (empty)
+- GET /:userId    
 - GET /user/join-game
 - POST /user/join-game
     body:
@@ -168,24 +171,34 @@ gamesLost - Number
     reference: 
         - createdBy [ObjectId<User>]   
 - GET /game/:id
-- GET /user/join-team
-- POST /user/join-team
-    body:
-        - teamName
-- GET /user/create-team
+- GET /user/team-detail
 - POST /user/create-team
     body:
         - date
         - homeTown
     reference: 
         - owner [ObjectId<User>]  
+        - players [ObjectId<Users>]
+-GET /user/teams
+-GET /user/profile
+-POST /user/profile
+    body: 
+        - username 
+        - email 
+        - password 
+        - imageUrl 
+        - location 
+        - gamesCreated 
+        - gamesPlayed   
+-GET /forum
+-GET /user/forum
 
 ## Links
 
 ### Trello
 [https://trello.com/b/fudcI5E0/basketball-app]
 
-## Wire Frames
+### Wire Frames
 [https://miro.com/welcomeonboard/MW4a3RWED9e9OKUeqWq9bE6VG0qn6snInn1niT7fGu7rqM3hJWhAnZAavrZltQof]
 
 ### Git
@@ -197,6 +210,7 @@ gamesLost - Number
 
 ### Slides
 [https://docs.google.com/presentation/d/1ITWaidwNwHyAy3hsINt5oreKjPL4oQH-_L3dVBlzcZs/edit?usp=sharing]
+
 
 
 
