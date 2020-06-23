@@ -179,9 +179,9 @@ gamesPlayed - Number
     reference: 
         - owner [ObjectId<User>]  
         - players [ObjectId<Users>]
--GET /user/teams
--GET /user/profile
--POST /user/profile
+- GET /user/teams
+- GET /user/profile
+- POST /user/profile
     body: 
         - username 
         - email 
@@ -190,8 +190,8 @@ gamesPlayed - Number
         - location 
         - gamesCreated 
         - gamesPlayed   
--GET /forum
--GET /user/forum
+- GET /forum
+- GET /user/forum
 
 ## Links
 
@@ -210,6 +210,9 @@ gamesPlayed - Number
 
 ### Slides
 [https://docs.google.com/presentation/d/1ITWaidwNwHyAy3hsINt5oreKjPL4oQH-_L3dVBlzcZs/edit?usp=sharing]
+
+
+
 
 
 
