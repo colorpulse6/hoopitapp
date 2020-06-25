@@ -3,9 +3,11 @@ import axios from 'axios'
 import config from '../config';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
+import TeamDetail from './TeamDetail'
 
 
-export default class GameDetail extends React.Component {
+
+export default class GameAdmin extends React.Component {
 
     state = {
         player: '',
@@ -13,9 +15,10 @@ export default class GameDetail extends React.Component {
     }
 
     
+    
     componentDidMount(){
         let id = this.props.match.params.gameId
-        //console.log('id is ' + this.props.match.params)
+        // console.log('id is ' + this.props.match.params)
         axios.get(`${config.API_URL}/game-detail/${id}`, {withCredentials: true})
             .then((res) => {
                 // console.log('Info' + res.data)
@@ -30,41 +33,12 @@ export default class GameDetail extends React.Component {
             })
     }
 
-    handleJoinGame = () => {
-        this.sendNewPlayers()  
-        console.log(this.state.player)
-        let {location, date, createdBy} = this.state.game
-        const list = this.state.game.players.concat(this.state.player);
-        if(!this.state.game.players.includes(this.state.player)){
-            this.setState( {
-                game: {
-                    location: location,
-                    date: date,
-                    createdBy: createdBy,
-                    players: list
-                }
-            })     
-        } 
-    }
-
-    sendNewPlayers = () => {
-        let id = this.props.match.params.gameId
-        axios.get(`${config.API_URL}/join-game/${id}`, {withCredentials: true})
-        .then((res) => {
-            // console.log(res)         
-        })
-        .catch((err) => {
-            console.log(err + 'ERRRRRRR')
-        })
-    }
-
-
     render() {
 
         if (!this.props.loggedInUser) {
             return <Redirect to='/sign-in' />
         }
-        const {location, date, createdBy, players} = this.state.game
+        const {location, date, createdBy, players, _id} = this.state.game
         console.log('players:  ' + typeof players) 
             let userNames = []
             for (let i = 0; i< this.props.users.length; i++){
@@ -89,10 +63,10 @@ export default class GameDetail extends React.Component {
                 <p>Players: {userNames.map((name)=> {
                     return name
                 })}</p>
-                <button onClick={this.handleJoinGame} type="submit">Join</button>
+                <Link to={`/${_id}/admin/team-detail`}><button onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
             </div>
         )
 
-    }  
+    }
     
 }

@@ -14,6 +14,8 @@ import Signup from './components/Signup'
 import UserMain from './components/UserMain'
 import CreateGame from './components/CreateGame'
 import GameDetail from './components/GameDetail'
+import GameAdmin from './components/GameAdmin'
+
 import TeamsInfo from './components/TeamsInfo'
 import TeamDetail from './components/TeamDetail'
 
@@ -28,18 +30,29 @@ class App extends React.Component {
 
 
   state = {
-    loggedInUser: null,
-    games:[]
+    loggedInUser: '',
+    games:[],
+    users:[]
   }
 
   getUser(){
     axios.get(`${config.API_URL}/user`, {withCredentials: true})
     .then((res) => {
+      console.log(res + 'ResuLT')
       this.setState({
         loggedInUser: res.data
       })
     })
       
+  }
+
+  getUsers(){
+    axios.get(`${config.API_URL}/users`,{withCredentials: true})
+    .then((res)=> {
+      this.setState({
+        users:res.data
+      })
+    })
   }
 
   getGames = () => {
@@ -58,9 +71,14 @@ class App extends React.Component {
 
   componentDidMount(){
     this.getGames();
+    this.getUsers();
+    console.log('MOUNTED')
+   
     if (!this.state.loggedInUser) {
       this.getUser();
+      console.log('GOT USER')
     }
+    console.log(this.state)
   }
 
   handleSignUp = (e) => {
@@ -77,8 +95,6 @@ class App extends React.Component {
       
     }, { withCredentials: true}) //CHECKS COOKIES
     .then((res) => {
-      console.log('Working')
-      console.log(this.props)
         this.setState({
           loggedInUser: res.data
         }, () => {
@@ -100,6 +116,7 @@ class App extends React.Component {
       password: password
     }, {withCredentials: true})
     .then((res) => {
+      console.log('RESDATA'+res.data)
       this.setState({
         loggedInUser: res.data
       }, () => {
@@ -149,16 +166,6 @@ class App extends React.Component {
     })
 }
 
-// handleJoinGame = () => {
-  
-//   this.setState({
-
-//   })
-//     }
-
-
-
-
 
   render() {
     const {loggedInUser} = this.state
@@ -183,7 +190,7 @@ class App extends React.Component {
               return <UserMain 
               loggedInUser={loggedInUser}
               games={this.state.games}
-              onJoinGame={this.handleJoinGame}
+              users={this.state.users}
               />
             }}/>  
           <Route path="/team-info"  render={() => {
@@ -196,13 +203,38 @@ class App extends React.Component {
               onAddGame={this.handleAddGame}  
               />
             }}/>  
-           <Route path="/:gameId"  render={(routeProps) => {
+           <Route exact path="/game-detail/:gameId"  render={(routeProps) => {
               return <GameDetail 
               loggedInUser={loggedInUser} 
               {...routeProps}
+              users={this.state.users}
                
               />
             }}/>   
+           <Route exact path="/:gameId/admin"  render={(routeProps) => {
+              return <GameAdmin 
+              loggedInUser={loggedInUser} 
+              {...routeProps}
+              users={this.state.users}
+               
+              />
+            }}/>    
+            <Route path="/:gameId/admin/team-detail"  render={(routeProps) => {
+              return <TeamDetail 
+              loggedInUser={loggedInUser} 
+              {...routeProps}
+              users={this.state.users}
+               
+              />
+            }}/>
+            <Route path="/team-info"  render={(routeProps) => {
+              return <TeamsInfo 
+              loggedInUser={loggedInUser} 
+              {...routeProps}
+              users={this.state.users}
+               
+              />
+            }}/>
 
         </Switch>
       </div>

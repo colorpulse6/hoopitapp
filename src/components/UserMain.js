@@ -10,6 +10,7 @@ export default function UserMain(props) {
         return <Redirect to='/sign-in' />
     }
 
+    
 
     return(
         <div>
@@ -22,19 +23,34 @@ export default function UserMain(props) {
                     if (el.location === props.loggedInUser.location && el.createdBy !== props.loggedInUser.username) {
                         return <div key={index} id="game">
                     
-                        <Link to={`/${el._id}`}><p>Date: {el.date}</p></Link>
+                        <Link to={`/game-detail/${el._id}`}><p>Date: {el.date}</p></Link>
                         <p>Location: {el.location}</p>
                         <p>Created By: {el.createdBy}</p>
-                        <p>Max Players: {el.maxPlayers}</p>
-                        <p>Players: {el.players}</p>
-
-                        <button onClick={props.onJoinGame} type="submit">Join</button>
+                       
+                        <p>Players: {el.players.length}/{el.maxPlayers}</p>
+                        {(el.players.length + 2 === el.maxPlayers) ?  <p>Almost full!</p> : <p></p>}
+            
                         <br></br>
                     </div>
-                        
-                    } 
+                    }  
+                })
+            }
+            <h4>Your Games</h4>
+            {
+                props.games.map((el, index) => {
+                    if (el.location === props.loggedInUser.location && el.createdBy === props.loggedInUser.username) {
+                        return <div key={index} id="game">
                     
-                    
+                        <Link to={`/${el._id}/admin`}><p>Date: {el.date}</p></Link>
+                        <p>Location: {el.location}</p>
+                        <p>Created By: {el.createdBy}</p>
+                       
+                        <p>Players: {el.players.length}/{el.maxPlayers}</p>
+                        {(el.players.length + 2 === el.maxPlayers) ?  <p>Almost full!</p> : <p></p>}
+            
+                        <br></br>
+                    </div>
+                    }  
                 })
             }
 
