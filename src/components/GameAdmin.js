@@ -55,15 +55,19 @@ export default class GameAdmin extends React.Component {
             
         
         return(
-            <div>
-            <h1>Game Detail Page Admin</h1>
-                <p>Location: {location}</p>
-                <p>Date: {date}</p>
-                <p>Created By: {createdBy}</p>
-                <p>Players: {userNames.map((name)=> {
-                    return name
-                })}</p>
-                <Link to={`/${_id}/admin/team-detail`}><button onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
+            <div className="game-detail-page">
+                <div className="game-card card">
+                    <h1>Game Detail Page Admin</h1>
+                    <p>Location: {location}</p>
+                    <p>Date: {date}</p>
+                    <p>Created By: {createdBy}</p>
+                    <p>Players: {userNames.map((name)=> {
+                        return name
+                    })}</p>
+
+                </div>
+            
+                <Link to={`/${_id}/admin/team-detail`}><button className="btn btn-primary" onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
             </div>
         )
 

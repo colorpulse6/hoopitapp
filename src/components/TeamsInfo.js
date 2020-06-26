@@ -27,18 +27,22 @@ export default class TeamsInfo extends React.Component {
                 // console.log('Team pLayers on Team Info Page: ' + this.state.teams)
     }
 
-    handleQuitTeam = (e) => {
-        // console.log(e.target.value)
-        let id = e.target.value
-        // console.log('Wanna QUIT?!')
-        axios.post(`${config.API_URL}/quit-team/${id}`, {}, {withCredentials: true})
-        .then((res) => {
-            console.log('Client Side works ' + this.props.loggedInUser._id + ' from ' + id)
-            this.props.history.push('/user-main')
-        })
-        .catch((err)=> {
-            console.log('Something went wrong deleting from team on the client side' + err)
-        })
+    handleQuitTeam = (val1, val2,e) => {
+        let name = val1
+        let id = val2
+        let confirmQuit = window.confirm(`Are you sure you want to quit the team ${name}?`);
+        if (confirmQuit) {
+                axios.post(`${config.API_URL}/quit-team/${id}`, {}, {withCredentials: true})
+            .then((res) => {
+                console.log('Client Side works ' + this.props.loggedInUser._id + ' from ' + id)
+                this.props.history.push('/user-main')
+            })
+            .catch((err)=> {
+                console.log('Something went wrong deleting from team on the client side' + err)
+            })
+   
+        }
+        
             
     }
 
@@ -72,31 +76,38 @@ export default class TeamsInfo extends React.Component {
         // console.log(playerNames + "IOUBI/ZGUSA")
 
         return(
-            <div>
+            <div className="game-detail-page row">
             <h1>Teams Info Page</h1>
-            {this.state.teams.map((team, index)=> {
-                if(team.players.includes(this.props.loggedInUser._id))
-                return <div key={index}>
-                    <p>Team Name: {team.teamName}</p>
-                    <p>Owner: {team.owner}</p>
-                    <p>Home Town: {team.homeTown}</p>
-
-                    <div>Games Played: {!team.gamesPlayed ? <p>0</p>  : <p>{team.gamesPlayed}</p>}
-                    </div>
-
-                    <div>Players:
-                    {
-                        uniqueArray.map((name)=> {
-                            return <p>{name}</p>
-                        })
-                    }
-                    </div>
-                    <button value={team._id} onClick={this.handleQuitTeam}>Quit Team</button>
+                <div className="games-near-you">
                     
+                        
+                        {this.state.teams.map((team, index)=> {
+                            if(team.players.includes(this.props.loggedInUser._id))
+                            return <div key={index} className="card each-card team-info-card">
+                                <p>Team Name: {team.teamName}</p>
+                                <p>Owner: {team.owner}</p>
+                                <p>Home Town: {team.homeTown}</p>
+
+                            <p>Games Played: {!team.gamesPlayed ? 0  : team.gamesPlayed}
+                            </p>
+
+                        <div>
+                            <p><strong>Players:</strong></p>
+                            {
+                                uniqueArray.map((name)=> {
+                                    return <p>{name}</p>
+                                })
+                            }
+                        </div>
+                        <button className="btn btn-primary quit-team-btn" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
+                        
+                    </div>
+                    
+                    
+                })}
+
                 </div>
-                
-                
-            })}
+            
             
             </div>
         )

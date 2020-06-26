@@ -50,6 +50,8 @@ export default class TeamsDetail extends React.Component {
                     players: list
                 } 
             })
+            this.props.history.push('/user-main')
+
         })
         .catch((err) => {
             console.log(err + 'Axios Error!!!!')
@@ -72,17 +74,22 @@ export default class TeamsDetail extends React.Component {
             
         
         return(
-            <div>
+            <div className="game-detail-page">
             <h1>Team Detail Page</h1>
 
             <form onSubmit={this.saveTeam}>
-                <input type="text" placeholder="Name your team?" name="teamName" id="teamName"/>
-                <br></br>
-                <br></br>
-                <p>Players: {userNames.map((name)=> {
-                    return name
-                })}</p>
-                <button>Save Team</button>
+                <input type="text" placeholder="Name your team?" name="teamName" id="teamName" required/> 
+               <div className="team-players">
+                    <div>
+                        <h4>Players:</h4> 
+                        {userNames.map((name)=> {
+                            return <p>{name}</p>
+                            })}
+                    </div>
+                    
+                    <button className="btn btn-primary create-team-btn">Save Team</button>
+               </div>
+                
                     
             </form>
            

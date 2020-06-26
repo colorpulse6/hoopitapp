@@ -15,16 +15,16 @@ export default function UserMain(props) {
     return(
         <div >
             {/* <h1>Main User Page</h1> */}
-            <h2 className="hello-text">Hello {props.loggedInUser.username}</h2>
+            <div className='main-header'>
+                <h2 className="hello-text">Hello {props.loggedInUser.username}</h2>
+                <Link to="/create-game"><button className="btn btn-primary create-btn">Create A Game</button></Link>
+            </div>
+            
 
             <div className="user-main-div">
-                
-                <div className='main-header'>
-                    <h4>Games Near You</h4>
-                    <Link to="/create-game"><button className="btn btn-primary create-btn">Create A Game</button></Link>
 
-                </div>
-                
+                <h4 className='title-header'>Games Near You</h4>
+
                 <div class="row ">
                 
                     <div class="games-near-you">
@@ -52,7 +52,7 @@ export default function UserMain(props) {
                     </div>
                 </div>
             </div>
-            <h4 className="main-header">Your Games</h4>
+            <h4 className="title-header">Your Games</h4>
             <div className="your-games">
                 
                 <div className="row">
