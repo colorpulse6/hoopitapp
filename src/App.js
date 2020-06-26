@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 
   getGames = () => {
-    axios.get(`${config.API_URL}/user-main`, {withCredentials: true})
+    axios.get(`${config.API_URL}/main`, {withCredentials: true})
       .then((res) => {
         this.setState({
           games: res.data
@@ -72,7 +72,7 @@ class App extends React.Component {
   componentDidMount(){
     this.getGames();
     this.getUsers();
-    // console.log('MOUNTED')
+    console.log('MOUNTED' + this.state)
    
     if (!this.state.loggedInUser) {
       this.getUser();

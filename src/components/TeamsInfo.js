@@ -34,8 +34,12 @@ export default class TeamsInfo extends React.Component {
         if (confirmQuit) {
                 axios.post(`${config.API_URL}/quit-team/${id}`, {}, {withCredentials: true})
             .then((res) => {
-                console.log('Client Side works ' + this.props.loggedInUser._id + ' from ' + id)
                 this.props.history.push('/user-main')
+                console.log('Client Side works ' + this.props.loggedInUser._id + ' from ' + id)
+                this.setState({
+                    teams: res.data,
+                })
+                
             })
             .catch((err)=> {
                 console.log('Something went wrong deleting from team on the client side' + err)
@@ -52,12 +56,16 @@ export default class TeamsInfo extends React.Component {
 
         let playerIds = []
         let playerNames = []
-        //GET PLAYER IDS FROM TEAM OBJECT
-        this.state.teams.map((team) => {
-            team.players.forEach((eachId)=> {
-                playerIds.push(eachId)
+        // GET PLAYER IDS FROM TEAM OBJECT
+        if(this.state.teams.length){
+            this.state.teams.map((team) => {
+                team.players.forEach((eachId)=> {
+                    playerIds.push(eachId)
+                })
             })
-        })
+
+        }
+         
         //TEST PLAYER IDS AGAINST USER IDS AND ADD NAMES TO ARRAY
         for(let i = 0; i< this.props.users.length; i++){
             for(let j=0; j<playerIds.length; j++){
@@ -76,13 +84,15 @@ export default class TeamsInfo extends React.Component {
             <div className="game-detail-page row">
             <h1>Teams Info Page</h1>
                 <div className="games-near-you">
-                    
+                    {uniqueArray.slice(0,1).map((team, index)=> {
+            return !team.includes(this.props.loggedInUser.username) ? <h3>Nobody Likes You...</h3> : <p></p>}
+            )}
                         
                         {this.state.teams.map((team, index)=> {
                             if(team.players.includes(this.props.loggedInUser._id))
                             return <div key={index} className="card each-card team-info-card">
                                 <p>Team Name: {team.teamName}</p>
-                                <p>Owner: {team.owner}</p>
+                                <p>Owner: {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}</p>
                                 <p>Home Town: {team.homeTown}</p>
 
                             <p>Games Played: {!team.gamesPlayed ? 0  : team.gamesPlayed}

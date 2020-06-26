@@ -1,12 +1,41 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import config from '../config';
 
 
-export default function UserMain(props) {
+export default class UserMain extends React.Component {
 
-    //REDIRECTS USER TO SIGN IN IF NOT LOGGED IN
-    if (!props.loggedInUser) {
+    state = {
+        games: []
+    }
+
+    getGames = () => {
+        axios.get(`${config.API_URL}/user-main`, {withCredentials: true})
+          .then((res) => {
+            this.setState({
+              games: res.data
+            })
+          })
+          .catch((err) => {
+            if(err.response.status === 401) {
+              this.props.history.push('/')
+            }
+          })  
+      }
+
+      componentDidMount(){
+        this.getGames();
+        console.log(this.state)
+       console.log('Games from User Main:   ---   ' + this.state.games)
+        
+      }
+
+    render() {
+
+        //REDIRECTS USER TO SIGN IN IF NOT LOGGED IN
+    if (!this.props.loggedInUser) {
         return <Redirect to='/sign-in' />
     }
 
@@ -14,7 +43,7 @@ export default function UserMain(props) {
         <div >
             {/* <h1>Main User Page</h1> */}
             <div className='main-header'>
-                <h2 className="hello-text">Hello {props.loggedInUser.username}</h2>
+                <h2 className="hello-text">Hello {this.props.loggedInUser.username}</h2>
                 <Link to="/create-game"><button className="btn btn-primary create-btn">Create A Game</button></Link>
             </div>
             
@@ -29,8 +58,8 @@ export default function UserMain(props) {
                         
                             
                                 {
-                                    props.games.map((el, index) => {
-                                        if (el.location === props.loggedInUser.location && el.createdBy !== props.loggedInUser.username  && !el.players.includes(props.loggedInUser._id)) {
+                                    this.state.games.map((el, index) => {
+                                        if (el.location === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username  && !el.players.includes(this.props.loggedInUser._id)) {
                                             return <div className="card each-card"> 
                                                 <div className="card-body" key={index} id="game">
                                         
@@ -38,8 +67,9 @@ export default function UserMain(props) {
                                             <p className="text-info">Location: {el.location}</p>
                                             <p className="text-info">Created By: {el.createdBy}</p>
                                         
-                                            <p className="text-info">Players: {el.players.length}/{el.maxPlayers}</p>
-                                            {(el.players.length + 2 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
+                                            <p className={el.maxPlayers > el.players.length ? "text-success" : "text-danger"}>Players: {el.players.length}/{el.maxPlayers}</p>
+                                            {(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
+                                            {el.maxPlayers === el.players.length ? <p className="text-danger">FULL</p> : <p></p>}
                                 
                                            
                                         </div>
@@ -57,8 +87,8 @@ export default function UserMain(props) {
                 
                     <div class="games-near-you">
                         {
-                            props.games.map((el, index) => {
-                                if (el.location === props.loggedInUser.location && el.createdBy === props.loggedInUser.username) {
+                            this.state.games.map((el, index) => {
+                                if (el.location === this.props.loggedInUser.location && el.createdBy === this.props.loggedInUser.username) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 
@@ -66,8 +96,9 @@ export default function UserMain(props) {
                                     <p className="text-success" >Location: {el.location}</p>
                                     <p className="text-success">Created By: {el.createdBy}</p>
                                 
-                                    <p className="text-success">Players: {el.players.length}/{el.maxPlayers}</p>
-                                    {(el.players.length + 2 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
+                                    <p className={el.maxPlayers > el.players.length ? "text-success" : "text-danger"}>Players: {el.players.length}/{el.maxPlayers}</p>
+                                    {(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
+                                    {el.maxPlayers === el.players.length ? <p className="text-danger">FULL</p> : <p></p>}
                         
                                     <br></br>
                                 </div>
@@ -86,8 +117,8 @@ export default function UserMain(props) {
                 
                     <div class="games-near-you">
                         {
-                            props.games.map((el, index) => {
-                                if (el.location === props.loggedInUser.location && el.createdBy !== props.loggedInUser.username && el.players.includes(props.loggedInUser._id)) {
+                            this.state.games.map((el, index) => {
+                                if (el.location === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username && el.players.includes(this.props.loggedInUser._id)) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 
@@ -95,8 +126,9 @@ export default function UserMain(props) {
                                     <p className="text-success" >Location: {el.location}</p>
                                     <p className="text-success">Created By: {el.createdBy}</p>
                                 
-                                    <p className="text-success">Players: {el.players.length}/{el.maxPlayers}</p>
-                                    {(el.players.length + 2 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
+                                    <p className={el.maxPlayers > el.players.length ? "text-success" : "text-danger"}>Players: {el.players.length}/{el.maxPlayers}</p>
+                                    {el.maxPlayers === el.players.length ? <p className="text-danger">FULL</p> : <p></p>}
+                                   
                         
                                     <br></br>
                                 </div>
@@ -113,4 +145,8 @@ export default function UserMain(props) {
 
         
     )
+
+    }
+
+    
 }

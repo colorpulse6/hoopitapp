@@ -38,21 +38,30 @@ export default class GameDetail extends React.Component {
 
     // ADD PLAYER TO GAME
     handleJoinGame = () => {
-        this.sendNewPlayers()  
+          
         // console.log(this.state.player)
         let {location, date, createdBy} = this.state.game
         const list = this.state.game.players.concat(this.state.player);
         if(!this.state.game.players.includes(this.state.player)){
-            this.setState( {
-                game: {
-                    location: location,
-                    date: date,
-                    createdBy: createdBy,
-                    players: list
-                }
-            }, () => {
-                this.props.history.push('/user-main')
-              })     
+            if(this.state.game.players.length !== this.state.game.maxPlayers){
+                this.sendNewPlayers()
+                this.setState( {
+                    game: {
+                        location: location,
+                        date: date,
+                        createdBy: createdBy,
+                        players: list
+                    }
+                }, () => {
+                    this.props.history.push('/user-main')
+                  })
+
+            } else {
+                
+                    alert('Game is full.')
+                
+            }
+                 
         } 
     }
 
@@ -77,10 +86,10 @@ export default class GameDetail extends React.Component {
         console.log('user ' + this.props.loggedInUser._id)
         let confirmQuit = window.confirm(`Are really a quitter?`);
         if (confirmQuit) {
-                axios.get(`${config.API_URL}/quit-game/${id}`, {}, {withCredentials: true})
+                axios.get(`${config.API_URL}/quit-game/${id}`, {withCredentials: true})
             .then((res) => {
                 console.log(res.data + "success")
-                // this.props.history.push('/user-main')
+                this.props.history.push('/user-main')
             })
             .catch((err)=> {
                 console.log('Game delete error client side' + err)
