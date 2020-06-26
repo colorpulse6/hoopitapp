@@ -14,7 +14,7 @@ export default class TeamsDetail extends React.Component {
         let id = this.props.match.params.gameId
         axios.get(`${config.API_URL}/game-detail/${id}`, {withCredentials: true})
             .then((res) => {
-            console.log('GAME DETAIL' + res.data)                
+            // console.log('GAME DETAIL' + res.data)                
 
                 this.setState({
                     game: res.data,
@@ -31,7 +31,7 @@ export default class TeamsDetail extends React.Component {
       
         let id = this.props.match.params.gameId
         let owner = this.props.loggedInUser.username
-        console.log(owner)
+        // console.log(owner)
         let teamName = e.target.teamName.value
         let homeTown = this.props.loggedInUser.location
         const list = this.state.game.players;

@@ -17,7 +17,7 @@ export default function CreateGame(props) {
                 
                 <div className="form-group">
                     <label htmlFor="Date">Date</label>
-                    <input type="text" className="form-control" name="date" id="date" />
+                    <input type="date" className="form-control" name="date" id="date" />
                 </div>
 
                 <div className="form-group">

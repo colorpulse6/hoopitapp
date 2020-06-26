@@ -14,25 +14,29 @@ export default class GameDetail extends React.Component {
 
     
     componentDidMount(){
+        
         let id = this.props.match.params.gameId
-        //console.log('id is ' + this.props.match.params)
+        console.log('Users on Game Deatail Page: ' + this.props.users)
         axios.get(`${config.API_URL}/game-detail/${id}`, {withCredentials: true})
             .then((res) => {
                 // console.log('Info' + res.data)
                 this.setState({
                     game: res.data,
                     player: this.props.loggedInUser.username
+                    
                 })
+                console.log(res.data + 'SBDI/&&/&&/&&&&&66666')
                 // console.log(this.state.game)
             })
             .catch((err) => {
                 console.log(err)
             })
+
     }
 
     handleJoinGame = () => {
         this.sendNewPlayers()  
-        console.log(this.state.player)
+        // console.log(this.state.player)
         let {location, date, createdBy} = this.state.game
         const list = this.state.game.players.concat(this.state.player);
         if(!this.state.game.players.includes(this.state.player)){
@@ -43,7 +47,9 @@ export default class GameDetail extends React.Component {
                     createdBy: createdBy,
                     players: list
                 }
-            })     
+            }, () => {
+                this.props.history.push('/user-main')
+              })     
         } 
     }
 
@@ -89,7 +95,11 @@ export default class GameDetail extends React.Component {
                 <p>Players: {userNames.map((name)=> {
                     return name
                 })}</p>
-                <button onClick={this.handleJoinGame} type="submit">Join</button>
+                <div>
+                {!userNames.includes(this.props.loggedInUser.username) ? <button onClick={this.handleJoinGame} type="submit">Join</button> : <p>You are scheduled to play this game.</p>}
+                
+                </div>
+                
             </div>
         )
 

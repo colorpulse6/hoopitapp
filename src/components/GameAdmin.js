@@ -56,7 +56,7 @@ export default class GameAdmin extends React.Component {
         
         return(
             <div>
-            <h1>Game Detail Page</h1>
+            <h1>Game Detail Page Admin</h1>
                 <p>Location: {location}</p>
                 <p>Date: {date}</p>
                 <p>Created By: {createdBy}</p>

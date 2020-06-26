@@ -38,7 +38,7 @@ class App extends React.Component {
   getUser(){
     axios.get(`${config.API_URL}/user`, {withCredentials: true})
     .then((res) => {
-      console.log(res + 'ResuLT')
+      // console.log(res + 'ResuLT')
       this.setState({
         loggedInUser: res.data
       })
@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 
   getGames = () => {
-    axios.get(`${config.API_URL}/user-main`)
+    axios.get(`${config.API_URL}/user-main`, {withCredentials: true})
       .then((res) => {
         this.setState({
           games: res.data
@@ -72,11 +72,11 @@ class App extends React.Component {
   componentDidMount(){
     this.getGames();
     this.getUsers();
-    console.log('MOUNTED')
+    // console.log('MOUNTED')
    
     if (!this.state.loggedInUser) {
       this.getUser();
-      console.log('GOT USER')
+      // console.log('GOT USER')
     }
     console.log(this.state)
   }
@@ -116,7 +116,7 @@ class App extends React.Component {
       password: password
     }, {withCredentials: true})
     .then((res) => {
-      console.log('RESDATA'+res.data)
+      // console.log('RESDATA'+res.data)
       this.setState({
         loggedInUser: res.data
       }, () => {
@@ -137,6 +137,8 @@ class App extends React.Component {
       })
     })
   }
+
+  
 
 
   handleAddGame = (e) => {
@@ -177,7 +179,9 @@ class App extends React.Component {
        />
         <Switch>
           <Route exact path="/"  render={() => {
-                return <Home />
+                return <Home 
+                games={this.state.games}
+                />
               }}/>
           <Route path="/sign-in"  render={() => {
               return <Signin 
@@ -186,6 +190,13 @@ class App extends React.Component {
           <Route path="/sign-up"  render={() => {
               return <Signup onSignUp = {this.handleSignUp} />
             }}/>  
+            <Route path="/edit-profile"  render={() => {
+              return <EditProfile 
+              loggedInUser={loggedInUser}
+              games={this.state.games}
+              users={this.state.users}
+              />
+            }}/>
           <Route path="/user-main"  render={() => {
               return <UserMain 
               loggedInUser={loggedInUser}
@@ -193,9 +204,12 @@ class App extends React.Component {
               users={this.state.users}
               />
             }}/>  
-          <Route path="/team-info"  render={() => {
+          <Route path="/team-info"  render={(routeProps) => {
               return <TeamsInfo 
-              loggedInUser={loggedInUser} />
+              loggedInUser={loggedInUser} 
+              {...routeProps}
+              users={this.state.users}
+              />
             }}/> 
           <Route path="/create-game"  render={() => {
               return <CreateGame 
@@ -227,14 +241,7 @@ class App extends React.Component {
                
               />
             }}/>
-            <Route path="/team-info"  render={(routeProps) => {
-              return <TeamsInfo 
-              loggedInUser={loggedInUser} 
-              {...routeProps}
-              users={this.state.users}
-               
-              />
-            }}/>
+            
 
         </Switch>
       </div>
