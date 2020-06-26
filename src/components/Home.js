@@ -13,7 +13,7 @@ export default class Home extends React.Component {
             <div>
             <GooglePlacesAutocomplete
       onSelect={console.log}
-      apiKey="AIzaSyDJ_D47clTFho3rq8csXDFz3Fie4GmHGxY"
+      apiKey=""
     />
             
             </div>
