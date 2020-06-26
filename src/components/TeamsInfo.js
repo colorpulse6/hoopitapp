@@ -40,10 +40,7 @@ export default class TeamsInfo extends React.Component {
             .catch((err)=> {
                 console.log('Something went wrong deleting from team on the client side' + err)
             })
-   
-        }
-        
-            
+        }     
     }
 
 

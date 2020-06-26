@@ -14,7 +14,9 @@ export default class GameDetail extends React.Component {
 
     
     componentDidMount(){
-        
+
+    
+
         let id = this.props.match.params.gameId
         console.log('Users on Game Deatail Page: ' + this.props.users)
         axios.get(`${config.API_URL}/game-detail/${id}`, {withCredentials: true})
@@ -34,6 +36,7 @@ export default class GameDetail extends React.Component {
 
     }
 
+    // ADD PLAYER TO GAME
     handleJoinGame = () => {
         this.sendNewPlayers()  
         // console.log(this.state.player)
@@ -53,6 +56,7 @@ export default class GameDetail extends React.Component {
         } 
     }
 
+    //SEND PLAYERS TO DB
     sendNewPlayers = () => {
         let id = this.props.match.params.gameId
         axios.get(`${config.API_URL}/join-game/${id}`, {withCredentials: true})
@@ -65,12 +69,35 @@ export default class GameDetail extends React.Component {
     }
 
 
+    handleQuitGame = (e) => {
+        
+        let id = e.target.value
+        
+        console.log('gameId:' + id)
+        console.log('user ' + this.props.loggedInUser._id)
+        let confirmQuit = window.confirm(`Are really a quitter?`);
+        if (confirmQuit) {
+                axios.get(`${config.API_URL}/quit-game/${id}`, {}, {withCredentials: true})
+            .then((res) => {
+                console.log(res.data + "success")
+                // this.props.history.push('/user-main')
+            })
+            .catch((err)=> {
+                console.log('Game delete error client side' + err)
+            })
+   
+        }
+        
+            
+    }
+
+
     render() {
 
         if (!this.props.loggedInUser) {
             return <Redirect to='/sign-in' />
         }
-        const {location, date, createdBy, players} = this.state.game
+        const {location, date, createdBy, players, _id} = this.state.game
         console.log('players:  ' + typeof players) 
             let userNames = []
             for (let i = 0; i< this.props.users.length; i++){
@@ -88,19 +115,25 @@ export default class GameDetail extends React.Component {
         
         return(
             <div className="game-detail-page">
-            <div className="game-card card">
-                <h1>Game Detail Page</h1>
-                    <p>Location: {location}</p>
-                    <p>Date: {date}</p>
-                    <p>Created By: {createdBy}</p>
-                    <p>Players: {userNames.map((name)=> {
-                        return name
-                    })}</p>
-                    <div>
-                    {!userNames.includes(this.props.loggedInUser.username) ? <button onClick={this.handleJoinGame} type="submit">Join</button> : <p>You are scheduled to play this game.</p>}
-                    </div>
+                <div className="game-card card">
+                    <h1>Game Detail Page</h1>
+                        <p>Location: {location}</p>
+                        <p>Date: {date}</p>
+                        <p>Created By: {createdBy}</p>
+                        <p>Players: {userNames.map((name)=> {
+                            return name
+                        })}</p>
+                        <div>
+                        {
+                            !userNames.includes(this.props.loggedInUser.username) ? <button className="btn btn-primary" onClick={this.handleJoinGame} type="submit">Join</button> : <div>
+                            <p>You are scheduled to play this game.</p> 
+                            <button className="btn btn-danger" value={_id} onClick={this.handleQuitGame}>Leave Game</button>
+                            </div>
+                        }
+                        
+                        </div>
 
-            </div>
+                </div>
             
                 
             </div>
