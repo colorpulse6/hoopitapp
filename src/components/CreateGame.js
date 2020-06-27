@@ -17,19 +17,20 @@ export default function CreateGame(props) {
                 
                 <div className="form-group">
                     <label htmlFor="Date">Date</label>
-                    <input type="date" className="form-control" name="date" id="date" />
+                    <input type="date" className="form-control" name="date" id="date" required/>
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="location">location</label>
-                    <input type="text" className="form-control" name="location" id="location" />
+                    <input type="text" className="form-control" name="location" id="location" required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="maxPlayers">Max Players</label>
-                    <input type="text" className="form-control" name="maxPlayers" id="maxPlayers" />
+                    <input type="text" className="form-control" name="maxPlayers" id="maxPlayers" required/>
                 </div>
 
                 <input type="file" name="image"></input>
+                <input type="time" name="time"></input>
                 
                 <button type="submit" className="btn btn-primary">Create</button>
             </form>

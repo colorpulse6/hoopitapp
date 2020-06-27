@@ -50,7 +50,7 @@ export default class TeamsDetail extends React.Component {
                     players: list
                 } 
             })
-            this.props.history.push('/user-main')
+            this.props.history.push('/team-info')
 
         })
         .catch((err) => {

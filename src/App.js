@@ -18,6 +18,10 @@ import GameAdmin from './components/GameAdmin'
 
 import TeamsInfo from './components/TeamsInfo'
 import TeamDetail from './components/TeamDetail'
+import EachTeam from './components/EachTeam'
+
+import ChatPage from './components/ChatPage'
+
 
 
 
@@ -235,6 +239,15 @@ class App extends React.Component {
             }}/>    
             <Route path="/:gameId/admin/team-detail"  render={(routeProps) => {
               return <TeamDetail 
+              loggedInUser={loggedInUser} 
+              {...routeProps}
+              users={this.state.users}
+               
+              />
+            }}/>
+            
+            <Route path="/each-team/:teamId"  render={(routeProps) => {
+              return <EachTeam 
               loggedInUser={loggedInUser} 
               {...routeProps}
               users={this.state.users}

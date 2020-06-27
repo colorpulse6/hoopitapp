@@ -9,6 +9,7 @@ export default class UserMain extends React.Component {
 
     state = {
         games: []
+
     }
 
     getGames = () => {
@@ -25,7 +26,18 @@ export default class UserMain extends React.Component {
           })  
       }
 
+      getUser(){
+        axios.get(`${config.API_URL}/user`, {withCredentials: true})
+        .then((res) => {
+          // console.log(res + 'ResuLT')
+          this.setState({
+            loggedInUser: res.data
+          })
+        })
+          
+      }
       componentDidMount(){
+        this.getUser()
         this.getGames();
         console.log(this.state)
        console.log('Games from User Main:   ---   ' + this.state.games)
@@ -56,14 +68,14 @@ export default class UserMain extends React.Component {
                 
                     <div class="games-near-you">
                         
-                            
+                            {/* SHOW GAMES IN YOUR CITY */}
                                 {
                                     this.state.games.map((el, index) => {
                                         if (el.location === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username  && !el.players.includes(this.props.loggedInUser._id)) {
                                             return <div className="card each-card"> 
                                                 <div className="card-body" key={index} id="game">
                                         
-                                            <Link to={`/game-detail/${el._id}`}><p>Date: {el.date}</p></Link>
+                                            <p>Date: {el.date}</p>
                                             <p className="text-info">Location: {el.location}</p>
                                             <p className="text-info">Created By: {el.createdBy}</p>
                                         
@@ -71,7 +83,7 @@ export default class UserMain extends React.Component {
                                             {(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
                                             {el.maxPlayers === el.players.length ? <p className="text-danger">FULL</p> : <p></p>}
                                 
-                                           
+                                            <Link to={`/game-detail/${el._id}`}><button className="btn btn-primary">View Details</button></Link>
                                         </div>
                                     </div>
                                         }  
@@ -86,13 +98,16 @@ export default class UserMain extends React.Component {
                 <div className="row">
                 
                     <div class="games-near-you">
+
+                        {/* SHOW GAMES YOU MADE */}
+
                         {
                             this.state.games.map((el, index) => {
                                 if (el.location === this.props.loggedInUser.location && el.createdBy === this.props.loggedInUser.username) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 
-                                    <Link to={`/${el._id}/admin`}><p>Date: {el.date}</p></Link>
+                                    <p>Date: {el.date}</p>
                                     <p className="text-success" >Location: {el.location}</p>
                                     <p className="text-success">Created By: {el.createdBy}</p>
                                 
@@ -101,6 +116,7 @@ export default class UserMain extends React.Component {
                                     {el.maxPlayers === el.players.length ? <p className="text-danger">FULL</p> : <p></p>}
                         
                                     <br></br>
+                                    <Link to={`/${el._id}/admin`}><button className="btn btn-primary">View Details</button></Link>
                                 </div>
                             </div>
                                 }  
@@ -116,13 +132,15 @@ export default class UserMain extends React.Component {
                 <div className="row">
                 
                     <div class="games-near-you">
+
+                    {/* SHOW GAMES YOU JOINED */}
                         {
                             this.state.games.map((el, index) => {
                                 if (el.location === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username && el.players.includes(this.props.loggedInUser._id)) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 
-                                    <Link to={`/game-detail/${el._id}`}><p>Date: {el.date}</p></Link>
+                                    <p>Date: {el.date}</p>
                                     <p className="text-success" >Location: {el.location}</p>
                                     <p className="text-success">Created By: {el.createdBy}</p>
                                 
@@ -131,6 +149,7 @@ export default class UserMain extends React.Component {
                                    
                         
                                     <br></br>
+                                    <Link to={`/game-detail/${el._id}`}><button className="btn btn-primary">View Details</button></Link>
                                 </div>
                             </div>
                                 }  

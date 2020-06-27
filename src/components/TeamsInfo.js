@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios'
 import config from '../config';
 import { Redirect } from 'react-router-dom';
+import EachTeam from './EachTeam'
+import {Switch, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 export default class TeamsInfo extends React.Component {
@@ -47,6 +50,28 @@ export default class TeamsInfo extends React.Component {
         }     
     }
 
+    handleDisbandTeam = (e) => {
+        let id = e.target.value
+        console.log(id)
+
+        let confirmQuit = window.confirm('Are you sure you want to diband this team?');
+        if (confirmQuit) {
+                axios.delete(`${config.API_URL}/disband-team/${id}`, {withCredentials: true})
+            .then((res) => {
+                this.props.history.push('/user-main')
+                console.log('Client Side works to delete team ')
+                this.setState({
+                    teams: res.data,
+                })
+                
+            })
+            .catch((err)=> {
+                console.log('Something went wrong deleting team on the client side' + err)
+            })
+        }     
+
+    }
+
 
 
     render() {
@@ -84,14 +109,14 @@ export default class TeamsInfo extends React.Component {
             <div className="game-detail-page row">
             <h1>Teams Info Page</h1>
                 <div className="games-near-you">
-                    {uniqueArray.slice(0,1).map((team, index)=> {
+                    {/* {uniqueArray.slice(0,1).map((team, index)=> {
             return !team.includes(this.props.loggedInUser.username) ? <h3>Nobody Likes You...</h3> : <p></p>}
-            )}
+            )} */}
                         
                         {this.state.teams.map((team, index)=> {
                             if(team.players.includes(this.props.loggedInUser._id))
                             return <div key={index} className="card each-card team-info-card">
-                                <p>Team Name: {team.teamName}</p>
+                                <Link to={`/each-team/${team._id}`}><p>Team Name: {team.teamName}</p></Link>
                                 <p>Owner: {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}</p>
                                 <p>Home Town: {team.homeTown}</p>
 
@@ -106,7 +131,12 @@ export default class TeamsInfo extends React.Component {
                                 })
                             }
                         </div>
-                        <button className="btn btn-primary quit-team-btn" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
+                        {
+                            //CHANGE BUTTON DEPENDING ON OWNER OF TEAM OR NOT
+                            this.props.loggedInUser.username === team.owner ? <button className="btn btn-primary quit-team-btn" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
+                            : <button className="btn btn-primary quit-team-btn" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
+                        }
+                        
                         
                     </div>
                     
@@ -114,8 +144,7 @@ export default class TeamsInfo extends React.Component {
                 })}
 
                 </div>
-            
-            
+                
             </div>
         )
 

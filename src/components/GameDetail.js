@@ -15,10 +15,8 @@ export default class GameDetail extends React.Component {
     
     componentDidMount(){
 
-    
-
         let id = this.props.match.params.gameId
-        console.log('Users on Game Deatail Page: ' + this.props.users)
+        // console.log('Users on Game Deatail Page: ' + this.props.users)
         axios.get(`${config.API_URL}/game-detail/${id}`, {withCredentials: true})
             .then((res) => {
                 // console.log('Info' + res.data)
