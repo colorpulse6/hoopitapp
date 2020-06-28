@@ -26,7 +26,7 @@ export default function Nav(props) {
                     </li>
 
                     <li className="nav-item">
-                       <Link className="nav-link" to="/edit-profile">Profile</Link>
+                       <Link className="nav-link" to="/edit-profile">{props.loggedInUser.username}</Link>
                     </li>
 
                     <li className="nav-item ">

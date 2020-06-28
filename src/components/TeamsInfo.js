@@ -16,7 +16,7 @@ export default class TeamsInfo extends React.Component {
     componentDidMount(){
         
             
-            // console.log(this.state.teams + 'These are teams!')
+            console.log(this.state.teams + 'These are teams!')
             axios.get(`${config.API_URL}/teams`, {withCredentials: true})
                 .then((res) => {
                     // console.log('Info' + res.data)

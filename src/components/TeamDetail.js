@@ -11,6 +11,7 @@ export default class TeamsDetail extends React.Component {
     }
 //QUESTION: DO I NEED TO CALL getUser() EVERY PAGE?
     componentDidMount(){
+        console.log('game::::' + this.state.game)
         let id = this.props.match.params.gameId
         axios.get(`${config.API_URL}/game-detail/${id}`, {withCredentials: true})
             .then((res) => {
@@ -35,27 +36,33 @@ export default class TeamsDetail extends React.Component {
         let teamName = e.target.teamName.value
         let homeTown = this.props.loggedInUser.location
         const list = this.state.game.players;
-        axios.post(`${config.API_URL}/${id}/save-team`, {
-            owner: owner,
-            teamName: teamName,
-            hoometown: homeTown,
-            players: list
-            
-            
-        }, {withCredentials: true})
-        .then((res) => {
-            this.setState({
-                team: {
-                    teamName: teamName,
-                    players: list
-                } 
+        if(this.state.game.maxPlayers === this.state.game.players.length){
+            axios.post(`${config.API_URL}/${id}/save-team`, {
+                owner: owner,
+                teamName: teamName,
+                hoometown: homeTown,
+                players: list
+                
+                
+            }, {withCredentials: true})
+            .then((res) => {
+                this.setState({
+                    team: {
+                        teamName: teamName,
+                        players: list
+                    } 
+                })
+                this.props.history.push('/team-info')
+    
             })
-            this.props.history.push('/team-info')
+            .catch((err) => {
+                console.log(err + 'Axios Error!!!!')
+            })
 
-        })
-        .catch((err) => {
-            console.log(err + 'Axios Error!!!!')
-        })
+        } else {
+            alert('Game must be full to form a team!')
+        }
+        
     }
 
     render() {

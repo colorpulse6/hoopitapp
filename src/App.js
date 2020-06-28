@@ -83,6 +83,8 @@ class App extends React.Component {
       // console.log('GOT USER')
     }
     console.log(this.state)
+    
+
   }
 
   handleSignUp = (e) => {
@@ -147,23 +149,30 @@ class App extends React.Component {
 
   handleAddGame = (e) => {
     e.preventDefault()
+
     let date = e.target.date.value
     let location = e.target.location.value
     let maxPlayers = e.target.maxPlayers.value
-
+    let team;
+    if(e.target.team.value === 'No team selected'){
+      team = this.state.loggedInUser.username
+    } else{
+      team = e.target.team.value.split(',')
+    }
     axios.post(`${config.API_URL}/create-game`, {
       date: date,
       location: location,
       maxPlayers: maxPlayers,
-      createdBy: this.state.loggedInUser.username
+      createdBy: this.state.loggedInUser.username,
+      players: team
     }, {withCredentials: true})
     .then((res) => {
+      console.log(res.data)
       this.setState({
         games: [...this.state.games, res.data]
       }, () => {
         this.props.history.push('/user-main')
       })
-      // this.setState({} , function)
     })
     .catch((err) => {
       if(err.response.status === 401) {
@@ -171,6 +180,7 @@ class App extends React.Component {
       }
     })
 }
+
 
 
   render() {
@@ -218,7 +228,8 @@ class App extends React.Component {
           <Route path="/create-game"  render={() => {
               return <CreateGame 
               loggedInUser={loggedInUser} 
-              onAddGame={this.handleAddGame}  
+              onAddGame={this.handleAddGame} 
+              useTeam={this.handleUseTeam} 
               />
             }}/>  
            <Route exact path="/game-detail/:gameId"  render={(routeProps) => {
