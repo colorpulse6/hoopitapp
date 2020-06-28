@@ -119,6 +119,64 @@
   width:250px;
 }
 
+/* Create Game Page */
+
+.create-game-main {
+  display:flex;
+  align-items: flex-start;
+}
+.create-game-map {
+  width:500px;
+  height:500px;
+  border:1px solid black;
+
+}
+
+.front-page-map-conatiner {
+  height:100%;
+}
+
+.map {
+  max-height:100px;
+  width: 100%;
+  height: 100em;
+  
+
+}
+
+.map-search {
+  position: absolute;
+  top: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 10;
+  
+}
+
+.map-search input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
+  border:1px solid red;
+  
+}
+
+.locate-btn {
+  position: absolute;
+  top: 15rem;
+  right:1rem;
+  background:none;
+  border:none;
+  z-index: 10
+}
+
+.locate-btn img {
+  width:50px;
+  cursor: pointer;
+}
+
 /* Game Detail Pages */
 
 .game-detail-page{
@@ -169,6 +227,8 @@
   height:50px;
 }
 
+
+
 /* Chat */
 
 .user-chat-name {
@@ -204,7 +264,7 @@
   background-color: #ddd;
 }
 
-Clear floats
+/* Clear floats */
 .chat-container::after {
   content: "";
   clear: both;

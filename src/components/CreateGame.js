@@ -2,6 +2,22 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios'
 import config from '../config';
+import Map from "./Map"
+import '../App.css';
+
+
+
+// import usePlacesAutoComplete, {
+//     getGeocode,
+//     getLatLng,
+// } from "use-places-autocomplete";
+
+// import {
+//     Combobox,
+//     ComoboboxInput,
+//     ComboboxList,
+//     ComboboxOption,
+// } from "@reach/combobox";
 
 
 export default class CreateGame extends React.Component {
@@ -32,12 +48,14 @@ export default class CreateGame extends React.Component {
             return <Redirect to='/sign-in' />
         }
 
+    
+
 
         return(
 
             
             
-            <div>
+            <div className="create-game-main">
             <h1>Create Game Page</h1>
             
             <form onSubmit={this.props.onAddGame}>

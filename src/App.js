@@ -195,6 +195,8 @@ class App extends React.Component {
           <Route exact path="/"  render={() => {
                 return <Home 
                 games={this.state.games}
+                loggedInUser={loggedInUser}
+                users={this.state.users}
                 />
               }}/>
           <Route path="/sign-in"  render={() => {

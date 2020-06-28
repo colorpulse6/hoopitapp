@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import config from '../config';
+import Map from './Map'
 
 
 export default class UserMain extends React.Component {
@@ -67,6 +68,12 @@ export default class UserMain extends React.Component {
                 <div class="row ">
                 
                     <div class="games-near-you">
+
+                    <Map className="map"
+                        games={this.state.games}
+                        loggedInUser={this.props.loggedInUser}
+                    
+                />
                         
                             {/* SHOW GAMES IN YOUR CITY */}
                                 {
