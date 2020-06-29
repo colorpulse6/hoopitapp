@@ -110,7 +110,7 @@ export default class UserMain extends React.Component {
 
                         {
                             this.state.games.map((el, index) => {
-                                if (el.city === this.props.loggedInUser.location && el.createdBy === this.props.loggedInUser.username) {
+                                if (el.createdBy === this.props.loggedInUser.username) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 

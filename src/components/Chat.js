@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ChatInput from './ChatInput'
 import ChatMessage from './ChatMessage'
+import { Redirect } from 'react-router-dom';
 
 const URL = 'ws://localhost:3030'
 
@@ -23,7 +24,7 @@ class Chat extends Component {
       // on receiving a message, add it to the list of messages
       const message = JSON.parse(evt.data)
       this.addMessage(message)
-      console.log(evt.data)
+      console.log(evt.data + 'WHAT IS THIS?')
     }
 
     this.ws.onclose = () => {
@@ -35,8 +36,10 @@ class Chat extends Component {
     }
   }
 
-  addMessage = message =>
+  addMessage = message => {
     this.setState(state => ({ messages: [message, ...state.messages] }))
+    console.log(this.state.messages + 'WHAT IS THIS?')
+  }
 
   submitMessage = messageString => {
     // on submitting the ChatInput form, send the message, add it to the list and reset the input
@@ -47,6 +50,10 @@ class Chat extends Component {
   }
 
   render() {
+    if (!this.props.loggedInUser) {
+      //REDIRECTS USER TO SIGN IN IF NOT LOGGED IN
+      return <Redirect to='/sign-in' />
+  }
     return (
       <div>
         <label htmlFor="name">

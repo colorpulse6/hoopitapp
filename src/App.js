@@ -169,18 +169,20 @@ class App extends React.Component {
     // console.log(this.handleLocationInput())
     let date = e.target.date.value
     let location = this.state.location
+    let time = e.target.time.value
     let city = this.state.city
     let lat = this.state.lat
     let lng = this.state.lng
     let maxPlayers = e.target.maxPlayers.value
     let team;
     if(e.target.team.value === 'No team selected'){
-      team = this.state.loggedInUser.username
+      team = this.state.loggedInUser._id
     } else{
       team = e.target.team.value.split(',')
     }
     axios.post(`${config.API_URL}/create-game`, {
       date: date,
+      time: time,
       location: location,
       city: city,
       lat: lat,

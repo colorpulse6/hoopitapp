@@ -70,10 +70,12 @@ export default class CreateGame extends React.Component {
                     <div className="form-group">
                         <label htmlFor="location">location</label>
                         {/* <input type="text" className="form-control" name="location" id="location" required/> */}
-                        <SearchCity 
-                        panTo={this.props.handleLocationInput}
+                        <div>
+                            <SearchCity 
+                            panTo={this.props.handleLocationInput}
                          
                         />
+                        </div>
                     </div>
                     <div className="form-group">
                         <label htmlFor="maxPlayers">Max Players</label>

@@ -37,8 +37,8 @@ import mapStyles from "./mapStyles"
 const libraries = ["places"]
 
 const mapContainerStyle = {
-    width: '100vw', 
-    height: '100vh'
+    width: '800px', 
+    height: '500px'
     
 }
 const styles = { width: '100%', height: '100%', position: 'absolute'};
@@ -160,11 +160,12 @@ export default function Map(props) {
                                         <Link to={`/game-detail/${game._id}`}><h2>Game</h2></Link>
                                         <p> Created By: {game.createdBy}</p>
                                         <p> Location: {game.location}</p>
+                                        <p>Time: {game.time}</p>
                                    </div>
                         }
                         
                     })}
-                    <p>Marked at {formatRelative(selected.time, new Date())}</p>
+                    {/* <p>Marked at {formatRelative(selected.time, new Date())}</p> */}
                 </div>
             </InfoWindow>) : null}
         </GoogleMap>
