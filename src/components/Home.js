@@ -1,21 +1,31 @@
 import React from 'react';
 import Map from './Map'
+import axios from 'axios'
+import config from '../config';
 
-export default function Home() {
+export default class Home extends React.Component {
+
     
-    return(
 
-        <div >
-        <div>
-            <Map className="home-map"
-                
-            />
+        render(){
 
-        </div>
+            return(
+
+                <div >
+                    <div>
+                        {/* <Map 
+                            
+                        /> */}
+
+                    </div>
+            
+                </div>
+            )
+
+        }
         
-    </div>
 
-    )
+    
     
 
     

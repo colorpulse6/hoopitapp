@@ -27,21 +27,21 @@ export default class UserMain extends React.Component {
           })  
       }
 
-      getUser(){
-        axios.get(`${config.API_URL}/user`, {withCredentials: true})
-        .then((res) => {
-          // console.log(res + 'ResuLT')
-          this.setState({
-            loggedInUser: res.data
-          })
-        })
+    //   getUser(){
+    //     axios.get(`${config.API_URL}/user`, {withCredentials: true})
+    //     .then((res) => {
+    //       // console.log(res + 'ResuLT')
+    //       this.setState({
+    //         loggedInUser: res.data
+    //       })
+    //     })
           
-      }
+    //   }
       componentDidMount(){
-        this.getUser()
+        // this.getUser()
         this.getGames();
-        console.log(this.state)
-       console.log('Games from User Main:   ---   ' + this.state.games)
+        // console.log(this.state)
+       
         
       }
 
@@ -51,7 +51,8 @@ export default class UserMain extends React.Component {
     if (!this.props.loggedInUser) {
         return <Redirect to='/sign-in' />
     }
-
+    console.log('Games from User Main:   ---   ' + this.state.games)
+    const games = this.state.games
     return(
         <div >
             {/* <h1>Main User Page</h1> */}
@@ -70,7 +71,6 @@ export default class UserMain extends React.Component {
                     <div class="games-near-you">
 
                     <Map className="map"
-                        games={this.state.games}
                         loggedInUser={this.props.loggedInUser}
                     
                 />
@@ -78,7 +78,7 @@ export default class UserMain extends React.Component {
                             {/* SHOW GAMES IN YOUR CITY */}
                                 {
                                     this.state.games.map((el, index) => {
-                                        if (el.location === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username  && !el.players.includes(this.props.loggedInUser._id)) {
+                                        if (el.city === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username  && !el.players.includes(this.props.loggedInUser._id)) {
                                             return <div className="card each-card"> 
                                                 <div className="card-body" key={index} id="game">
                                         
@@ -110,7 +110,7 @@ export default class UserMain extends React.Component {
 
                         {
                             this.state.games.map((el, index) => {
-                                if (el.location === this.props.loggedInUser.location && el.createdBy === this.props.loggedInUser.username) {
+                                if (el.city === this.props.loggedInUser.location && el.createdBy === this.props.loggedInUser.username) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 
@@ -143,7 +143,7 @@ export default class UserMain extends React.Component {
                     {/* SHOW GAMES YOU JOINED */}
                         {
                             this.state.games.map((el, index) => {
-                                if (el.location === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username && el.players.includes(this.props.loggedInUser._id)) {
+                                if (el.city === this.props.loggedInUser.location && el.createdBy !== this.props.loggedInUser.username && el.players.includes(this.props.loggedInUser._id)) {
                                     return <div class="card each-card">
                                     <div class="card-body" key={index} id="game">
                                 

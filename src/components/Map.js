@@ -2,6 +2,10 @@ import React from 'react';
 import '../App.css';
 import bball from './b-ball.png'
 import SearchCity from './SearchCity'
+import axios from 'axios'
+import config from '../config';
+import {Link} from 'react-router-dom'
+
 import {
     
     GoogleMap,
@@ -51,23 +55,46 @@ export default function Map(props) {
     const [markers, setMarkers] = React.useState([])
     const [selected, setSelected] = React.useState(null);
 
-    const onMapClick = React.useCallback((event) => {
-        console.log(event)
-        //Get Markers on Click
-        setMarkers(current => [
-            ...current, 
-            {
-                lat:event.latLng.lat(),
-                lng: event.latLng.lng(),
-                time: new Date()
-        },
-    ]);
-    }, []);
+    const [games, setData] = React.useState({ hits: [] });
 
+    // const onMapClick = React.useCallback((event) => {
+    //     console.log(event)
+    //     // Get Markers on Click
+    //     setMarkers(current => [
+    //         ...current, 
+    //         {
+    //             lat:event.latLng.lat(),
+    //             lng: event.latLng.lng(),
+    //             time: new Date()
+    //     },
+    // ]);
+    
+    // }, []);
+    console.log(games.data + 'ogugvk')
     //RETAIN STATE WITHOUT CAUSING RERENDERS
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
+        console.log(props.games + 'THESE HERE GAMES!')
+        
+        //GET GAMES FROM API
+            axios.get(`${config.API_URL}/user-main`, {withCredentials: true})
+              .then((games) => {
+                //   SET GAMES IN HOOK STATE
+                setData(games)
+                games.data.map((game) => {
+                    return setMarkers(current => [
+                        ...current, 
+                        {
+                            lat: game.lat,
+                            lng: game.lng,
+                            time: new Date()
+                    },
+           
+                ]);
+                })
+              })  
+
     }, []);
 
     //PAN TO LAT AND LONG OF INPUT
@@ -91,7 +118,7 @@ export default function Map(props) {
    
     // const user =  props.loggedInUser.username
 
-    return <div className="front-page-map-conatiner">
+    return <div className="front-page-map-container">
     
         <SearchCity panTo={panTo}/>
         <Locate panTo={panTo}/>
@@ -99,10 +126,10 @@ export default function Map(props) {
         <GoogleMap 
             styles={styles}
             mapContainerStyle={mapContainerStyle}
-            zoom={12}
+            zoom={10}
             center={center}
             options={options}
-            onClick={onMapClick}
+            // onClick={onMapClick}
             onLoad={onMapLoad}
         >
             {markers.map((marker => <Marker 
@@ -125,8 +152,18 @@ export default function Map(props) {
                 <InfoWindow position={{lat:selected.lat, lng:selected.lng}} onCloseClick={() =>{setSelected(null)}}>
             
                 <div>
-                    <h2>Game</h2>
-                    {/* <p>Marked by {user}</p> */}
+                    
+                    {games.data.map((game)=> {
+                         
+                        if(game.lat === selected.lat){
+                            return <div>
+                                        <Link to={`/game-detail/${game._id}`}><h2>Game</h2></Link>
+                                        <p> Created By: {game.createdBy}</p>
+                                        <p> Location: {game.location}</p>
+                                   </div>
+                        }
+                        
+                    })}
                     <p>Marked at {formatRelative(selected.time, new Date())}</p>
                 </div>
             </InfoWindow>) : null}

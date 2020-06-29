@@ -41,6 +41,7 @@ export default class CreateGame extends React.Component {
             })
     }
     
+    
 
     render() {
         
@@ -70,8 +71,8 @@ export default class CreateGame extends React.Component {
                         <label htmlFor="location">location</label>
                         {/* <input type="text" className="form-control" name="location" id="location" required/> */}
                         <SearchCity 
-                        name='location'
-                        value={this.props.value}    
+                        panTo={this.props.handleLocationInput}
+                         
                         />
                     </div>
                     <div className="form-group">

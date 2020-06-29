@@ -43,8 +43,8 @@ export default function SearchCity({ panTo }) {
                     //GET LAT AND LNG FROM INPUT
                     const {lat, lng } = await getLatLng(results[0]);
                     //PAN TO INPUT
-                    panTo({ lat, lng })
-                    console.log(lat, lng)
+                    panTo({ lat, lng, address, value })
+                    // console.log(lat, lng)
                 } catch (err){
                     console.log(err + 'ERROR!')
                 }

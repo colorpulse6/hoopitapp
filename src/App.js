@@ -21,6 +21,8 @@ import TeamDetail from './components/TeamDetail'
 import EachTeam from './components/EachTeam'
 
 import ChatPage from './components/ChatPage'
+import { lastDayOfDecade } from 'date-fns';
+import { object } from 'prop-types';
 
 
 
@@ -36,7 +38,11 @@ class App extends React.Component {
   state = {
     loggedInUser: '',
     games:[],
-    users:[]
+    users:[],
+    location:'',
+    city:'',
+    lat: null,
+    lng: null
   }
 
   getUser(){
@@ -76,7 +82,7 @@ class App extends React.Component {
   componentDidMount(){
     this.getGames();
     this.getUsers();
-    console.log('MOUNTED' + this.state)
+    console.log('MOUNTED' + this.state.loggedInUser)
    
     if (!this.state.loggedInUser) {
       this.getUser();
@@ -145,13 +151,27 @@ class App extends React.Component {
   }
 
   
+   handleLocationInput = (obj) => {
+      this.setState({
+          location: obj.address,
+          city: obj.value,
+          lat: obj.lat,
+          lng: obj.lng
+      })
+    // console.log(obj)
+     
+}
 
 
   handleAddGame = (e) => {
     e.preventDefault()
 
+    // console.log(this.handleLocationInput())
     let date = e.target.date.value
-    let location = e.target.location.value
+    let location = this.state.location
+    let city = this.state.city
+    let lat = this.state.lat
+    let lng = this.state.lng
     let maxPlayers = e.target.maxPlayers.value
     let team;
     if(e.target.team.value === 'No team selected'){
@@ -162,12 +182,15 @@ class App extends React.Component {
     axios.post(`${config.API_URL}/create-game`, {
       date: date,
       location: location,
+      city: city,
+      lat: lat,
+      lng: lng,
       maxPlayers: maxPlayers,
       createdBy: this.state.loggedInUser.username,
       players: team
     }, {withCredentials: true})
     .then((res) => {
-      console.log(res.data)
+      console.log('GOT GAME')
       this.setState({
         games: [...this.state.games, res.data]
       }, () => {
@@ -195,8 +218,10 @@ class App extends React.Component {
           <Route exact path="/"  render={() => {
                 return <Home 
                 games={this.state.games}
-                loggedInUser={loggedInUser}
+                loggedInUser={this.state.loggedInUser}
                 users={this.state.users}
+                // getUser={this.getUser}
+                // getGames={this.getGames}
                 />
               }}/>
           <Route path="/sign-in"  render={() => {
@@ -232,6 +257,7 @@ class App extends React.Component {
               loggedInUser={loggedInUser} 
               onAddGame={this.handleAddGame} 
               useTeam={this.handleUseTeam} 
+              handleLocationInput={this.handleLocationInput}
               />
             }}/>  
            <Route exact path="/game-detail/:gameId"  render={(routeProps) => {
