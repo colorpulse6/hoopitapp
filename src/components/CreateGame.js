@@ -4,6 +4,7 @@ import axios from 'axios'
 import config from '../config';
 import Map from "./Map"
 import '../App.css';
+import SearchCity from './SearchCity'
 
 
 
@@ -67,7 +68,11 @@ export default class CreateGame extends React.Component {
     
                     <div className="form-group">
                         <label htmlFor="location">location</label>
-                        <input type="text" className="form-control" name="location" id="location" required/>
+                        {/* <input type="text" className="form-control" name="location" id="location" required/> */}
+                        <SearchCity 
+                        name='location'
+                        value={this.props.value}    
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="maxPlayers">Max Players</label>
@@ -98,3 +103,4 @@ export default class CreateGame extends React.Component {
     }
    
 }
+

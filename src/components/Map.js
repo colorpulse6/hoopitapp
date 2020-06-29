@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import bball from './b-ball.png'
-
+import SearchCity from './SearchCity'
 import {
     
     GoogleMap,
@@ -89,11 +89,11 @@ export default function Map(props) {
         zoomControl: true,
     }
    
-    const user =  props.loggedInUser.username
+    // const user =  props.loggedInUser.username
 
     return <div className="front-page-map-conatiner">
     
-        <Search panTo={panTo}/>
+        <SearchCity panTo={panTo}/>
         <Locate panTo={panTo}/>
 
         <GoogleMap 
@@ -126,7 +126,7 @@ export default function Map(props) {
             
                 <div>
                     <h2>Game</h2>
-                    <p>Marked by {user}</p>
+                    {/* <p>Marked by {user}</p> */}
                     <p>Marked at {formatRelative(selected.time, new Date())}</p>
                 </div>
             </InfoWindow>) : null}
@@ -150,63 +150,3 @@ function Locate({panTo}) {
             </button>
 }
 
-function Search({ panTo }) {
-    //API HOOK
-    const {
-        ready, 
-        value, 
-        suggestions: {status, data}, 
-        setValue, 
-        clearSuggestions
-    } = usePlacesAutoComplete({
-        requestOptions: {
-            location: {lat: () => 52.5200, lng: () => 13.4050 },
-            radius: 200 * 1000,
-        },
-
-    });
-        
-    return (
-    <div className="map-search">
-        <Combobox 
-            onSelect = {async (address) => {
-                //UPDATE STATE
-                setValue(address, false);
-                clearSuggestions();
-                
-                try {
-                    const results = await getGeocode({address})
-                    //GET LAT AND LNG FROM INPUT
-                    const {lat, lng } = await getLatLng(results[0]);
-                    //PAN TO INPUT
-                    panTo({ lat, lng })
-                    console.log(lat, lng)
-                } catch (err){
-                    console.log(err + 'ERROR!')
-                }
-                // console.log(address);
-        }}
-        >
-
-            <ComboboxInput 
-                value={value} 
-                onChange={(e) => {
-                    setValue(e.target.value);
-                }}
-                disabled={!ready} 
-                placeholder = "Enter an address"
-
-            />
-            <ComboboxPopover>
-                <ComboboxList>
-                    {status === 'OK' && 
-                        
-                    data.map(({id, description}) => ( <ComboboxOption key={id} value={description}/>
-                    ))}
-                </ComboboxList>
-            </ComboboxPopover>
-        </Combobox>
-
-    </div>
-    )
-}
