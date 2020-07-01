@@ -34,11 +34,13 @@ class Chat extends Component {
         ws: new WebSocket(URL),
       })
     }
+    
   }
 
   addMessage = message => {
     this.setState(state => ({ messages: [message, ...state.messages] }))
     console.log(this.state.messages + 'WHAT IS THIS?')
+
   }
 
   submitMessage = messageString => {

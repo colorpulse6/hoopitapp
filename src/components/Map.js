@@ -1,6 +1,8 @@
 import React from 'react';
 import '../App.css';
 import bball from './b-ball.png'
+import hoopitappLogo from './hoopitapp-logo.png'
+
 import SearchCity from './SearchCity'
 import axios from 'axios'
 import config from '../config';
@@ -37,8 +39,8 @@ import mapStyles from "./mapStyles"
 const libraries = ["places"]
 
 const mapContainerStyle = {
-    width: '800px', 
-    height: '500px'
+    width: '80vw', 
+    height: '60vh'
     
 }
 const styles = { width: '100%', height: '100%', position: 'absolute'};
@@ -70,6 +72,10 @@ export default function Map(props) {
     // ]);
     
     // }, []);
+
+    
+        
+     
     console.log(games.data + 'ogugvk')
     //RETAIN STATE WITHOUT CAUSING RERENDERS
     const mapRef = React.useRef();
@@ -115,14 +121,35 @@ export default function Map(props) {
         disableDefaultUI: true,
         zoomControl: true,
     }
+
+    let markerImage 
+
+   
    
     // const user =  props.loggedInUser.username
-
-    return <div className="front-page-map-container">
     
+    
+    
+    return <div className="front-page-map-container">
+
+        {/* { games.data.map((game)=> {
+            if(props.loggedInUser.username === game.createdBy){
+                markerImage = hoopitappLogo
+            } else {
+                markerImage = bball
+            }
+        })
+            
+        } */}
+
         <SearchCity panTo={panTo}/>
         <Locate panTo={panTo}/>
 
+        <div
+            style={{
+            width: "100%",
+            marginLeft: 0,
+        }}>
         <GoogleMap 
             styles={styles}
             mapContainerStyle={mapContainerStyle}
@@ -154,13 +181,14 @@ export default function Map(props) {
                 <div>
                     
                     {games.data.map((game)=> {
-                         
+                        
                         if(game.lat === selected.lat){
-                            return <div>
-                                        <Link to={`/game-detail/${game._id}`}><h2>Game</h2></Link>
+                            return <div className="card each-card">
+                                        <Link to={`/game-detail/${game._id}`}>
                                         <p> Created By: {game.createdBy}</p>
                                         <p> Location: {game.location}</p>
                                         <p>Time: {game.time}</p>
+                                        <button></button></Link>
                                    </div>
                         }
                         
@@ -169,7 +197,7 @@ export default function Map(props) {
                 </div>
             </InfoWindow>) : null}
         </GoogleMap>
-
+        </div>
     </div>
 }
 
@@ -184,7 +212,7 @@ function Locate({panTo}) {
         () => null
         );
     }}>
-                <img src={bball}></img>
+                {/* <img src={bball}></img> */}
             </button>
 }
 

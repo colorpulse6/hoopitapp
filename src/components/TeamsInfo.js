@@ -38,7 +38,7 @@ export default class TeamsInfo extends React.Component {
                 axios.post(`${config.API_URL}/quit-team/${id}`, {}, {withCredentials: true})
             .then((res) => {
                 this.props.history.push('/user-main')
-                console.log('Client Side works ' + this.props.loggedInUser._id + ' from ' + id)
+                // console.log('Client Side works ' + this.props.loggedInUser._id + ' from ' + id)
                 this.setState({
                     teams: res.data,
                 })
@@ -85,7 +85,9 @@ export default class TeamsInfo extends React.Component {
         if(this.state.teams.length){
             this.state.teams.map((team) => {
                 team.players.forEach((eachId)=> {
+
                     playerIds.push(eachId)
+                    console.log(eachId)
                 })
             })
 
@@ -96,9 +98,11 @@ export default class TeamsInfo extends React.Component {
             for(let j=0; j<playerIds.length; j++){
                 if(this.props.users[i]._id === playerIds[j]){
                     playerNames.push(this.props.users[i].username)
+                    
                 }
             }
         }
+        console.log(playerNames)
         //REMOVE DUPLICATES FROM NAMES ARRAY
         let uniqueArray = playerNames.filter(function(item, pos, self) {
             return self.indexOf(item) == pos;

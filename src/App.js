@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+
 import axios from 'axios'
 import {Switch, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom'
@@ -23,13 +25,6 @@ import EachTeam from './components/EachTeam'
 import ChatPage from './components/ChatPage'
 import { lastDayOfDecade } from 'date-fns';
 import { object } from 'prop-types';
-
-
-
-
-
-
-
 
 
 class App extends React.Component {
@@ -222,6 +217,7 @@ class App extends React.Component {
                 games={this.state.games}
                 loggedInUser={this.state.loggedInUser}
                 users={this.state.users}
+                getGames={this.getGames}
                 // getUser={this.getUser}
                 // getGames={this.getGames}
                 />
@@ -252,6 +248,8 @@ class App extends React.Component {
               loggedInUser={loggedInUser} 
               {...routeProps}
               users={this.state.users}
+              games={this.state.games}
+
               />
             }}/> 
           <Route path="/create-game"  render={() => {

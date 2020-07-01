@@ -3,7 +3,7 @@ import bball from './b-ball.png'
 
 export default function Signin(props) {
     return(
-        <form onSubmit={props.onSignIn} className="form-container">
+        <form onSubmit={props.onSignIn} className="form-container card">
         <img className="bball" src= {bball}></img>
         <h2>Please Sign In</h2>
         

@@ -33,6 +33,26 @@ export default class GameAdmin extends React.Component {
             })
     }
 
+    cancelGame = () => {
+        let id = this.props.match.params.gameId
+        let confirmQuit = window.confirm('Are you sure you want to cancel this team?');
+        if (confirmQuit) {
+                axios.delete(`${config.API_URL}/${id}/admin/cancel-game`, {withCredentials: true})
+            .then((res) => {
+                this.props.history.push('/user-main')
+                console.log('Client Side works to delete game ')
+                this.setState({
+                    teams: res.data,
+                })
+                
+            })
+            .catch((err)=> {
+                console.log('Something went wrong deleting game team on the client side' + err)
+            })
+        }     
+    }
+
+
     render() {
 
         if (!this.props.loggedInUser) {
@@ -66,8 +86,11 @@ export default class GameAdmin extends React.Component {
                     })}</p>
 
                 </div>
-            
+                    
                 <Link to={`/${_id}/admin/team-detail`}><button className="btn btn-primary" onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
+                    <br></br>
+                <Link to={`/${_id}/admin/cancel-game`}><button className="btn btn-primary" onClick={this.cancelGame} type="submit">Cancel Game</button></Link>
+
             </div>
         )
 
