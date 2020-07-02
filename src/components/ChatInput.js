@@ -22,7 +22,7 @@ export default class ChatInput extends Component {
         }}
       >
       <div>
-        <input
+        <input className="second-font"
             type="text"
             placeholder={'Enter message...'}
             value={this.state.message}

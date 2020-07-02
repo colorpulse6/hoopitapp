@@ -183,12 +183,16 @@ export default function Map(props) {
                     {games.data.map((game)=> {
                         
                         if(game.lat === selected.lat){
-                            return <div className="card each-card">
-                                        <Link to={`/game-detail/${game._id}`}>
-                                        <p> Created By: {game.createdBy}</p>
-                                        <p> Location: {game.location}</p>
-                                        <p>Time: {game.time}</p>
-                                        <button></button></Link>
+                            return <div className=" each-card card-text map-info">
+                                    
+                                    
+                                    <Link to={props.loggedInUser.username === game.createdBy?`/${game._id}/admin`: `/game-detail/${game._id}`}>
+                                                <p className="second-font"> <strong>Created By:</strong><br></br> {game.createdBy}</p>
+                                                <p className="second-font"> <strong>Location:</strong><br></br> {game.location}</p>
+                                                <p className="second-font"><strong>Time:</strong><br></br> {game.time}</p>
+                                                </Link>
+                                   
+                                        
                                    </div>
                         }
                         

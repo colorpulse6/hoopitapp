@@ -35,7 +35,7 @@ export default class GameAdmin extends React.Component {
 
     cancelGame = () => {
         let id = this.props.match.params.gameId
-        let confirmQuit = window.confirm('Are you sure you want to cancel this team?');
+        let confirmQuit = window.confirm('Are you sure you want to cancel this game?');
         if (confirmQuit) {
                 axios.delete(`${config.API_URL}/${id}/admin/cancel-game`, {withCredentials: true})
             .then((res) => {
@@ -75,23 +75,32 @@ export default class GameAdmin extends React.Component {
             
         
         return(
-            <div className="game-detail-page">
-                <div className="game-card card">
-                    <h1>Game Detail Page Admin</h1>
-                    <p>Location: {location}</p>
-                    <p>Date: {date}</p>
-                    <p>Created By: {createdBy}</p>
-                    <p>Players: {userNames.map((name)=> {
+            <div className="page-containers">
+                <div className="game-detail-page">
+                <div className="game-card ">
+                <img class="" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
+                <div className="game-detail-text">
+                    <h4 className="second-font">You are the creator of this game</h4>
+                    <p className="second-text"><strong>Location:</strong> <br></br>{location}</p>
+                    <p className="second-text"><strong>Date:</strong><br></br> {date}</p>
+                    <p className="second-text"><strong>Created By:</strong> <br></br>{createdBy}</p>
+                    <p className="second-text"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
                         return name
                     })}</p>
 
+
                 </div>
                     
-                <Link to={`/${_id}/admin/team-detail`}><button className="btn btn-primary" onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
+                </div>
+                    
+                <Link to={`/${_id}/admin/team-detail`}><button className="card-buttons" onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
                     <br></br>
-                <Link to={`/${_id}/admin/cancel-game`}><button className="btn btn-primary" onClick={this.cancelGame} type="submit">Cancel Game</button></Link>
+                <Link to={`/${_id}/admin/cancel-game`}><button className="card-buttons red-buttons" onClick={this.cancelGame} type="submit">Cancel Game</button></Link>
 
             </div>
+
+            </div>
+            
         )
 
     }

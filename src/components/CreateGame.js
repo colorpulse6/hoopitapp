@@ -54,53 +54,72 @@ export default class CreateGame extends React.Component {
 
 
         return(
-
+            <div className="page-containers">
+            <div className="header-texts">
+                <h3 class="display-6 second-font">Create your Game</h3>
+                <p className="second-font">Fill in details to create a match</p>
+            </div>
             
             
             <div className="create-game-main">
-            <h1>Create Game Page</h1>
+            
             
             <form onSubmit={this.props.onAddGame}>
                     
                     <div className="form-group">
-                        <label htmlFor="Date">Date</label>
+                        <label htmlFor="Date" className="second-font"><strong>Choose your date and time</strong></label>
+                        <hr></hr>
+                        <div className="date-time">
                         <input type="date" className="form-control" name="date" id="date" required/>
+                        <input type="time" className="form-control" name="time"></input>
+                        </div>
                     </div>
     
                     <div className="form-group">
-                        <label htmlFor="location">location</label>
+                        <label htmlFor="location" className="second-font"><strong>Location</strong></label>
+                        <hr></hr>
                         {/* <input type="text" className="form-control" name="location" id="location" required/> */}
                         <div>
                             <SearchCity 
-                            panTo={this.props.handleLocationInput}
+                            panTo={this.props.handleLocationInput
+                            }
+                            
                          
                         />
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="maxPlayers">Max Players</label>
+                        <label htmlFor="maxPlayers" className="second-font"><strong>Pick number of players</strong></label>
+                        <hr></hr>
                         <input type="text" className="form-control" name="maxPlayers" id="maxPlayers" required/>
                     </div>
                     <div className="form-group">
-                    <label for="team">Use a Team?</label>
-                        <select name="team" id="team">
-                            <option>No team selected</option>
-                            {this.state.teams.map((team, index)=>{
-                                if(this.props.loggedInUser.username === team.owner) { return <option key={index} value={team.players}>{team.teamName}</option>}  
-                                
-                            })}
-                        </select>
+                    <div className="team-select">
+                        <label for="team" className="second-font"><strong>Use a Team?</strong></label>
+                        <hr></hr>
+                            <select name="team" id="team" className="form-control">
+                                <option>No team selected</option>
+                                {this.state.teams.map((team, index)=>{
+                                    if(this.props.loggedInUser.username === team.owner) { return <option key={index} value={team.players}>{team.teamName}</option>}  
+                                    
+                                })}
+                            </select>
                     </div>
                     
-                    <input type="file" name="image"></input>
-                    <input type="time" name="time"></input>
+                    </div>
+                    
+                    {/* <input type="file" name="image"></input> */}
+                    
     
-                    <button type="submit" className="btn btn-primary">Create</button>
+                    <button type="submit" className="card-buttons">Create</button>
                 </form>
                
             
             
             </div>
+
+            </div>
+            
         )
 
     }

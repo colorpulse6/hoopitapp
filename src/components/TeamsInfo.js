@@ -110,8 +110,8 @@ export default class TeamsInfo extends React.Component {
         // console.log(playerNames + "IOUBI/ZGUSA")
 
         return(
-            <div className="game-detail-page row">
-            <h1>Teams Info Page</h1>
+            <div className="page-containers row">
+            <h3 className="second-font">Team Info</h3>
                 <div className="games-near-you">
                     {/* {uniqueArray.slice(0,1).map((team, index)=> {
             return !team.includes(this.props.loggedInUser.username) ? <h3>Nobody Likes You...</h3> : <p></p>}
@@ -119,26 +119,26 @@ export default class TeamsInfo extends React.Component {
                         
                         {this.state.teams.map((team, index)=> {
                             if(team.players.includes(this.props.loggedInUser._id))
-                            return <div key={index} className="card each-card team-info-card">
-                                <Link to={`/each-team/${team._id}`}><p>Team Name: {team.teamName}</p></Link>
-                                <p>Owner: {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}</p>
-                                <p>Home Town: {team.homeTown}</p>
+                            return <div key={index} className=" each-card team-info-card">
+                                <Link to={`/each-team/${team._id}`}><p className="second-font"><strong>Team Name:</strong> {team.teamName}</p></Link>
+                                <p className="second-font"><strong>Owner:</strong> {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}</p>
+                                <p className="second-font"><strong>Home Town:</strong> {team.homeTown}</p>
 
-                            <p>Games Played: {!team.gamesPlayed ? 0  : team.gamesPlayed}
+                            <p className="second-font"><strong>Games Played:</strong> {!team.gamesPlayed ? 0  : team.gamesPlayed}
                             </p>
 
                         <div>
-                            <p><strong>Players:</strong></p>
+                            <p className="second-font"><strong>Players:</strong></p>
                             {
                                 uniqueArray.map((name)=> {
-                                    return <p>{name}</p>
+                                    return <p className="second-font">{name}</p>
                                 })
                             }
                         </div>
                         {
                             //CHANGE BUTTON DEPENDING ON OWNER OF TEAM OR NOT
-                            this.props.loggedInUser.username === team.owner ? <button className="btn btn-primary quit-team-btn" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
-                            : <button className="btn btn-primary quit-team-btn" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
+                            this.props.loggedInUser.username === team.owner ? <button className="card-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
+                            : <button className="card-buttons" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
                         }
                         
                         

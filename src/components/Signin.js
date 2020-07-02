@@ -3,19 +3,22 @@ import bball from './b-ball.png'
 
 export default function Signin(props) {
     return(
-        <form onSubmit={props.onSignIn} className="form-container card">
+        <div className="page-containers">
+        <form onSubmit={props.onSignIn} className="form-container">
         <img className="bball" src= {bball}></img>
-        <h2>Please Sign In</h2>
+        <h2 className="primary-font">Please Sign In</h2>
         
             <div className="form-group">
-                <label htmlFor="exampleInputEmail1"></label>
-                <input className="input" type="email" className="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Email address" />
+                <label htmlFor="exampleInputEmail1" className="second-font">Email</label>
+                <input className="input" type="email" className="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" />
             </div>
             <div className="form-group">
-                <label htmlFor="exampleInputPassword1"></label>
-                <input name="password" type="password" className="form-control input" id="exampleInputPassword1" placeholder="Password"/> 
+                <label htmlFor="exampleInputPassword1" className="second-font">Password</label>
+                <input name="password" type="password" className="form-control input" id="exampleInputPassword1" /> 
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            {props.error?  <div>{props.error}</div>: null}
+            <button type="submit" className="card-buttons">Submit</button>
         </form>
+        </div>
     )
 }

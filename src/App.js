@@ -37,7 +37,8 @@ class App extends React.Component {
     location:'',
     city:'',
     lat: null,
-    lng: null
+    lng: null,
+    error: ''
   }
 
   getUser(){
@@ -126,9 +127,16 @@ class App extends React.Component {
       // console.log('RESDATA'+res.data)
       this.setState({
         loggedInUser: res.data
+
       }, () => {
         this.props.history.push('/user-main')
       })
+    })
+    .catch((error)=> {
+      this.setState({
+        error:error
+      })
+      
     })
   }
 
@@ -224,10 +232,15 @@ class App extends React.Component {
               }}/>
           <Route path="/sign-in"  render={() => {
               return <Signin 
-              onSignIn={this.handleSignIn} />
+              onSignIn={this.handleSignIn}
+              error={this.state.error} 
+
+              />
             }}/>    
           <Route path="/sign-up"  render={() => {
-              return <Signup onSignUp = {this.handleSignUp} />
+              return <Signup onSignUp = {this.handleSignUp} 
+              error={this.state.error}
+              />
             }}/>  
             <Route path="/edit-profile"  render={() => {
               return <EditProfile 

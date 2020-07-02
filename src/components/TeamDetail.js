@@ -81,23 +81,25 @@ export default class TeamsDetail extends React.Component {
             
         
         return(
-            <div className="game-detail-page">
-            <h1>Team Detail Page</h1>
+            <div className="page-containers">
+            <h3 className="second-text">Create New Team</h3>
 
             <form onSubmit={this.saveTeam}>
-                <input type="text" placeholder="Name your team?" name="teamName" id="teamName" required/> 
-               <div className="team-players">
-                    <div>
-                        <h4>Players:</h4> 
+            <div className="form-group team-details">
+            
+                <input className="form-control second-text" type="text" placeholder="Name your team?" name="teamName" id="teamName" required/> 
+               <div>
+                    <div className="team-players-div">
+                        <h5 className="second-text">Players:</h5> 
                         {userNames.map((name)=> {
-                            return <p>{name}</p>
+                            return <p className="second-text">{name}</p>
                             })}
                     </div>
                     
-                    <button className="btn btn-primary create-team-btn">Save Team</button>
+                    <button className="card-buttons">Save Team</button>
                </div>
                 
-                    
+               </div>
             </form>
            
                 

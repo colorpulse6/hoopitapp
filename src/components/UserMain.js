@@ -45,16 +45,24 @@ export default class UserMain extends React.Component {
 
     return(
         <div >
+
+                
             {/* <h1>Main User Page</h1> */}
-            <div className='main-header'>
-                <h2 className="hello-text">Hello {this.props.loggedInUser.username}</h2>
-                <Link to="/create-game"><button className="btn btn-primary create-btn">Create A Game</button></Link>
-            </div>
+            <div className="page-containers">
+                <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h3 class="display-6 primary-font">Welcome Back {this.props.loggedInUser.username}!</h3>
+                            <p class="lead"></p>
+                        </div>
+                    </div>
+                <Link to="/create-game"><button className="card-buttons second-font create-game-button">Create A Game</button></Link>
             
+           
+
             <div className="user-main-main">
             <div className="user-main-div">
 
-                <h4 className='title-header'>Games Near You</h4>
+            <h4 className='title-header primary-font near-you-text'>Games Near You</h4>
 
                 <div class="row ">
                 
@@ -92,7 +100,7 @@ export default class UserMain extends React.Component {
                 </div>
             </div>
             <div>
-            <h4 className="title-header">Your Games</h4>
+            
             <div className="your-games">
                 
                 <div className="row">
@@ -104,14 +112,16 @@ export default class UserMain extends React.Component {
                         {
                             this.state.games.map((el, index) => {
                                 if (el.createdBy === this.props.loggedInUser.username) {
-                                    return <div class="card each-card">
+                                    return <div className="game-cards">
+                                    <h4 className="title-header second-font">Your Games</h4>
+                                    <div class="card each-card">
                                     <div  key={index} id="game">
                                     <img class="card-img-top" src="https://source.unsplash.com/286x180/?basketball,court"  alt="..."></img>
                                     <div className="card-content">
                                         <div className="card-text">
-                                            <p>Date: {el.date}</p>
-                                            <p >Location: {el.location}</p>
-                                            <p>Created By: {el.createdBy}</p>
+                                            <p className="second-font">Date: {el.date}</p>
+                                            <p className="second-font" >Location: {el.location}</p>
+                                            <p className="second-font">Created By: {el.createdBy}</p>
                                         
                                             {/* <p className={el.maxPlayers > el.players.length ? "text-success" : "text-danger"}>Players: {el.players.length}/{el.maxPlayers}</p>
                                             {(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
@@ -131,8 +141,10 @@ export default class UserMain extends React.Component {
                                     <br></br>
                                     
                                 </div>
-                                <Link to={`/${el._id}/admin`}><button className="btn btn-primary card-buttons">View Details</button></Link>
+                                <Link to={`/${el._id}/admin`}><button className="  card-buttons">View Details</button></Link>
                             </div>
+                                    </div>
+                                    
                                 }  
                             })
                         }
@@ -140,7 +152,7 @@ export default class UserMain extends React.Component {
                 </div>
             </div>
 
-            <h4 className="title-header">Upcoming Games For You</h4>
+            
             <div className="your-games">
                 
                 <div className="row">
@@ -150,18 +162,26 @@ export default class UserMain extends React.Component {
                     {/* SHOW GAMES YOU JOINED */}
                         {
                             this.state.games.map((el, index) => {
-                                if ( el.players.includes(this.props.loggedInUser._id)) {
-                                    return <div class="card each-card">
+                                if ( el.players.includes(this.props.loggedInUser._id) && el.createdBy !== this.props.loggedInUser.username) {
+                                    return <div>
+                                    <h3 className="title-header second-font">Upcoming Games For You</h3>
+                                    <div class="card each-card">
                                     <div key={index} id="game">
                                     <img class="card-img-top" src="https://source.unsplash.com/286x180/?basketball,court"  alt="..."></img>
                                     <div className="card-content">
-                                    <p>Date: {el.date}</p>
-                                    <p >Location: {el.location}</p>
-                                    <p>Created By: {el.createdBy}</p>
-                                
-                                    <p className={el.maxPlayers > el.players.length ? "text-success" : "text-danger"}>Players: {el.players.length}/{el.maxPlayers}</p>
-                                    {el.maxPlayers === el.players.length ? <p className="text-danger">FULL</p> : <p></p>
-                                    }
+                                    <div className="card-text">
+                                    <p className="second-font">Date: {el.date}</p>
+                                    <p className="second-font" >Location: {el.location}</p>
+                                    <p className="second-font">Created By: {el.createdBy}</p>
+                                    </div>
+                                    <div className="chart-div">
+                                    <RadialChart
+                                        progress={el.players.length/el.maxPlayers*100}
+                                        color="#3c71d0"
+                                        number={el.players.length+'/'+el.maxPlayers}
+                                        text={(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  'Almost Full' : 'Full'}
+                                    />
+                                    </div>
                                     </div>
                                     
                                    
@@ -169,8 +189,9 @@ export default class UserMain extends React.Component {
                                     <br></br>
                                     
                                 </div>
-                                <Link to={`/game-detail/${el._id}`}><button className="btn btn-primary card-buttons">View Details</button></Link>
+                                <Link to={`/game-detail/${el._id}`}><button className=" card-buttons">View Details</button></Link>
                             </div>
+                                    </div>
                                 }  
                             })
                         }
@@ -186,7 +207,7 @@ export default class UserMain extends React.Component {
 
 
         </div>
-
+</div>
         
     )
 

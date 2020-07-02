@@ -68,13 +68,18 @@
   width:400px;
   display:flex;
   flex-direction: column;
-  align-items: center;
-  text-align:center;
+  align-items: flex-start;
+  text-align:left;
   margin:0 auto;
   margin-top:100px;
-  border:1px solid black;
   padding:50px;
   
+}
+.form-container input {
+  width: 300px;
+  margin:20 0;
+  height:30px;
+  radius:50%
 }
 
 
@@ -83,10 +88,7 @@
   margin-bottom:20px;
 }
 
-.input {
-  margin:20 0
 
-}
 
 /* Navbar */
 #content-wrap {
@@ -94,43 +96,74 @@
   
 }
 
+.navbar {
+background-color: #AEB3B9;
+}
+
 .nav-content{
   margin-right:100px;
 }
 .nav-button {
   margin-right:20px;
+  color: white;
 }
 .navbar-collapse{
   position:relative;
   left:0px;
 }
 
+.logout{
+  border:none;
+  background: none;
+  padding-top:8px;
+  margin-left:-5px;
+  color:whitesmoke
+}
 
 /* Main Styles */
 .hello-text {
   text-align:center;
-  margin-top:10px
+  margin-top:10px;
+ 
 }
 
 .page-containers {
-  margin:20px;
+  margin:30px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
 }
 
-p {
-  width: 150px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
+.jumbotron {
+  /* background: linear-gradient(142deg, rgba(74,6,144,1) 0%, rgba(201,8,42,1) 97%, rgba(228,134,106,1) 99%); */
+  
+  background-image: url("https://images.pexels.com/photos/3634518/pexels-photo-3634518.jpeg?cs=srgb&dl=aerial-photography-of-empty-basketball-court-3634518.jpg&fm=jpg");
+  background-size: cover;
+}
+
+.jumbotron div{
+  padding:20px;
+  color:whitesmoke
 }
 
 .card-buttons {
   width: 100%;
   height:40px;
   background-color:#17408B;
-  color:whitesmoke
-  
+  color:whitesmoke;
+  border-radius:2px
   
 }
+
+.red-buttons{
+  background-color: #C9082A;
+}
+.header-texts{
+  text-align: center;
+  margin-left:-15%
+}
+
+
 
 
 
@@ -147,7 +180,7 @@ p {
  flex-wrap:wrap;
 }
 
-.create-btn {
+.create-game-btn {
   margin-top:20px;
 }
 
@@ -157,17 +190,30 @@ p {
   align-items: center;
 }
 
+
+
 .title-header {
   display:flex;
-  margin-left:50px;
-  margin-bottom:-20px;
+  margin-left:10px;
+  margin-bottom:20px;
   margin-top:50px;
+}
+
+.game-cards {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.near-you-text {
+  margin-bottom:-20px
 }
 
 .games-near-you {
   display:flex;
   flex-wrap:wrap;
-  margin:50px;
+  margin:30px;
+  margin-bottom:-20px
 
 }
 
@@ -184,31 +230,73 @@ p {
   width:250px;
 }
 
+
+
 .card-text {
   display: flex;
   flex-direction: column;
+  
 }
 
 .card-text p{
   margin:0;
   font-size: 10px;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
 }
 
 /* Create Game Page */
 
 .create-game-main {
   display:flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
-.create-game-map {
+/* .create-game-map {
   width:500px;
   height:500px;
   border:1px solid black;
 
+} */
+
+.create-game-main label {
+  margin-bottom:-30px;
+  margin-top:30px;
+}
+
+.date-time{
+  display:flex;
+  justify-content: space-around;
+
+}
+.date-time input{
+  width:48%;
+  
+  font-family: 'Nunito', sans-serif;
 }
 
 .front-page-map-conatiner {
   height:100%;
+}
+
+.create-game-button{
+  width:100%
+}
+
+.team-select {
+  display:flex;
+  justify-content:space-around
+}
+
+.team-select label{
+  margin-top:5px;
+}
+.team-select select {
+  max-width:60%;
+  font-size: 14px;
 }
 
 
@@ -227,6 +315,15 @@ p {
   font-size: 1rem;
   width: 100%;
   
+}
+.map-info{
+  display:flex;
+  flex-direction: column;
+}
+
+.map-info p{
+  text-decoration: none;
+  color:black
 }
 
 .locate-btn {
@@ -250,7 +347,7 @@ p {
   flex-direction: column;
   align-items: center;
   text-align:center;
-  margin-top:50px;
+  
 }
 
 .game-card {
@@ -258,6 +355,11 @@ p {
   text-align:center;
   margin-bottom:20px;
   padding:20px;
+}
+
+.game-detail-text {
+  margin-top:30px;
+ margin-bottom:-20px;
 }
 
 /*Team Info Page*/
@@ -273,25 +375,24 @@ p {
 }
 
 /* Create Team Page */
-.team-players {
-  display:flex;
-  align-items: space-between;
-  margin:20px;
+
+
+
+.team-details {
   padding:20px;
 }
 
-.team-players div {
-  margin-right:50px;
+.team-details input  {
+  margin:20px;
 }
 
-.team-players h4 {
-  margin-bottom:20px;
+.team-players-div h5 {
+  text-align: center;
+  margin:20px;
 }
 
-.create-team-btn {
-  margin-top:25%;
-  height:50px;
-}
+
+
 
 
 
@@ -429,6 +530,7 @@ margin-top:-2px
   .home-div h7 {
     font-size: 1em;
   }
+ 
   
 }
 
@@ -445,3 +547,4 @@ margin-top:-2px
     
   }
 }
+

@@ -49,14 +49,15 @@ export default class EachTeam extends React.Component {
        }
 
         return(
-            <div className="games-near-you main-header">
-            <h1>{teamName}</h1>
+            <div className="page-containers">
+            
+            <h3 className="second-font">{teamName}</h3>
                {
-                <div className="card game-card ">
+                <div className="game-card ">
                    
-                   <p>Owner: {owner}</p>
-                   <p>Hometown: {homeTown}</p>
-                   <p>Players: {
+                   <p className="second-font">Owner: {owner}</p>
+                   <p className="second-font">Hometown: {homeTown}</p>
+                   <p className="second-font">Players: {
                        doobs.map((player) => {
                            return player.username
                        })

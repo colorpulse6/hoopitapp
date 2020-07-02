@@ -6,10 +6,10 @@ import bball from './b-ball.png'
 export default function Nav(props) {
     return(
         <div id="content-wrap" >
-        <nav class="navbar navbar-expand-lg navbar-custom navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-custom navbar-light ">
             
                 
-                    <Link to="/" ><img src={ bball } width="50" height="50" class="d-inline-block align-top" alt=""></img></Link>
+                    <Link to="/" ><img src={ bball } width="30" height="30" class="d-inline-block align-top" alt=""></img></Link>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@ export default function Nav(props) {
                 
             {
             props.loggedInUser ? (
-                <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                <div class="collapse navbar-collapse  justify-content-end " id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <Link className="nav-link" to="/user-main">Home<span class="sr-only">(current)</span></Link>
@@ -35,7 +35,7 @@ export default function Nav(props) {
                     </li>
 
                     <li class="nav-item">
-                        <button className="nav-link logout-btn btn-primary btn" onClick={props.onLogout}>Logout</button>
+                        <button className="logout" onClick={props.onLogout}>Logout</button>
                     </li>
                     </ul>
                 </div>
