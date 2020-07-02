@@ -1,14 +1,16 @@
 import React from 'react';
 import bball from './b-ball.png'
+import nextButton from './next-button.png'
+
 
 
 export default function Signup(props) {
     return(
         <div className="page-containers">
 
-<form onSubmit={props.onSignUp} className="form-container">
+<form onSubmit={props.onSignUp} className="form-container signup-form">
         <img className="bball" src= {bball}></img>
-        <h2 className="primary-font">Join hoopitApp</h2>
+        <h2 className="second-font">Join hoop.it.App</h2>
             <div className="form-group" >
                 <label htmlFor="exampleInputUsername" className="second-font">Your Name</label>
                 <input type="text" className="form-control" id="exampleInputUsername" name="username" />
@@ -26,7 +28,7 @@ export default function Signup(props) {
                 <label htmlFor="exampleInputPassword1" className="second-font">Password</label>
                 <input name="password" type="password" className="form-control input" id="exampleInputPassword1" />
             </div>
-            <button type="submit" className="card-buttons">Submit</button>
+            <button type="submit" className="card-buttons">Sign Up <img className="next-button" src={nextButton}></img></button>
         </form>
 
         </div>

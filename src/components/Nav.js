@@ -6,24 +6,30 @@ import bball from './b-ball.png'
 export default function Nav(props) {
     return(
         <div id="content-wrap" >
-        <nav class="navbar navbar-expand-lg navbar-custom navbar-light ">
+        <nav class="navbar navbar-expand-lg navbar-custom navbar-light bg-light ">
             
                 
-                    <Link to="/" ><img src={ bball } width="30" height="30" class="d-inline-block align-top" alt=""></img></Link>
+                    
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div className="collapsed-nav">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <Link to={props.loggedInUser ? "user-main":"/"} ><img src={ bball } width="30" height="30" class="d-inline-block align-top bball-nav" alt=""></img></Link>
+                        <p>hoop.it.App</p>
+                        
+                    </div>
 
                     
                 
             {
             props.loggedInUser ? (
-                <div class="collapse navbar-collapse  justify-content-end " id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
+                <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
+                
+                <ul class="navbar-nav navbar-brand">
+                    {/* <li class="nav-item active">
                         <Link className="nav-link" to="/user-main">Home<span class="sr-only">(current)</span></Link>
-                    </li>
+                    </li> */}
                     
                     <li class="nav-item">
                         <Link className="nav-link " to="/team-info">Teams</Link>

@@ -104,7 +104,7 @@ export default class GameDetail extends React.Component {
         if (!this.props.loggedInUser) {
             return <Redirect to='/sign-in' />
         }
-        const {location, date, createdBy, players, _id} = this.state.game
+        const {location, date, createdBy, players, _id, savedAsTeam} = this.state.game
         console.log('players:  ' + typeof players) 
             let userNames = []
             for (let i = 0; i< this.props.users.length; i++){
@@ -121,15 +121,19 @@ export default class GameDetail extends React.Component {
             
         
         return(
+            
             <div className="game-detail-page">
                 <div className="game-card card">
                     <h1>Game Detail Page</h1>
-                        <p>Location: {location}</p>
-                        <p>Date: {date}</p>
-                        <p>Created By: {createdBy}</p>
-                        <p>Players: {userNames.map((name)=> {
-                            return name
-                        })}</p>
+                        <p className="second-font"><strong>Location: </strong><br></br> {location}</p>
+                        <p className="second-font"><strong>Date: </strong><br></br> {date}</p>
+                        <p className="second-font"><strong>Created By: </strong><br></br> {createdBy}</p>
+                        {
+                            savedAsTeam  ? <p className="second-text"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-text"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
+                            return <div>{name}
+                            <br></br></div> 
+                             })}</p></div>
+                    }
                         <div>
                         {
                             !userNames.includes(this.props.loggedInUser.username) ? <button className="btn btn-primary" onClick={this.handleJoinGame} type="submit">Join</button> : <div>

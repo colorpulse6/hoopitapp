@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios'
 import config from '../config';
 import Map from "./Map"
+import nextButton from './next-button.png'
 import '../App.css';
 import SearchCity from './SearchCity'
 
@@ -111,7 +112,7 @@ export default class CreateGame extends React.Component {
                     {/* <input type="file" name="image"></input> */}
                     
     
-                    <button type="submit" className="card-buttons">Create</button>
+                    <button type="submit" className="card-buttons">Create <img className="next-button" src={nextButton}></img></button>
                 </form>
                
             

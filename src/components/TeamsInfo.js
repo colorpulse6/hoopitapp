@@ -120,7 +120,7 @@ export default class TeamsInfo extends React.Component {
                         {this.state.teams.map((team, index)=> {
                             if(team.players.includes(this.props.loggedInUser._id))
                             return <div key={index} className=" each-card team-info-card">
-                                <Link to={`/each-team/${team._id}`}><p className="second-font"><strong>Team Name:</strong> {team.teamName}</p></Link>
+                                <Link to={`/each-team/${team._id}`}><p className="second-font"><strong>Team Name:</strong><br></br> {team.teamName}</p></Link>
                                 <p className="second-font"><strong>Owner:</strong> {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}</p>
                                 <p className="second-font"><strong>Home Town:</strong> {team.homeTown}</p>
 

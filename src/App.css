@@ -44,8 +44,8 @@
 
 /* HOME */
 .home-div {
-  margin:10%;
-  margin-right:70px
+  
+  
 }
 
 .primary-font {
@@ -56,23 +56,24 @@
 
 .second-font{
   font-family: 'Nunito', sans-serif;
+  font-weight:600
 }
 
 .home-container {
- width: 90%;  
+ padding-right: 94px;  
+ padding-left:40px
 }
 
 /* Signin/signup */
 
 .form-container {
-  width:400px;
+  
   display:flex;
   flex-direction: column;
   align-items: flex-start;
   text-align:left;
   margin:0 auto;
-  margin-top:100px;
-  padding:50px;
+  
   
 }
 .form-container input {
@@ -88,6 +89,13 @@
   margin-bottom:20px;
 }
 
+.signup-form{
+  
+}
+
+.signup-form h2{
+  margin-bottom:20px;
+}
 
 
 /* Navbar */
@@ -96,12 +104,29 @@
   
 }
 
+.collapsed-nav{
+  display:flex;
+  font-family: 'Nunito', sans-serif;
+
+}
+.collapsed-nav p{
+ font-size: 10px;
+ margin-top: 5px;
+ margin-left:2px
+}
+
+.bball-nav{
+  margin-left:12px;
+  margin-top:5px;
+}
+
 .navbar {
 background-color: #AEB3B9;
 }
 
 .nav-content{
   margin-right:100px;
+  
 }
 .nav-button {
   margin-right:20px;
@@ -109,7 +134,14 @@ background-color: #AEB3B9;
 }
 .navbar-collapse{
   position:relative;
-  left:0px;
+  left:10px;
+  
+  
+}
+
+.navbar-collapse li{
+  font-size:15px;
+  margin:-3px
 }
 
 .logout{
@@ -117,10 +149,17 @@ background-color: #AEB3B9;
   background: none;
   padding-top:8px;
   margin-left:-5px;
-  color:whitesmoke
+  
 }
 
 /* Main Styles */
+
+
+.next-button {
+  width:12px;
+  margin-left:5px;
+  margin-top:-2px
+}
 .hello-text {
   text-align:center;
   margin-top:10px;
@@ -128,7 +167,7 @@ background-color: #AEB3B9;
 }
 
 .page-containers {
-  margin:30px;
+  padding:46px 64px 48px 40px;
   display:flex;
   flex-direction: column;
   align-items:center;
@@ -139,11 +178,19 @@ background-color: #AEB3B9;
   
   background-image: url("https://images.pexels.com/photos/3634518/pexels-photo-3634518.jpeg?cs=srgb&dl=aerial-photography-of-empty-basketball-court-3634518.jpg&fm=jpg");
   background-size: cover;
+  padding:0
 }
 
-.jumbotron div{
-  padding:20px;
-  color:whitesmoke
+.jumbotron-fluid{
+  
+}
+
+
+.jumbotron h3 {
+  color:black;
+  max-width:360px;
+  padding:46px 64px 48px 40px
+  
 }
 
 .card-buttons {
@@ -362,6 +409,11 @@ background-color: #AEB3B9;
  margin-bottom:-20px;
 }
 
+.admin-buttons {
+  margin-top:25px;
+  margin-bottom:25px  
+}
+
 /*Team Info Page*/
 .quit-team-btn {
   width:50%;
@@ -371,6 +423,8 @@ background-color: #AEB3B9;
 
 .team-info-card {
   padding:20px;
+  text-align:center;
+ 
   
 }
 
@@ -399,7 +453,9 @@ background-color: #AEB3B9;
 /* Chat */
 
 .user-chat-name {
-  color:red;
+  color:#C9082A;
+  
+
 }
 
 .chat-box {
@@ -408,7 +464,10 @@ background-color: #AEB3B9;
   margin: 0 auto;
   border: 1px solid;
   padding: 10px;
-  box-shadow: 5px 10px 8px 10px #888888;
+  box-shadow: 2px 10px 8px 10px #888888;
+  background-image: url("https://images.pexels.com/photos/2291004/pexels-photo-2291004.jpeg?auto=compress&cs=tinysrgb&h=650&w=940");
+  background-position: center;
+  
 }
 
 .chat-container {
@@ -417,6 +476,7 @@ background-color: #AEB3B9;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
+  opacity: 0.8;
   
 }
 
@@ -429,6 +489,8 @@ background-color: #AEB3B9;
 .darker {
   border-color: #ccc;
   background-color: #ddd;
+  opacity: 0.8;
+
 }
 
 /* Clear floats */
@@ -466,6 +528,22 @@ background-color: #AEB3B9;
   margin-top:20px;
 }
 
+.other-chat-name{
+  color:#17408B
+}
+
+.chat-header {
+  color:white;
+}
+
+.chat-button{
+  width:25%;
+  height:30px;
+}
+
+.chatinput{
+  border-radius:2%
+}
 /* CHARTS */
 
 .radial-chart {
@@ -501,6 +579,10 @@ margin-top:-2px
   margin-bottom:20px 
 }
 
+.loader {
+  margin-top:120px;
+}
+
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -521,7 +603,7 @@ margin-top:-2px
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .jumbotron h4 {
+  .jumbotron h3 {
       font-size: 3em;
   }
   .home-container h5 {
@@ -530,13 +612,16 @@ margin-top:-2px
   .home-div h7 {
     font-size: 1em;
   }
- 
+  .bball-nav{
+    width:50px;
+    height:50px
+  }
   
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .jumbotron h4 {
+  .jumbotron h3 {
       font-size: 4em;
   }
   .home-container h5 {
@@ -546,5 +631,7 @@ margin-top:-2px
     font-size: 1.5em;
     
   }
+  
+  
 }
 

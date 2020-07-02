@@ -58,7 +58,7 @@ class Chat extends Component {
   }
     return (
       <div>
-        <label htmlFor="name" className="second-font">
+        <label htmlFor="name" className="second-font chat-header">
           Hello {this.props.loggedInUser.username}
           
         </label>

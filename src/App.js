@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js' 
 
 import axios from 'axios'
 import {Switch, Route} from 'react-router-dom'
@@ -21,7 +21,7 @@ import GameAdmin from './components/GameAdmin'
 import TeamsInfo from './components/TeamsInfo'
 import TeamDetail from './components/TeamDetail'
 import EachTeam from './components/EachTeam'
-
+import Loading from './components/Loading'
 import ChatPage from './components/ChatPage'
 import { lastDayOfDecade } from 'date-fns';
 import { object } from 'prop-types';
@@ -84,7 +84,7 @@ class App extends React.Component {
       this.getUser();
       // console.log('GOT USER')
     }
-    console.log(this.state)
+    // console.log(this.state.loggedInUser)
     
 
   }
@@ -212,6 +212,13 @@ class App extends React.Component {
 
 
   render() {
+    if(!this.state.games.length){
+      return (
+        <div>
+          <Loading />
+        </div>
+        )
+    }
     const {loggedInUser} = this.state
     return (
       <div >
