@@ -212,13 +212,13 @@ class App extends React.Component {
 
 
   render() {
-    if(!this.state.games.length){
-      return (
-        <div>
-          <Loading />
-        </div>
-        )
-    }
+    // if(!this.state.games.length){
+    //   return (
+    //     <div>
+    //       <Loading />
+    //     </div>
+    //     )
+    // }
     const {loggedInUser} = this.state
     return (
       <div >

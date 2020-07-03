@@ -66,10 +66,13 @@ export default class EachTeam extends React.Component {
                </div>
 
                }
-
+               <div className="chatters">
                <ChatPage 
                    loggedInUser = {this.props.loggedInUser}
                />
+                   
+               </div>
+               
 
                 
                

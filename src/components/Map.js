@@ -40,7 +40,7 @@ const libraries = ["places"]
 
 const mapContainerStyle = {
     width: '80vw', 
-    height: '60vh'
+    height: '45vh'
     
 }
 const styles = { width: '100%', height: '100%', position: 'absolute'};
@@ -141,8 +141,9 @@ export default function Map(props) {
         })
             
         } */}
-
-        <SearchCity panTo={panTo}/>
+        <div className="infoWindow">
+        <SearchCity  panTo={panTo}/>
+        </div>
         <Locate panTo={panTo}/>
 
         <div
@@ -153,7 +154,7 @@ export default function Map(props) {
         <GoogleMap 
             styles={styles}
             mapContainerStyle={mapContainerStyle}
-            zoom={10}
+            zoom={8}
             center={center}
             options={options}
             // onClick={onMapClick}
@@ -164,7 +165,7 @@ export default function Map(props) {
                 position={{lat: marker.lat, lng: marker.lng}} 
                 icon={{
                     url: bball,
-                    scaledSize: new window.google.maps.Size(30, 30),
+                    scaledSize: new window.google.maps.Size(25, 25),
                     origin: new window.google.maps.Point(0,0),
                     anchor: new window.google.maps.Point(15,15)
                 }}
@@ -176,7 +177,7 @@ export default function Map(props) {
             ))}
 
             {selected ? (
-                <InfoWindow position={{lat:selected.lat, lng:selected.lng}} onCloseClick={() =>{setSelected(null)}}>
+                <InfoWindow  position={{lat:selected.lat, lng:selected.lng}} onCloseClick={() =>{setSelected(null)}}>
             
                 <div>
                     

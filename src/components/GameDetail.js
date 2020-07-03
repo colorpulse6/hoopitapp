@@ -122,23 +122,28 @@ export default class GameDetail extends React.Component {
         
         return(
             
-            <div className="game-detail-page">
-                <div className="game-card card">
-                    <h1>Game Detail Page</h1>
+            <div className="page-containers">
+                <div className="game-detail-page">
+                    <div className="game-detail-text">
+
+                    
+                    <h4 className="second-font">Game Details</h4>
                         <p className="second-font"><strong>Location: </strong><br></br> {location}</p>
                         <p className="second-font"><strong>Date: </strong><br></br> {date}</p>
                         <p className="second-font"><strong>Created By: </strong><br></br> {createdBy}</p>
                         {
-                            savedAsTeam  ? <p className="second-text"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-text"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
+                            savedAsTeam  ? <p className="second-font"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-font"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
                             return <div>{name}
                             <br></br></div> 
                              })}</p></div>
                     }
+                    
+                         </div>
                         <div>
                         {
                             !userNames.includes(this.props.loggedInUser.username) ? <button className="btn btn-primary" onClick={this.handleJoinGame} type="submit">Join</button> : <div>
                             <p>You are scheduled to play this game.</p> 
-                            <button className="btn btn-danger" value={_id} onClick={this.handleQuitGame}>Leave Game</button>
+                            <button className="red-buttons" value={_id} onClick={this.handleQuitGame}>Leave Game</button>
                             </div>
                         }
                         

@@ -110,21 +110,21 @@ export default class TeamsInfo extends React.Component {
         // console.log(playerNames + "IOUBI/ZGUSA")
 
         return(
-            <div className="page-containers row">
-            <h3 className="second-font">Team Info</h3>
-                <div className="games-near-you">
+            <div className="page-containers ">
+            <h2 className="second-font">Teams</h2>
+                <div className="">
                     {/* {uniqueArray.slice(0,1).map((team, index)=> {
             return !team.includes(this.props.loggedInUser.username) ? <h3>Nobody Likes You...</h3> : <p></p>}
             )} */}
                         
                         {this.state.teams.map((team, index)=> {
                             if(team.players.includes(this.props.loggedInUser._id))
-                            return <div key={index} className=" each-card team-info-card">
-                                <Link to={`/each-team/${team._id}`}><p className="second-font"><strong>Team Name:</strong><br></br> {team.teamName}</p></Link>
-                                <p className="second-font"><strong>Owner:</strong> {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}</p>
-                                <p className="second-font"><strong>Home Town:</strong> {team.homeTown}</p>
+                            return <div key={index} className="  team-info-card">
+                                <Link to={`/each-team/${team._id}`}><h4 className="second-font team-names"><strong></strong><br></br> {team.teamName}<hr></hr></h4></Link>
+                                <p className="second-font team-names"><strong>Owner:</strong> {this.props.loggedInUser.username !== team.owner ? team.owner : 'You'}<hr></hr></p>
+                                <p className="second-font"><strong>Home Town:</strong> {team.homeTown}<hr></hr></p>
 
-                            <p className="second-font"><strong>Games Played:</strong> {!team.gamesPlayed ? 0  : team.gamesPlayed}
+                            <p className="second-font"><strong>Games Played:</strong> {!team.gamesPlayed ? 0  : team.gamesPlayed}<hr></hr>
                             </p>
 
                         <div>
@@ -137,8 +137,8 @@ export default class TeamsInfo extends React.Component {
                         </div>
                         {
                             //CHANGE BUTTON DEPENDING ON OWNER OF TEAM OR NOT
-                            this.props.loggedInUser.username === team.owner ? <button className="card-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
-                            : <button className="card-buttons" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
+                            this.props.loggedInUser.username === team.owner ? <button className="red-buttons red-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
+                            : <button className="card-buttons red-buttons" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
                         }
                         
                         

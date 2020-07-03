@@ -44,9 +44,9 @@
 
 /* HOME */
 .home-div {
-  
-  
+  margin-left:25px
 }
+
 
 .primary-font {
   font-family: copperplate, serif;
@@ -55,13 +55,24 @@
 }
 
 .second-font{
-  font-family: 'Nunito', sans-serif;
-  font-weight:600
+  font-family: Nunito;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.92;
+  letter-spacing: 2.79px;
+  color: #273d68;
 }
 
-.home-container {
- padding-right: 94px;  
- padding-left:40px
+.home-container p{
+ margin-left:-25px;
+ margin-top:-1px;
+ margin-bottom:30px
+ 
+ 
+}
+.discover-games{
+  margin-left:-23px
 }
 
 /* Signin/signup */
@@ -111,8 +122,22 @@
 }
 .collapsed-nav p{
  font-size: 10px;
- margin-top: 5px;
+ margin-top: 7px;
  margin-left:2px
+}
+
+.hoopItApp{
+  width: 78px;
+  height: 10px;
+  font-family: Copperplate;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.07px;
+  color: #273d68;
+  
 }
 
 .bball-nav{
@@ -136,7 +161,10 @@ background-color: #AEB3B9;
   position:relative;
   left:10px;
   
-  
+}
+
+.create-game-btn {
+  width:100%;
 }
 
 .navbar-collapse li{
@@ -172,12 +200,19 @@ background-color: #AEB3B9;
   flex-direction: column;
   align-items:center;
 }
+.edit-profile{
+  margin-left:-25px
+}
+.edit-profile input {
+  
+}
 
 .jumbotron {
   /* background: linear-gradient(142deg, rgba(74,6,144,1) 0%, rgba(201,8,42,1) 97%, rgba(228,134,106,1) 99%); */
   
   background-image: url("https://images.pexels.com/photos/3634518/pexels-photo-3634518.jpeg?cs=srgb&dl=aerial-photography-of-empty-basketball-court-3634518.jpg&fm=jpg");
   background-size: cover;
+  background-position: center;
   padding:0
 }
 
@@ -186,25 +221,43 @@ background-color: #AEB3B9;
 }
 
 
-.jumbotron h3 {
-  color:black;
+.jumbotron h4 {
+  color:white;
   max-width:360px;
   padding:46px 64px 48px 40px
   
 }
 
+.infoWindow{
+  margin-bottom:10px;
+}
+
 .card-buttons {
   width: 100%;
-  height:40px;
-  background-color:#17408B;
-  color:whitesmoke;
-  border-radius:2px
+  height: 35px;
+  border-radius: 2px;
+  background-color: #273d68;
+  color:#fbfbfb;
+  border:none;
   
 }
 
 .red-buttons{
   background-color: #C9082A;
+  height: 45px;
+  border-radius: 2px;
+  box-shadow: 2px 3px 12px -4px rgba(0, 0, 0, 0.5);
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.93;
+  letter-spacing: 1.5px;
+  color: #fbfbfb;
 }
+
+
 .header-texts{
   text-align: center;
   margin-left:-15%
@@ -219,6 +272,7 @@ background-color: #AEB3B9;
 .user-main-main {
   display:flex;
   flex-direction: column;
+  margin-left:25px
 }
 
 .user-main-div {
@@ -237,7 +291,37 @@ background-color: #AEB3B9;
   align-items: center;
 }
 
+.take-part-text {
+  max-width: 350px;
+  margin-top:60px;
+  margin-left:18px;
+  margin-bottom:-5px;
+  font-size: 15px;
+  width: 285px;
+  height: 45px;
+  font-family: Nunito;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 1.61px;
+  color: #273d68;
 
+}
+
+.user-main-header {
+  max-width:250px;
+  margin-left:15px;
+  margin-top:29px;
+
+}
+
+.main-page-headers{
+  max-width:250px;
+  margin-bottom:20px;
+  margin-top:15px
+}
 
 .title-header {
   display:flex;
@@ -254,27 +338,42 @@ background-color: #AEB3B9;
 
 .near-you-text {
   margin-bottom:-20px
+  
 }
 
 .games-near-you {
   display:flex;
   flex-wrap:wrap;
   margin:30px;
-  margin-bottom:-20px
+  margin-bottom:-30px;
 
 }
 
 .card-content {
   margin:10px;
-  margin-bottom:-20px;
-  font-size: 10px;
+  
+  font-size: 14px;
   display: flex;
   align-items: flex-start;
 }
 
+.created-by-name{
+  width: 123px;
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.93;
+  letter-spacing: 1.5px;
+  color: #273d68;
+}
+
 .each-card {
-  margin:10px;
-  width:250px;
+  width:295px;
+  
+  margin-bottom:30px;
+  box-shadow: 2px 3px 9px -3px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -282,16 +381,30 @@ background-color: #AEB3B9;
 .card-text {
   display: flex;
   flex-direction: column;
-  
+  margin-bottom:-20px;
+  margin-left:10px;
+  margin-top:5px;
 }
 
 .card-text p{
   margin:0;
-  font-size: 10px;
-  width: 150px;
+  font-size: 14px;
+  width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding:5px;
+  margin-left:-10px
+
+}
+
+
+
+.card-text p img {
+  padding-right:10px
+}
+
+.location-text {
   
 }
 
@@ -327,10 +440,15 @@ background-color: #AEB3B9;
 
 .front-page-map-conatiner {
   height:100%;
+  
+}
+.map-div{
+  margin-bottom:25px
 }
 
 .create-game-button{
-  width:100%
+  width:78%;
+  margin-left:40px;
 }
 
 .team-select {
@@ -406,12 +524,21 @@ background-color: #AEB3B9;
 
 .game-detail-text {
   margin-top:30px;
- margin-bottom:-20px;
+ padding:0px;
+}
+.game-detail-text p {
+  line-height: 1;
+  letter-spacing: 1.61px;
 }
 
 .admin-buttons {
-  margin-top:25px;
-  margin-bottom:25px  
+  margin-top:15px;
+  margin-bottom:25px;
+  
+}
+.admin-buttons button {
+  margin:5px
+
 }
 
 /*Team Info Page*/
@@ -424,8 +551,15 @@ background-color: #AEB3B9;
 .team-info-card {
   padding:20px;
   text-align:center;
+  max-width:300px;
  
   
+}
+
+.team-names{
+  line-height: 1.2;
+  letter-spacing: 1.61px;
+
 }
 
 /* Create Team Page */
@@ -469,6 +603,9 @@ background-color: #AEB3B9;
   background-position: center;
   
 }
+.chatters {
+margin-left:-5px
+}
 
 .chat-container {
   border: 2px solid #dedede;
@@ -477,6 +614,7 @@ background-color: #AEB3B9;
   padding: 10px;
   margin: 10px 0;
   opacity: 0.8;
+  
   
 }
 
@@ -570,9 +708,10 @@ background-color: #AEB3B9;
 
 .chart-div {
 
-margin-left:15px;
-margin-bottom:  5px;
-margin-top:-2px
+margin-left:-5px;
+margin-bottom:  -24px;
+margin-top:3px
+
 }
 
 .home-cards {

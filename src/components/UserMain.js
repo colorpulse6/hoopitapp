@@ -5,9 +5,10 @@ import axios from 'axios'
 import config from '../config';
 import Map from './Map'
 import RadialChart from './RadialChart'
-
-
-
+import nextButton from './next-button.png'
+import userImg from './combined-shape-copy.png'
+import dateImg from './combined-shape.png'
+import group2 from './group-2.png'
 export default class UserMain extends React.Component {
 
     state = {
@@ -31,6 +32,7 @@ export default class UserMain extends React.Component {
 
       componentDidMount(){
         this.getGames();
+        console.log(this.state.games)
         console.log(this.props.loggedInUser)
         
        
@@ -47,35 +49,31 @@ export default class UserMain extends React.Component {
     return(
         <div >
 
-                
             {/* <h1>Main User Page</h1> */}
             <div class="jumbotron jumbotron-fluid">
                         <div class="container">
-                            <h3 class="display-6 second-font">Welcome {this.props.loggedInUser.username}!</h3>
+                            <h4 class="display-6 second-font">Welcome {this.props.loggedInUser.username}!</h4>
                             <p class="lead"></p>
                         </div>
                     </div>
             <div className="page-containers">
-                
-                <Link to="/create-game"><button className="card-buttons second-font create-game-button">Create A Game</button></Link>
-            
-           
-
+          
             <div className="user-main-main">
             <div className="user-main-div">
 
-            <h4 className='title-header second-font near-you-text'>Games Near You</h4>
+            <h3 className='user-main-header second-font near-you-text'>Discover games around your area</h3>
+            <p className="second-font take-part-text">Take part in one of the games played near you, get to meet your team for the match of the day</p>
 
                 <div class="row ">
                 
                     <div class="games-near-you">
 
 
-                    
-                    <Map 
+                    <div className="map-div"><Map 
                         loggedInUser={this.props.loggedInUser}
                     
-                />
+                /></div>
+                    
                         
                             {/* SHOW GAMES IN YOUR CITY */}
                                 {/* {
@@ -112,9 +110,9 @@ export default class UserMain extends React.Component {
                         {/* SHOW GAMES YOU MADE */}
                         <div className="game-cards">
                         {
-                            this.state.games.slice(0,1).map((el, index) => {
+                            this.state.games.map((el, index) => {
                                 if (el.createdBy === this.props.loggedInUser.username) {
-                                    return <h3 className="title-header second-font">Your Games</h3>}})
+                                    return <div key={index}><h3 className="main-page-headers second-font">Your Games</h3></div>}})
 
                         }
 
@@ -126,9 +124,10 @@ export default class UserMain extends React.Component {
                                     <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
                                     <div className="card-content">
                                         <div className="card-text">
-                                            <p className="second-font">Date: {el.date}</p>
-                                            <p className="second-font" >Location: {el.location}</p>
-                                            <p className="second-font">Created By: {el.createdBy}</p>
+                                        <p className="second-font created-by-name"><img src={userImg}></img>{el.createdBy}</p>
+                                            <p className="second-font"><img src={dateImg}></img>{el.date}</p>
+                                            <p className="second-font location-text" ><img src={group2}></img>{el.location}</p>
+                                            
                                         
                                             {/* <p className={el.maxPlayers > el.players.length ? "text-success" : "text-danger"}>Players: {el.players.length}/{el.maxPlayers}</p>
                                             {(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  <p className="text-danger">Almost full!</p> : <p></p>}
@@ -139,7 +138,7 @@ export default class UserMain extends React.Component {
                                     <div className="chart-div">
                                     <RadialChart
                                         progress={el.players.length/el.maxPlayers*100}
-                                        color="#3c71d0"
+                                        color="#C9082A"
                                         number={el.players.length+'/'+el.maxPlayers}
                                         text={(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  'Almost Full' : 'Full'}
                                     />
@@ -148,7 +147,7 @@ export default class UserMain extends React.Component {
                                     <br></br>
                                     
                                 </div>
-                                <Link to={`/${el._id}/admin`}><button className="  card-buttons">View Details</button></Link>
+                                <Link to={`/${el._id}/admin`}><button className="  card-buttons">View Details <img className="next-button" src={nextButton}></img></button></Link>
                             </div>
                                     
                                     
@@ -172,7 +171,7 @@ export default class UserMain extends React.Component {
                     {
                         this.state.games.slice(0,1).map((el, index) => {
                                 if ( el.players.includes(this.props.loggedInUser._id) && el.createdBy !== this.props.loggedInUser.username) {
-                                    return <h3 className="title-header second-font">Upcoming Games For You</h3>}})
+                                    return <h3 className="main-page-headers second-font">Your upcoming games</h3>}})
                     }
                     
                         {
@@ -186,14 +185,15 @@ export default class UserMain extends React.Component {
                                     <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
                                     <div className="card-content">
                                     <div className="card-text">
-                                    <p className="second-font">Date: {el.date}</p>
-                                    <p className="second-font" >Location: {el.location}</p>
-                                    <p className="second-font">Created By: {el.createdBy}</p>
+                                    <p className="second-font created-by-name"><img src={userImg}></img> <strong>{el.createdBy}</strong></p>
+                                    <p className="second-font"><img src={dateImg}></img> {el.date}</p>
+                                    <p className="second-font location-text" ><img src={group2}></img>  {el.location}</p>
+                                    
                                     </div>
                                     <div className="chart-div">
                                     <RadialChart
                                         progress={el.players.length/el.maxPlayers*100}
-                                        color="#3c71d0"
+                                        color="#C9082A"
                                         number={el.players.length+'/'+el.maxPlayers}
                                         text={(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  'Almost Full' : 'Full'}
                                     />
@@ -205,7 +205,7 @@ export default class UserMain extends React.Component {
                                     <br></br>
                                     
                                 </div>
-                                <Link to={`/game-detail/${el._id}`}><button className=" card-buttons">View Details</button></Link>
+                                <Link to={`/game-detail/${el._id}`}><button className=" card-buttons">View Details <img className="next-button" src={nextButton}></img></button></Link>
                             </div>
                                     </div>
                                 }  
@@ -223,9 +223,10 @@ export default class UserMain extends React.Component {
             
             
 
-
-        </div>
+        
 </div>
+<Link to="/create-game"><button className="card-buttons second-font create-game-button ">Create A Game <img className="next-button" src={nextButton}></img></button></Link>
+        </div>
         
     )
 

@@ -3,20 +3,25 @@ import ChatInput from './ChatInput'
 import ChatMessage from './ChatMessage'
 import { Redirect } from 'react-router-dom';
 
-const URL = 'ws://localhost:3030'
+// const URL = 'ws://hoopitapp.herokuapp.com'
+const URL = window.location.href.replace(/^http/, 'ws')
 
 class Chat extends Component {
   state = {
     name: this.props.loggedInUser.username,
     messages: [],
+    ws:''
   }
-
+  
   ws = new WebSocket(URL)
+
+  
 
   componentDidMount() {
     this.ws.onopen = () => {
       // on connecting, do nothing but log it to the console
       console.log('connected')
+      
       
     }
 
@@ -47,8 +52,8 @@ class Chat extends Component {
     // on submitting the ChatInput form, send the message, add it to the list and reset the input
     const date = new Date()
     const message = { name: this.props.loggedInUser.username.split(' ').slice(0, -1).join(' '), message: messageString, date:date  }
-    this.ws.send(JSON.stringify(message))
-    this.addMessage(message)
+    
+
   }
 
   render() {
@@ -57,8 +62,8 @@ class Chat extends Component {
       return <Redirect to='/sign-in' />
   }
     return (
-      <div>
-        <label htmlFor="name" className="second-font chat-header">
+      <div >
+        <label htmlFor="name" className="second-font">
           Hello {this.props.loggedInUser.username}
           
         </label>

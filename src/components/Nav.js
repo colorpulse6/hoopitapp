@@ -16,7 +16,7 @@ export default function Nav(props) {
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <Link to={props.loggedInUser ? "user-main":"/"} ><img src={ bball } width="30" height="30" class="d-inline-block align-top bball-nav" alt=""></img></Link>
-                        <p>hoop.it.App</p>
+                        <p className="hoopItApp">hoop.it.App</p>
                         
                     </div>
 

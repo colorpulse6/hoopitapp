@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '../App.css';
-const DEFAULT_COLOR = '#040404';
+const DEFAULT_COLOR = '#C9082A';
 
 
 
@@ -27,13 +27,13 @@ export default class RadialChart extends Component {
             text
         } = this.props;
         
-        const circleRadius = Math.min(radius, 85);
+        const circleRadius = Math.min(radius, 75);
         const circumference = 2 * 3.14 * circleRadius;
         const strokeLength = setStrokeLength ? circumference / 100 * progress : 0;
         const textStyles = {
             fontSize: '28px',
-            maxWidth: '5ch'
-       
+            maxWidth: '5ch',
+
         }
         const numStyles = {
             fontSize: '40px'
@@ -44,7 +44,7 @@ return (
                     'no-progress': strokeLength === 0
                 })}
            >
-               <svg viewBox="0 0 180 180" width='50' height='50'>
+               <svg viewBox="0 0 180 180" width='70' height='70'>
                     <text textAnchor="middle" x="90" y="85" style={numStyles}>{number}</text>
                     
                     <text textAnchor="middle" x="90" y="120" style={textStyles}>{text}</text>
@@ -77,7 +77,7 @@ return (
 RadialChart.defaultProps = {
     radius: 90,
     progress: 100,
-    strokeWidth: 5,
+    strokeWidth: 8,
     dimension: 180,
     color: DEFAULT_COLOR
 };
