@@ -72,7 +72,7 @@
  
 }
 .discover-games{
-  margin-left:-23px
+  margin-left:-23px;
 }
 
 /* Signin/signup */
@@ -213,7 +213,8 @@ background-color: #AEB3B9;
   background-image: url("https://images.pexels.com/photos/3634518/pexels-photo-3634518.jpeg?cs=srgb&dl=aerial-photography-of-empty-basketball-court-3634518.jpg&fm=jpg");
   background-size: cover;
   background-position: center;
-  padding:0
+  padding:0;
+  height:238px
 }
 
 .jumbotron-fluid{
@@ -222,9 +223,18 @@ background-color: #AEB3B9;
 
 
 .jumbotron h4 {
-  color:white;
-  max-width:360px;
-  padding:46px 64px 48px 40px
+  width: 300px;
+  height: 44px;
+  font-family: Copperplate;
+  font-size: 28px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.79;
+  letter-spacing: 3px;
+  color: #ffffff;
+  padding-left:30px;
+  padding-top:27px;
   
 }
 
@@ -269,6 +279,7 @@ background-color: #AEB3B9;
 
 /* user-main */
 
+
 .user-main-main {
   display:flex;
   flex-direction: column;
@@ -293,7 +304,7 @@ background-color: #AEB3B9;
 
 .take-part-text {
   max-width: 350px;
-  margin-top:60px;
+  margin-top:40px;
   margin-left:18px;
   margin-bottom:-5px;
   font-size: 15px;
@@ -376,6 +387,10 @@ background-color: #AEB3B9;
   box-shadow: 2px 3px 9px -3px rgba(0, 0, 0, 0.5);
 }
 
+.card-img-top {
+  height:205px;
+}
+
 
 
 .card-text {
@@ -449,6 +464,7 @@ background-color: #AEB3B9;
 .create-game-button{
   width:78%;
   margin-left:40px;
+  height:45px;
 }
 
 .team-select {

@@ -107,7 +107,7 @@ export default class TeamsInfo extends React.Component {
         let uniqueArray = playerNames.filter(function(item, pos, self) {
             return self.indexOf(item) == pos;
         })
-        // console.log(playerNames + "IOUBI/ZGUSA")
+        console.log(playerNames + "IOUBI/ZGUSA")
 
         return(
             <div className="page-containers ">
@@ -128,16 +128,17 @@ export default class TeamsInfo extends React.Component {
                             </p>
 
                         <div>
-                            <p className="second-font"><strong>Players:</strong></p>
+                            {/* <p className="second-font"><strong>Players:</strong></p>
                             {
                                 uniqueArray.map((name)=> {
+
                                     return <p className="second-font">{name}</p>
                                 })
-                            }
+                            } */}
                         </div>
                         {
                             //CHANGE BUTTON DEPENDING ON OWNER OF TEAM OR NOT
-                            this.props.loggedInUser.username === team.owner ? <button className="red-buttons red-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
+                            this.props.loggedInUser.username === team.owner ? <button className="card-buttons red-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
                             : <button className="card-buttons red-buttons" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
                         }
                         

@@ -52,7 +52,7 @@ export default class UserMain extends React.Component {
             {/* <h1>Main User Page</h1> */}
             <div class="jumbotron jumbotron-fluid">
                         <div class="container">
-                            <h4 class="display-6 second-font">Welcome {this.props.loggedInUser.username}!</h4>
+                            <h4 class="display-6 second-font welcome-text">Welcome {this.props.loggedInUser.username}!</h4>
                             <p class="lead"></p>
                         </div>
                     </div>

@@ -6,6 +6,9 @@ import {Link} from 'react-router-dom'
 import config from '../config';
 import hoopitappLogo from './hoopitapp-logo.png'
 import nextButton from './next-button.png'
+import userImg from './combined-shape-copy.png'
+import dateImg from './combined-shape.png'
+import group2 from './group-2.png'
 import RadialChart from './RadialChart'
 
 export default class Home extends React.Component {
@@ -57,20 +60,20 @@ componentDidMount(){
                     {       //SHUFFLE GAMES AND GET THE FIRST 3
                             this.state.games.sort(() => 0.5 - Math.random()).slice(0,3).map((el, index) => {
                                 
-                                    return <div class="card each-card home-cards">
+                                    return <div class="card each-card">
                                     <div  key={index} id="game">
                                     <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
                                     <div className="card-content">
                                         <div className="card-text">
-                                            <p>Date: {el.date}</p>
-                                            <p >Location: {el.location}</p>
-                                            <p>Created By: {el.createdBy}</p>
+                                        <p className="second-font created-by-name"><img src={userImg}></img>{el.createdBy}</p>
+                                            <p className="second-font"><img src={dateImg}></img>{el.date}</p>
+                                            <p className="second-font location-text" ><img src={group2}></img>{el.location}</p>
                                         </div>
                                     
                                     <div className="chart-div">
                                     <RadialChart
                                         progress={el.players.length/el.maxPlayers*100}
-                                        color="#3c71d0"
+                                        color="#C9082A"
                                         number={el.players.length+'/'+el.maxPlayers}
                                         text={(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  'Almost Full' : 'Full'}
                                     />
