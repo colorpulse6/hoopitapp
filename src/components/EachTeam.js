@@ -53,15 +53,15 @@ export default class EachTeam extends React.Component {
             
             <h3 className="second-font">{teamName}</h3>
                {
-                <div className="game-card ">
+                <div className="game-card each-team-info">
                    
-                   <p className="second-font"><strong>Owner:</strong><br></br> {owner}</p>
-                   <p className="second-font"><strong>Hometown:</strong><br></br> {homeTown}</p>
-                   <p className="second-font"><strong>Players:</strong> <br></br>{
+                   <p className="second-font"><strong>Owner:</strong><br></br> {owner}</p><hr></hr>
+                   <p className="second-font"><strong>Hometown:</strong><br></br> {homeTown}</p><hr></hr>
+                   <p className="second-font team-players-div"><strong>Players:</strong> <br></br>{
                        doobs.map((player) => {
                            return <div>{player.username} <br></br></div>
                        })
-                   }</p>
+                   }</p><hr></hr>
                    
                </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import bball from './b-ball.png'
-import nextButton from './next-button.png'
+import bball from '../images/b-ball.png'
+import nextButton from '../images/next-button.png'
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import bball from './b-ball.png'
+import bball from '../images/b-ball.png'
 
 
 export default function Nav(props) {

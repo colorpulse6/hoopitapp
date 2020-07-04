@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios'
 import config from '../config';
 import Map from "./Map"
-import nextButton from './next-button.png'
+import nextButton from '../images/next-button.png'
 import '../App.css';
 import SearchCity from './SearchCity'
 

@@ -4,6 +4,7 @@ import config from '../config';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import TeamDetail from './TeamDetail'
+import nextButton from '../images/next-button.png'
 
 
 
@@ -81,9 +82,9 @@ export default class GameAdmin extends React.Component {
                 {/* <img class="" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img> */}
                 <div className="game-detail-text">
                     <h4 className="second-font">You are the creator of this game</h4>
-                    <p className="second-font"><strong>Location:</strong> <br></br>{location}</p>
-                    <p className="second-font"><strong>Date:</strong><br></br> {date}</p>
-                    <p className="second-font"><strong>Created By:</strong> <br></br>{createdBy}</p>
+                    <p className="second-font"><strong>Location:</strong> <br></br>{location}<hr></hr></p>
+                    <p className="second-font"><strong>Date:</strong><br></br> {date}<hr></hr></p>
+                    <p className="second-font"><strong>Created By:</strong> <br></br>{createdBy}<hr></hr></p>
                     {
                         savedAsTeam  ? <p className="second-font"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-font"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
                         return <div>{name}
@@ -97,10 +98,10 @@ export default class GameAdmin extends React.Component {
                     
                 </div>
                 <div className=" admin-buttons">
-                {savedAsTeam === undefined? <div><Link to={`/${_id}/admin/team-detail`}><button className="card-buttons" onClick={this.makeTeam} type="submit">Save Group as Team</button></Link>
+                {savedAsTeam === undefined? <div><Link to={`/${_id}/admin/team-detail`}><button className="card-buttons" onClick={this.makeTeam} type="submit">Save Group as Team<img className="next-button" src={nextButton}></img></button></Link>
                     <br></br>
-                <Link to={`/${_id}/admin/cancel-game`}><button className="card-buttons red-buttons" onClick={this.cancelGame} type="submit">Cancel Game</button></Link></div> :
-                <Link to={`/${_id}/admin/cancel-game`}><button className="card-buttons red-buttons" onClick={this.cancelGame} type="submit">Cancel Game</button></Link>
+                <Link to={`/${_id}/admin/cancel-game`}><button className="card-buttons red-buttons" onClick={this.cancelGame} type="submit">Cancel Game<img className="next-button" src={nextButton}></img></button></Link></div> :
+                <Link to={`/${_id}/admin/cancel-game`}><button className="card-buttons red-buttons" onClick={this.cancelGame} type="submit">Cancel Game<img className="next-button" src={nextButton}></img></button></Link>
 
                 
                     

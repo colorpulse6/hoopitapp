@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import config from '../config';
+import nextButton from '../images/next-button.png'
 
 export default class EditProfile extends React.Component {
 
@@ -103,7 +104,7 @@ export default class EditProfile extends React.Component {
                     <label for="changeCity"></label>
                     <input type="text" class="second-font form-control" id="changeCity" placeholder="Change City" name="changeCity"></input>
                 </div>
-                <button type="submit" class="card-buttons">Edit</button>
+                <button type="submit" class="card-buttons">Edit<img className="next-button" src={nextButton}></img></button>
             </form>
             
             

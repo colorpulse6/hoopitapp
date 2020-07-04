@@ -5,10 +5,10 @@ import axios from 'axios'
 import config from '../config';
 import Map from './Map'
 import RadialChart from './RadialChart'
-import nextButton from './next-button.png'
-import userImg from './combined-shape-copy.png'
-import dateImg from './combined-shape.png'
-import group2 from './group-2.png'
+import nextButton from '../images/next-button.png'
+import userImg from '../images/combined-shape-copy.png'
+import dateImg from '../images/combined-shape.png'
+import group2 from '../images/group-2.png'
 export default class UserMain extends React.Component {
 
     state = {

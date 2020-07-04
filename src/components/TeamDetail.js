@@ -96,7 +96,7 @@ export default class TeamsDetail extends React.Component {
                             })}
                     </div>
                     
-                    <button className="card-buttons">Save Team</button>
+                    <button className="join-game-button card-buttons">Save Team</button>
                </div>
                 
                </div>

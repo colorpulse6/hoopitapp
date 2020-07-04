@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import bball from './b-ball.png'
-import hoopitappLogo from './hoopitapp-logo.png'
+import bball from '../images/b-ball.png'
+import hoopitappLogo from '../images/hoopitapp-logo.png'
 
 import SearchCity from './SearchCity'
 import axios from 'axios'

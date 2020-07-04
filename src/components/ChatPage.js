@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Chat from './Chat'
-import bball from './b-ball.png'
+import bball from '../images/b-ball.png'
 
 export default class ChatPage extends Component {
   render() {

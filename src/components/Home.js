@@ -4,11 +4,11 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 import config from '../config';
-import hoopitappLogo from './hoopitapp-logo.png'
-import nextButton from './next-button.png'
-import userImg from './combined-shape-copy.png'
-import dateImg from './combined-shape.png'
-import group2 from './group-2.png'
+import hoopitappLogo from '../images/hoopitapp-logo.png'
+import nextButton from '../images/next-button.png'
+import userImg from '../images/combined-shape-copy.png'
+import dateImg from '../images/combined-shape.png'
+import group2 from '../images/group-2.png'
 import RadialChart from './RadialChart'
 
 export default class Home extends React.Component {

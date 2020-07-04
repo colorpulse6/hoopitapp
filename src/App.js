@@ -38,7 +38,8 @@ class App extends React.Component {
     city:'',
     lat: null,
     lng: null,
-    error: ''
+    error: '',
+    isLoading: true
   }
 
   getUser(){
@@ -78,8 +79,10 @@ class App extends React.Component {
   componentDidMount(){
     this.getGames();
     this.getUsers();
-    console.log('MOUNTED' + this.state.loggedInUser)
-   
+    // console.log('MOUNTED' + this.state.loggedInUser)
+    setTimeout(() => {
+      this.setState({isLoading: false})
+    }, 1000);
     if (!this.state.loggedInUser) {
       this.getUser();
       // console.log('GOT USER')
@@ -212,13 +215,13 @@ class App extends React.Component {
 
 
   render() {
-    // if(!this.state.games.length){
-    //   return (
-    //     <div>
-    //       <Loading />
-    //     </div>
-    //     )
-    // }
+    if(this.state.isLoading){
+      return (
+        <div>
+          <Loading />
+        </div>
+        )
+    }
     const {loggedInUser} = this.state
     return (
       <div >

@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import EachTeam from './EachTeam'
 import {Switch, Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import nextButton from '../images/next-button.png'
 
 
 export default class TeamsInfo extends React.Component {
@@ -138,8 +139,8 @@ export default class TeamsInfo extends React.Component {
                         </div>
                         {
                             //CHANGE BUTTON DEPENDING ON OWNER OF TEAM OR NOT
-                            this.props.loggedInUser.username === team.owner ? <button className="card-buttons red-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team</button> 
-                            : <button className="card-buttons red-buttons" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team</button>
+                            this.props.loggedInUser.username === team.owner ? <button className="card-buttons red-buttons" value={team._id} onClick={this.handleDisbandTeam}>Disband Team<img className="next-button" src={nextButton}></img></button> 
+                            : <button className="card-buttons red-buttons" value={team.teamName, team._id} onClick={this.handleQuitTeam.bind(this, team.teamName, team._id )}>Quit Team<img className="next-button" src={nextButton}></img></button>
                         }
                         
                         

@@ -165,6 +165,7 @@ background-color: #AEB3B9;
 
 .create-game-btn {
   width:100%;
+  
 }
 
 .navbar-collapse li{
@@ -192,6 +193,9 @@ background-color: #AEB3B9;
   text-align:center;
   margin-top:10px;
  
+}
+hr {
+  width:110px
 }
 
 .page-containers {
@@ -250,6 +254,21 @@ background-color: #AEB3B9;
   color:#fbfbfb;
   border:none;
   
+}
+
+.join-game-button{
+  width:120px;
+  height: 35px;
+  border-radius: 2px;
+  box-shadow: 2px 3px 12px -4px rgba(0, 0, 0, 0.5);
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.93;
+  letter-spacing: 1.5px;
+  color: #fbfbfb;
 }
 
 .red-buttons{
@@ -465,6 +484,8 @@ background-color: #AEB3B9;
   width:78%;
   margin-left:40px;
   height:45px;
+  margin-bottom:54px;
+
 }
 
 .team-select {
@@ -480,6 +501,10 @@ background-color: #AEB3B9;
   font-size: 14px;
 }
 
+.each-team-info p {
+  line-height: 1.2;
+  letter-spacing: 1.61px;
+}
 
 /* .map-search {
   position: absolute;
@@ -620,7 +645,7 @@ background-color: #AEB3B9;
   
 }
 .chatters {
-margin-left:-5px
+margin-left:20px
 }
 
 .chat-container {

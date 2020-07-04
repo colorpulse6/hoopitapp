@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css'
-import bball from './b-ball.png'
+import bball from '../images/b-ball.png'
 
 export default ({ name, message, loggedInUser }) =>
 

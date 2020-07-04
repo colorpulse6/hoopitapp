@@ -3,6 +3,7 @@ import axios from 'axios'
 import config from '../config';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
+import nextButton from '../images/next-button.png'
 
 
 export default class GameDetail extends React.Component {
@@ -128,9 +129,9 @@ export default class GameDetail extends React.Component {
 
                     
                     <h4 className="second-font">Game Details</h4>
-                        <p className="second-font"><strong>Location: </strong><br></br> {location}</p>
-                        <p className="second-font"><strong>Date: </strong><br></br> {date}</p>
-                        <p className="second-font"><strong>Created By: </strong><br></br> {createdBy}</p>
+                        <p className="second-font"><strong>Location: </strong><br></br> {location}<hr></hr></p>
+                        <p className="second-font"><strong>Date: </strong><br></br> {date}<hr></hr></p>
+                        <p className="second-font"><strong>Created By: </strong><br></br> {createdBy}<hr></hr></p>
                         {
                             savedAsTeam  ? <p className="second-font"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-font"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
                             return <div>{name}
@@ -141,9 +142,9 @@ export default class GameDetail extends React.Component {
                          </div>
                         <div>
                         {
-                            !userNames.includes(this.props.loggedInUser.username) ? <button className="btn btn-primary" onClick={this.handleJoinGame} type="submit">Join</button> : <div>
+                            !userNames.includes(this.props.loggedInUser.username) ? <button className=" join-game-button card-buttons" onClick={this.handleJoinGame} type="submit">Join<img className="next-button" src={nextButton}></img></button> : <div>
                             <p>You are scheduled to play this game.</p> 
-                            <button className="red-buttons" value={_id} onClick={this.handleQuitGame}>Leave Game</button>
+                            <button className="red-buttons" value={_id} onClick={this.handleQuitGame}>Leave Game<img className="next-button" src={nextButton}></img></button>
                             </div>
                         }
                         
