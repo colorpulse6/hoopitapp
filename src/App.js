@@ -25,6 +25,8 @@ import Loading from './components/Loading'
 import ChatPage from './components/ChatPage'
 import { lastDayOfDecade } from 'date-fns';
 import { object } from 'prop-types';
+import ChatTest from './components/ChatTest'
+
 
 
 class App extends React.Component {
@@ -313,7 +315,13 @@ class App extends React.Component {
               loggedInUser={loggedInUser} 
               {...routeProps}
               users={this.state.users}
-               
+              />
+            }}/>
+            <Route path="/chat-test"  render={(routeProps) => {
+              return <ChatTest 
+              loggedInUser={loggedInUser} 
+              {...routeProps}
+              users={this.state.users}
               />
             }}/>
             

@@ -25,8 +25,8 @@ export default class ChatInput extends Component {
         <input className="second-font chatinput"
             type="text"
             placeholder={'Enter message...'}
-            value={this.state.message}
-            onChange={e => this.setState({ message: e.target.value })}
+            value={this.props.content}
+            onChange={this.props.handleContent}
           />
         
         <input type="submit" className="card-buttons chat-button" value={'Send'} />

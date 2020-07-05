@@ -25,7 +25,7 @@ export default class EachTeam extends React.Component {
         .catch((err) => {
             console.log('Error getting team:  ' + err)
         })
-        console.log(id)
+        // console.log(id)
       }
     
       //FOR DISPLAYING CHAT
@@ -69,6 +69,7 @@ export default class EachTeam extends React.Component {
                <div className="chatters">
                <ChatPage 
                    loggedInUser = {this.props.loggedInUser}
+                   teamId = {this.props.match.params.teamId}
                />
                    
                </div>

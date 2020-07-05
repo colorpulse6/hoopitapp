@@ -9,7 +9,10 @@ export default class ChatPage extends Component {
       <h4 className="App-title second-font chat-header">Welcome to Hoop Chat</h4>
         <div>
             <Chat 
-            loggedInUser={this.props.loggedInUser}/>
+            loggedInUser={this.props.loggedInUser}
+            teamId = {this.props.teamId}
+            />
+            
 
         </div>
           
