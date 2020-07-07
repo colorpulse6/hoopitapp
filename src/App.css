@@ -163,10 +163,8 @@ background-color: #AEB3B9;
   
 }
 
-.create-game-btn {
-  width:100%;
-  
-}
+
+
 
 .navbar-collapse li{
   font-size:15px;
@@ -311,9 +309,6 @@ hr {
  flex-wrap:wrap;
 }
 
-.create-game-btn {
-  margin-top:20px;
-}
 
 .main-header {
   display:flex;
@@ -365,6 +360,7 @@ hr {
   flex-direction: column;
   align-items: flex-start;
 }
+
 
 .near-you-text {
   margin-bottom:-20px
@@ -480,11 +476,17 @@ hr {
   margin-bottom:25px
 }
 
+.create-game-butn-div {
+  position: relative;
+  width:100%;
+  padding:50px
+}
+
 .create-game-button{
-  width:78%;
-  margin-left:40px;
-  height:45px;
-  margin-bottom:54px;
+  margin: 0;
+  position: absolute;
+ width:100%;
+ padding:0
 
 }
 
@@ -765,9 +767,10 @@ margin-top:3px
 
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .jumbotron h4 {
       font-size: 2em;
+      width:350px
   }
   .home-container h5 {
     font-size: 1em;
@@ -779,12 +782,27 @@ margin-top:3px
     width:50%;
     margin:0 auto
   }
+  /* .create-game-button {
+    width:295px;
+    margin-left:22px;
+  } */
+  
 }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .jumbotron h3 {
+@media (min-width: 768px) {
+
+  /* .create-game-button {
+    width:600px;
+    margin:0
+  } */
+  
+  .jumbotron h4 {
       font-size: 3em;
+      margin-top:-50px;
+      margin-left:50px;
+      width:450px
+      
   }
   .home-container h5 {
     font-size: 2em;
@@ -801,8 +819,9 @@ margin-top:3px
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .jumbotron h3 {
+  .jumbotron h4 {
       font-size: 4em;
+      width:600px
   }
   .home-container h5 {
     font-size: 3em;
@@ -811,7 +830,10 @@ margin-top:3px
     font-size: 1.5em;
     
   }
-  
+  .nav-item{
+    padding:0 10px 0 10px;
+    
+  }
   
 }
 

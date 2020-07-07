@@ -7,6 +7,8 @@ import SearchCity from './SearchCity'
 import axios from 'axios'
 import config from '../config';
 import {Link} from 'react-router-dom'
+import { useMediaQuery } from 'react-responsive'
+
 
 import {
     
@@ -35,19 +37,55 @@ import "@reach/combobox/styles.css";
 import mapStyles from "./mapStyles"
 
 
+
 //PROPS VARIABLES
 const libraries = ["places"]
 
-const mapContainerStyle = {
-    width: '80vw', 
-    height: '45vh'
-    
-}
 const styles = { width: '100%', height: '100%', position: 'absolute'};
 
 
 
 export default function Map(props) {
+
+
+    //RESPONSIVENESS
+    
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1089px)'
+  })
+  const isMediumScreen = useMediaQuery({ query: '(min-width: 712px)' })
+  const isSmallScreen = useMediaQuery({
+    query: '(max-width: 768px)'
+  })
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
+
+  console.log(isMediumScreen)
+
+  let mapContainerStyle;
+  if(isDesktopOrLaptop){
+    mapContainerStyle = {
+        width: '80vw', 
+        height: '100vh'
+    }
+  } else if (isMediumScreen){
+    mapContainerStyle = {
+        width: '80vw', 
+        height: '75vh'
+    }
+  } else if (isSmallScreen){
+    mapContainerStyle = {
+        width: '80vw', 
+        height: '45vh'
+    }
+
+  }
+  
+
+
+
+
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
@@ -58,6 +96,7 @@ export default function Map(props) {
     const [selected, setSelected] = React.useState(null);
 
     const [games, setData] = React.useState({ hits: [] });
+
 
     // const onMapClick = React.useCallback((event) => {
     //     console.log(event)
@@ -121,14 +160,7 @@ export default function Map(props) {
         disableDefaultUI: true,
         zoomControl: true,
     }
-
-    let markerImage 
-
-   
-   
-    // const user =  props.loggedInUser.username
-    
-    
+        
     
     return <div className="front-page-map-container">
 
@@ -153,7 +185,7 @@ export default function Map(props) {
         }}>
         <GoogleMap 
             styles={styles}
-            mapContainerStyle={mapContainerStyle}
+            mapContainerStyle={ mapContainerStyle }
             zoom={8}
             center={center}
             options={options}

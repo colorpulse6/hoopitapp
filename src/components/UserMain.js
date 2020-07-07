@@ -56,6 +56,7 @@ export default class UserMain extends React.Component {
                             <p class="lead"></p>
                         </div>
                     </div>
+
             <div className="page-containers">
           
             <div className="user-main-main">
@@ -101,7 +102,7 @@ export default class UserMain extends React.Component {
             </div>
             <div>
             
-            <div className="your-games">
+            <div >
                 
                 <div className="row">
                 
@@ -160,14 +161,14 @@ export default class UserMain extends React.Component {
             </div>
 
             
-            <div className="your-games">
+            <div>
                 
                 <div className="row">
                 
-                    <div class="games-near-you">
+                    <div class="games-near-you ">
 
                     {/* SHOW GAMES YOU JOINED */}
-                    <div className="game-cards">
+                    <div className="game-cards ">
                     {
                         this.state.games.slice(0,1).map((el, index) => {
                                 if ( el.players.includes(this.props.loggedInUser._id) && el.createdBy !== this.props.loggedInUser.username) {
@@ -220,12 +221,17 @@ export default class UserMain extends React.Component {
         </div>
 
         </div>
+
             
-            
+        <div class="create-game-butn-div">
+    <div class="">
+    <Link to="/create-game"><button className="card-buttons second-font ">Create A Game <img className="next-button" src={nextButton}></img></button></Link>    </div>
+  </div>
 
         
 </div>
-<Link to="/create-game"><button className="card-buttons second-font create-game-button ">Create A Game <img className="next-button" src={nextButton}></img></button></Link>
+
+
         </div>
         
     )

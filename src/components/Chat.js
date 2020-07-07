@@ -33,16 +33,19 @@ class Chat extends Component {
 
     // Load the last 10 messages in the window.
     let id = this.props.teamId
-       axios.get(`${config.API_URL}/each-team/${id}`, {withCredentials: true})
+       axios.get(`${config.API_URL}/team-messages/${id}`, {withCredentials: true})
        .then((res)=> {
-        this.socket.on('init', (msg) => {
+        // this.socket.on('init', (msg) => {
+        //   this.setState((state) => ({
+        //     chat: [...state.chat, ...msg.reverse()],
+        //   }), this.scrollToBottom);
+          
+         let msg = res.data;
           this.setState((state) => ({
             chat: [...state.chat, ...msg.reverse()],
           }), this.scrollToBottom);
-          
     
-        });
-
+        // });
        })
        .catch((err)=> {
          console.log(err + '   error setting chat state')
@@ -79,7 +82,7 @@ handleSubmit(event) {
     console.log('this', this.socket);
     // Send the new message to the server.
     this.socket.emit('message', {
-      name: state.name.split(' ').slice(0, -1).join(' '),
+      name: state.name,
       content: state.content,
       team: this.props.teamId
     });
