@@ -1,7 +1,7 @@
 # hoopitApp
 
 ## Description
-Organize basketball games in your city
+Hoop.It.App is a web and mobile app that allows you to organize basketball games in your city and build teams with your friends.  It is build using react, express and node.js with bcrypt for authentication.  This project represents my first full react project and extends the knowledge from my 2nd project by making use of complex models, routes and multiple user types.  I also took this opportunity to learn Socket.io for the chat function and the Google Maps API and Google Maps Places API.
 
 ## User Stories
 
