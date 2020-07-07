@@ -26,7 +26,8 @@ export default function Signup(props) {
             </div>
             <div className="form-group">
                 <label htmlFor="exampleInputPassword1" className="second-font">Password</label>
-                <input name="password" type="password" className="form-control input" id="exampleInputPassword1" />
+                <input  name="password" type="password" className="form-control input" id="exampleInputPassword1" />
+                <p style ={{fontSize:'7.8px', marginBottom:'-5px'}}>Password must be 8 characters and include a number and an uppercase letter</p>
             </div>
             <button type="submit" className="card-buttons">Sign Up <img className="next-button" src={nextButton}></img></button>
         </form>

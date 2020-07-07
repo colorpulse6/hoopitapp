@@ -5,7 +5,9 @@ import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import TeamDetail from './TeamDetail'
 import nextButton from '../images/next-button.png'
-
+import userImg from '../images/combined-shape-copy.png'
+import dateImg from '../images/combined-shape.png'
+import group2 from '../images/group-2.png'
 
 
 export default class GameAdmin extends React.Component {
@@ -59,7 +61,7 @@ export default class GameAdmin extends React.Component {
         if (!this.props.loggedInUser) {
             return <Redirect to='/sign-in' />
         }
-        const {location, date, createdBy, players, _id, savedAsTeam} = this.state.game
+        const {location, time, date, createdBy, players, _id, savedAsTeam} = this.state.game
         console.log('team:  ' + savedAsTeam) 
             let userNames = []
             for (let i = 0; i< this.props.users.length; i++){
@@ -78,23 +80,33 @@ export default class GameAdmin extends React.Component {
         return(
             <div className="page-containers">
                 <div className="game-detail-page">
-                <div >
-                {/* <img class="" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img> */}
+                <h4 className="second-font">{this.props.loggedInUser.username}'s game</h4>
                 <div className="game-detail-text">
-                    <h4 className="second-font">You are the creator of this game</h4>
-                    <p className="second-font"><strong>Location:</strong> <br></br>{location}<hr></hr></p>
-                    <p className="second-font"><strong>Date:</strong><br></br> {date}<hr></hr></p>
-                    <p className="second-font"><strong>Created By:</strong> <br></br>{createdBy}<hr></hr></p>
+                {/* <img class="" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img> */}
+
+                    <p className="second-font labels"><img src={dateImg}></img>Date and Time</p> <hr></hr>
+                    <div className="dateTime"><p className="inputs"> {date}</p><p className="inputs"> Game Time: {time}</p></div>
+
+                    <p className="second-font labels"><img src={group2}></img>Location </p>
+                    <hr></hr>
+                    <p className="inputs">{location}</p>
+
+                    
                     {
-                        savedAsTeam  ? <p className="second-font"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-font"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
+                        savedAsTeam  ? <p className="second-font labels">Team: <br></br>{savedAsTeam}</p> : <div><p className="second-font labels">Players</p>
+                        <hr></hr> 
+                        <p className="inputs">{userNames.map((name)=> {
                         return <div>{name}
                         <br></br></div> 
-                    })}</p></div>
+                    })}</p>
+                    <input type="checkbox" id="saveAsTeam" name="saveAsTeam" value="team"></input>
+                    <label className="inputs" for="saveAsTeam">Save as team</label>
+                        </div>
                     }
                     
 
 
-                </div>
+                
                     
                 </div>
                 <div className=" admin-buttons">
