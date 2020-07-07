@@ -18,7 +18,7 @@ export default function Signup(props) {
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1" className="second-font">Email address</label>
                 <input type="email" className="form-control input" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" />
-                <small id="emailHelp" className="form-text text-muted second-font">We'll never share your email with anyone else.</small>
+                
             </div>
             <div className="form-group">
                 <label htmlFor="exampleInputUsername" className="second-font">City</label>
@@ -30,7 +30,7 @@ export default function Signup(props) {
             </div>
             <button type="submit" className="card-buttons">Sign Up <img className="next-button" src={nextButton}></img></button>
         </form>
-
+        {props.error?  <div className="text-danger" style = {{marginLeft: '5px', marginTop:'10px'}}>{props.error}</div>: null}
         </div>
         
 

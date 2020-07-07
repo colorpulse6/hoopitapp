@@ -114,8 +114,12 @@ class App extends React.Component {
           this.props.history.push('/user-main')
         })
     })
-    .catch((err) => {
-      console.log(err)
+    .catch((res) => {
+      this.setState({
+        error: res.response.data.error
+      })
+      console.log('this is error' + this.state.error)
+
     })
   }
 
@@ -137,11 +141,11 @@ class App extends React.Component {
         this.props.history.push('/user-main')
       })
     })
-    .catch((error)=> {
+    .catch((res)=> {
       this.setState({
-        error:error
+        error: res.response.data.error
       })
-      
+      console.log('this is error' + this.state.error)
     })
   }
 
@@ -250,7 +254,8 @@ class App extends React.Component {
               />
             }}/>    
           <Route path="/sign-up"  render={() => {
-              return <Signup onSignUp = {this.handleSignUp} 
+              return <Signup 
+              onSignUp = {this.handleSignUp} 
               error={this.state.error}
               />
             }}/>  
