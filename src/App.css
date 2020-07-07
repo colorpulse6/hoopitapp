@@ -54,6 +54,8 @@
   font-weight: 300;
 }
 
+
+
 .second-font{
   font-family: Nunito;
   font-weight: bold;
@@ -205,9 +207,6 @@ hr {
 .edit-profile{
   margin-left:-25px
 }
-.edit-profile input {
-  
-}
 
 .jumbotron {
   /* background: linear-gradient(142deg, rgba(74,6,144,1) 0%, rgba(201,8,42,1) 97%, rgba(228,134,106,1) 99%); */
@@ -218,11 +217,6 @@ hr {
   padding:0;
   height:238px
 }
-
-.jumbotron-fluid{
-  
-}
-
 
 .jumbotron h4 {
   width: 300px;
@@ -297,17 +291,6 @@ hr {
 /* user-main */
 
 
-.user-main-main {
-  display:flex;
-  flex-direction: column;
-  margin-left:25px
-}
-
-.user-main-div {
- display:flex;
- flex-direction:column;
- flex-wrap:wrap;
-}
 
 
 .main-header {
@@ -316,11 +299,23 @@ hr {
   align-items: center;
 }
 
+
+.user-main-header {
+  max-width:250px;
+  margin-left:15px;
+  margin-top:-40px;
+  padding-bottom:50px;
+
+
+}
+
+.near-you-text {
+  margin-bottom:-20px
+  
+}
+
 .take-part-text {
   max-width: 350px;
-  margin-top:40px;
-  margin-left:18px;
-  margin-bottom:-5px;
   font-size: 15px;
   width: 285px;
   height: 45px;
@@ -335,17 +330,11 @@ hr {
 
 }
 
-.user-main-header {
-  max-width:250px;
-  margin-left:15px;
-  margin-top:29px;
-
-}
-
 .main-page-headers{
   max-width:250px;
   margin-bottom:20px;
-  margin-top:15px
+  margin-top:15px;
+  
 }
 
 .title-header {
@@ -355,25 +344,16 @@ hr {
   margin-top:50px;
 }
 
+.user-main-cards-div {
+  margin-left:50px
+}
+
 .game-cards {
   display:flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-
-.near-you-text {
-  margin-bottom:-20px
-  
-}
-
-.games-near-you {
-  display:flex;
-  flex-wrap:wrap;
-  margin:30px;
-  margin-bottom:-30px;
-
-}
 
 .card-content {
   margin:10px;
@@ -397,7 +377,7 @@ hr {
 
 .each-card {
   width:295px;
-  
+  margin:20px;
   margin-bottom:30px;
   box-shadow: 2px 3px 9px -3px rgba(0, 0, 0, 0.5);
 }
@@ -782,21 +762,20 @@ margin-top:3px
     width:50%;
     margin:0 auto
   }
-  /* .create-game-button {
-    width:295px;
-    margin-left:22px;
-  } */
+  .user-main-cards-div{
+    margin-left:0px;
+  }
+
+  .main-page-headers {
+    margin-left:20px;
+  }
   
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 768px) {
 
-  /* .create-game-button {
-    width:600px;
-    margin:0
-  } */
-  
+
   .jumbotron h4 {
       font-size: 3em;
       margin-top:-50px;
@@ -814,6 +793,20 @@ margin-top:3px
     width:50px;
     height:50px
   }
+
+  .user-main-cards-div{
+    margin-left:40px;
+  }
+
+  .main-page-headers {
+    margin-left:20px;
+  }
+
+  .user-main-header {
+    font-size:30px;
+    max-width:1000px;
+    }
+  
   
 }
 
@@ -821,7 +814,12 @@ margin-top:3px
 @media (min-width: 1200px) {
   .jumbotron h4 {
       font-size: 4em;
-      width:600px
+      width:600px;
+      
+  }
+  .join-text{
+    margin-bottom:200px;
+    
   }
   .home-container h5 {
     font-size: 3em;
@@ -834,6 +832,36 @@ margin-top:3px
     padding:0 10px 0 10px;
     
   }
+
+  .user-main-cards-div{
+    margin-left:80px;
+  }
+  .main-page-headers {
+    margin-left:20px;
+  }
+
+  .user-main-header {
+  font-size:50px;
+  max-width:1000px;
+  padding:40px;
+  margin-bottom:30px
+  }
+
+  
+
+  
+  .take-part-text {
+    max-width: 650px;
+    width: 585px;
+    font-size: 25px;
+    margin-top:-40px
+ 
+
+  
+  }
+ 
+
+  
   
 }
 

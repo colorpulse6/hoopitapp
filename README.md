@@ -205,7 +205,7 @@ gamesPlayed - Number
 [https://github.com/colorpulse6/hoopitapp]
 
 ### Deployment
-
+[https://hoopitapp.herokuapp.com/]
 
 ### Slides
 [https://docs.google.com/presentation/d/1ITWaidwNwHyAy3hsINt5oreKjPL4oQH-_L3dVBlzcZs/edit?usp=sharing]

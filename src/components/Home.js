@@ -16,6 +16,10 @@ export default class Home extends React.Component {
     state={
         games: []
     }
+    
+    componentDidMount(){
+        this.getGames()
+    }
     getGames = () => {
         axios.get(`${config.API_URL}/main`, {withCredentials: true})
           .then((res) => {
@@ -30,37 +34,36 @@ export default class Home extends React.Component {
             }
           })  
       }
-componentDidMount(){
-    this.getGames()
-}
+      
         render(){
 
             return(
 
                 <div >
                     <div class="jumbotron jumbotron-fluid">
-                        <div>
-                            <h4 class="display-6 primary-font">JOIN A BASKETBALL TEAM ANYWHERE YOU ARE</h4>
+                        <div class="container">
+                            <h4 class="display-6 primary-font welcome-text">JOIN A BASKETBALL GAME ANYWHERE YOU ARE</h4>
                             <p class="lead"></p>
                         </div>
                     </div>
 
-                    <div className=" user-main-div page-containers">
-                    <div class="container  second-font">
-                            <h3 class="display-6 second-font discover-games">Discover games <br></br>around your area</h3>
+                <div className=" page-containers">
+                    
+                        <h3 class="user-main-header second-font near-you-text">Discover games <br></br>around your area</h3>
                             <p class="lead"></p>
-                        </div>
-                        <div class="container home-container">
+                        
+                        
                             <p class="second-font take-part-text">Take part in one of the games played near you, get to meet your team for the match of the day </p>
                             <p class="lead"></p>
-                        </div>
+                        
 
 
                     <div>
+                    <div className="game-cards">
                     {       //SHUFFLE GAMES AND GET THE FIRST 3
-                            this.state.games.sort(() => 0.5 - Math.random()).slice(0,3).map((el, index) => {
+                        this.state.games.sort(() => 0.5 - Math.random()).slice(0,3).map((el, index) => {
                                 
-                                    return <div class="card each-card">
+                            return <div class="card each-card">
                                     <div  key={index} id="game">
                                     <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
                                     <div className="card-content">
@@ -88,7 +91,7 @@ componentDidMount(){
                             })
                         }
 
-
+                        </div>
 
                     </div>
 

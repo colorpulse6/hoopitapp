@@ -9,12 +9,18 @@ import nextButton from '../images/next-button.png'
 import userImg from '../images/combined-shape-copy.png'
 import dateImg from '../images/combined-shape.png'
 import group2 from '../images/group-2.png'
+
+
 export default class UserMain extends React.Component {
 
     state = {
         games: [],
 
     }
+
+    componentDidMount(){
+        this.getGames();
+      }
 
     getGames = () => {
         axios.get(`${config.API_URL}/user-main`, {withCredentials: true})
@@ -30,26 +36,19 @@ export default class UserMain extends React.Component {
           })  
       }
 
-      componentDidMount(){
-        this.getGames();
-        console.log(this.state.games)
-        console.log(this.props.loggedInUser)
-        
-       
-      }
+     
 
     render() {
 
-        //REDIRECTS USER TO SIGN IN IF NOT LOGGED IN
     if (!this.props.loggedInUser) {
         return <Redirect to='/sign-in' />
     }
-    // console.log('Games from User Main:   ---   ' + this.state.games)
+    
 
     return(
         <div >
 
-            {/* <h1>Main User Page</h1> */}
+            {/* JUMBOTRON*/}
             <div class="jumbotron jumbotron-fluid">
                         <div class="container">
                             <h4 class="display-6 second-font welcome-text">Welcome {this.props.loggedInUser.username}!</h4>
@@ -57,23 +56,23 @@ export default class UserMain extends React.Component {
                         </div>
                     </div>
 
+
             <div className="page-containers">
           
-            <div className="user-main-main">
-            <div className="user-main-div">
+           
 
             <h3 className='user-main-header second-font near-you-text'>Discover games around your area</h3>
-            <p className="second-font take-part-text">Take part in one of the games played near you, get to meet your team for the match of the day</p>
+            {/* <p className="second-font take-part-text">Take part in one of the games played near you, get to meet your team for the match of the day</p> */}
 
-                <div class="row ">
                 
-                    <div class="games-near-you">
+                
+                    <div >
 
-
+                    {/* MAP */}
                     <div className="map-div"><Map 
                         loggedInUser={this.props.loggedInUser}
-                    
-                /></div>
+                        />
+                    </div>
                     
                         
                             {/* SHOW GAMES IN YOUR CITY */}
@@ -98,25 +97,23 @@ export default class UserMain extends React.Component {
                                     })
                                 } */}
                     </div>
-                </div>
-            </div>
-            <div>
-            
-            <div >
                 
+            
+            
+                    <div class="user-main-cards-div">
                 <div className="row">
                 
-                    <div class="games-near-you">
+                    <div>
 
                         {/* SHOW GAMES YOU MADE */}
-                        <div className="game-cards">
+                        
                         {
                             this.state.games.map((el, index) => {
                                 if (el.createdBy === this.props.loggedInUser.username) {
                                     return <div key={index}><h3 className="main-page-headers second-font">Your Games</h3></div>}})
 
                         }
-
+                        <div className="game-cards">
                         {
                             this.state.games.map((el, index) => {
                                 if (el.createdBy === this.props.loggedInUser.username) {
@@ -157,23 +154,23 @@ export default class UserMain extends React.Component {
                         }
                         </div>
                     </div>
-                </div>
-            </div>
-
+                
+                    </div>
             
-            <div>
+            
                 
                 <div className="row">
                 
-                    <div class="games-near-you ">
+                    <div class="">
 
                     {/* SHOW GAMES YOU JOINED */}
-                    <div className="game-cards ">
+                    
                     {
                         this.state.games.slice(0,1).map((el, index) => {
                                 if ( el.players.includes(this.props.loggedInUser._id) && el.createdBy !== this.props.loggedInUser.username) {
                                     return <h3 className="main-page-headers second-font">Your upcoming games</h3>}})
                     }
+                    <div className="game-cards ">
                     
                         {
                             
@@ -215,12 +212,11 @@ export default class UserMain extends React.Component {
                         }
                         </div>
                     </div>
-                </div>
-            </div>
+                
                 
         </div>
-
-        </div>
+                        </div>
+        
 
             
         <div class="create-game-butn-div">
