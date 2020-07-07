@@ -19,8 +19,8 @@ class Chat extends Component {
       
     };
   }
-  socket = io.connect('http://localhost:5001')
-
+  // socket = io.connect('https://hoopitapp.herokuapp.com:5001')
+   socket = io.connect(config.SOCKET_URL)
   
 
   componentDidMount() {

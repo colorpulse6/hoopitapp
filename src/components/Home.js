@@ -42,7 +42,7 @@ export default class Home extends React.Component {
                 <div >
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container">
-                            <h4 class="display-6 primary-font welcome-text">JOIN A BASKETBALL GAME ANYWHERE YOU ARE</h4>
+                            <h4 class="">JOIN A BASKETBALL GAME ANYWHERE YOU ARE</h4>
                             <p class="lead"></p>
                         </div>
                     </div>
