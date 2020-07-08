@@ -24,6 +24,7 @@ export default function Nav(props) {
                 
             {
             props.loggedInUser ? (
+                <div>
                 <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
                 
                 <ul class="navbar-nav navbar-brand">
@@ -44,6 +45,8 @@ export default function Nav(props) {
                         <button className="logout" onClick={props.onLogout}>Logout</button>
                     </li>
                     </ul>
+                </div>
+                <img className="profileImage" src={props.loggedInUser.imageUrl}></img>
                 </div>
 
                 ) : (

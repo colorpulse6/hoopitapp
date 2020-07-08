@@ -90,7 +90,7 @@ class App extends React.Component {
       // console.log('GOT USER')
     }
     // console.log(this.state.loggedInUser)
-    
+
 
   }
 

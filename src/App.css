@@ -112,6 +112,16 @@
 
 
 /* Navbar */
+
+.profileImage{
+  width: 38px;
+  height: 38px;
+  border-radius: 50%; /*don't forget prefixes*/
+  background-position: center center;
+  /* as mentioned by Vad: */
+  background-size: cover;
+}
+
 #content-wrap {
   flex: 1 0 auto;
   
@@ -203,6 +213,7 @@ background-color: #AEB3B9;
   display:flex;
   flex-direction: column;
   align-items:center;
+  
 }
 .edit-profile{
   margin-left:-25px
@@ -300,12 +311,13 @@ background-color: #AEB3B9;
   margin-left:15px;
   margin-top:-40px;
   padding-bottom:50px;
-
+  
 
 }
 
 .near-you-text {
   margin-bottom:-20px
+
   
 }
 
@@ -340,13 +352,14 @@ background-color: #AEB3B9;
 }
 
 .user-main-cards-div {
-  margin-left:50px
+ 
 }
 
 .game-cards {
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
+  
 }
 
 
@@ -868,6 +881,7 @@ margin-top:3px
   .user-main-header {
     font-size:30px;
     max-width:1000px;
+
     }
   
   
@@ -902,6 +916,7 @@ margin-top:3px
   }
   .main-page-headers {
     margin-left:20px;
+    
   }
 
   .user-main-header {

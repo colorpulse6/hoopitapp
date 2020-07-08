@@ -20,6 +20,8 @@ export default class UserMain extends React.Component {
 
     componentDidMount(){
         this.getGames();
+        
+
       }
 
     getGames = () => {

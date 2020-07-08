@@ -6,14 +6,12 @@ import nextButton from '../images/next-button.png'
 export default class EditProfile extends React.Component {
 
     state = {
-        loggedInUser: ''
-
+        loggedInUser: '',
+        
     }
 
     componentDidMount(){
         this.getUser()
-        console.log(this.state)
-       console.log('Games from User Main:   ---   ' + this.state.games)
         
       }
 
@@ -22,11 +20,48 @@ export default class EditProfile extends React.Component {
         .then((res) => {
           // console.log(res + 'ResuLT')
           this.setState({
-            loggedInUser: res.data
+            loggedInUser: res.data,
+            profilePic: res.data.imageUrl
           })
+          console.log(res.data)
         })
-          
       }
+
+
+      handleProfilePic = (e) => {
+        e.preventDefault();
+        let imageUrl = e.target.file.files[0];
+        let id = this.props.loggedInUser._id
+        console.log(imageUrl);
+    
+        let uploadData = new FormData();
+        uploadData.append("imageUrl", imageUrl);
+    
+        axios.post(`${config.API_URL}/upload-img`, uploadData)
+          .then((res) => {
+            let profileImg = res.data.secure_url;
+            console.log(profileImg);
+            axios
+              .patch(
+                `${config.API_URL}/edit-profile-pic`,
+                { profileImg },
+                { withCredentials: true }
+              )
+              .then(() => {
+                this.setState({
+                  profileImg: res.data.secure_url,
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+          
+      };
+
     handleEditProfile = (e) => {
         e.preventDefault()
         let username = e.target.changeName.value
@@ -93,6 +128,8 @@ export default class EditProfile extends React.Component {
                     <h3 class="second-font">Edit Profile</h3>
                 </div>
 
+                
+
             <form className="form-container edit-profile" onSubmit={this.handleEditProfile}>
             
                 <div class="form-group">
@@ -105,7 +142,20 @@ export default class EditProfile extends React.Component {
                     <input type="text" class="second-font form-control" id="changeCity" placeholder="Change City" name="changeCity"></input>
                 </div>
                 <button type="submit" class="card-buttons">Edit<img className="next-button" src={nextButton}></img></button>
+
+                
             </form>
+
+            <form
+                    onSubmit={this.handleProfilePic}
+                >
+                    <input type="file" id="file" name="file" accept="image/*" />
+                    <label htmlFor="file">Upload Profile Picture...</label>
+                    <button type="submit">Save</button>
+                </form>
+
+           
+               
             
             
             </div>

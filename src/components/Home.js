@@ -49,7 +49,7 @@ export default class Home extends React.Component {
 
                 <div className=" page-containers">
                     
-                        <h3 class="user-main-header second-font near-you-text">Discover games <br></br>around your area</h3>
+                        <h3 class="user-main-header second-font near-you-text">Discover games around your area</h3>
                             <p class="lead"></p>
                         
                         
@@ -58,7 +58,7 @@ export default class Home extends React.Component {
                         
 
 
-                    <div>
+                    
                     <div className="game-cards">
                     {       //SHUFFLE GAMES AND GET THE FIRST 3
                         this.state.games.sort(() => 0.5 - Math.random()).slice(0,3).map((el, index) => {
@@ -93,7 +93,7 @@ export default class Home extends React.Component {
 
                         </div>
 
-                    </div>
+                    
 
                     </div>
                     
