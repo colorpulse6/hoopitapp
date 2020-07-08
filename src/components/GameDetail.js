@@ -4,6 +4,9 @@ import config from '../config';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom'
 import nextButton from '../images/next-button.png'
+import userImg from '../images/combined-shape-copy.png'
+import dateImg from '../images/combined-shape.png'
+import group2 from '../images/group-2.png'
 
 
 export default class GameDetail extends React.Component {
@@ -105,7 +108,7 @@ export default class GameDetail extends React.Component {
         if (!this.props.loggedInUser) {
             return <Redirect to='/sign-in' />
         }
-        const {location, date, createdBy, players, _id, savedAsTeam} = this.state.game
+        const {location, date, createdBy, players, _id, savedAsTeam, time} = this.state.game
         console.log('players:  ' + typeof players) 
             let userNames = []
             for (let i = 0; i< this.props.users.length; i++){
@@ -125,25 +128,36 @@ export default class GameDetail extends React.Component {
             
             <div className="page-containers">
                 <div className="game-detail-page">
+                    <h4 className="second-font">Game Details</h4>
+
                     <div className="game-detail-text">
 
                     
-                    <h4 className="second-font">Game Details</h4>
-                        <p className="second-font"><strong>Location: </strong><br></br> {location}<hr></hr></p>
-                        <p className="second-font"><strong>Date: </strong><br></br> {date}<hr></hr></p>
-                        <p className="second-font"><strong>Created By: </strong><br></br> {createdBy}<hr></hr></p>
+                    
+                        <p className="second-font labels"><img src={dateImg}></img>Date and Time</p> <hr></hr>
+                    <div className="dateTime"><p className="inputs"> {date}</p><p className="inputs"> Game Time: {time}</p></div>
+
+                    <p className="second-font labels"><img src={group2}></img>Location </p>
+                    <hr></hr>
+                    <p className="inputs">{location}</p>
+
                         {
-                            savedAsTeam  ? <p className="second-font"><strong>Team:</strong> <br></br>{savedAsTeam}</p> : <div><p className="second-font"><strong>Players:</strong> <br></br> {userNames.map((name)=> {
-                            return <div>{name}
-                            <br></br></div> 
-                             })}</p></div>
+                        savedAsTeam  ? <p className="second-font labels">Team: <hr></hr> {savedAsTeam}</p> : <div><p className="second-font labels">Players</p>
+                        <hr></hr> 
+                        <p className="inputs">{userNames.map((name)=> {
+                        return <div>{name}
+                        <br></br></div> 
+                    })}</p>
+                    <input type="checkbox" id="saveAsTeam" name="saveAsTeam" value="team"></input>
+                    <label className="inputs" for="saveAsTeam">Save as team</label>
+                        </div>
                     }
                     
                          </div>
-                        <div>
+                        <div className=" admin-buttons">
                         {
                             !userNames.includes(this.props.loggedInUser.username) ? <button className=" join-game-button card-buttons" onClick={this.handleJoinGame} type="submit">Join<img className="next-button" src={nextButton}></img></button> : <div>
-                            <p>You are scheduled to play this game.</p> 
+                            <p className="scheduled-to-play">You are scheduled to play this game.</p> 
                             <button className="red-buttons" value={_id} onClick={this.handleQuitGame}>Leave Game<img className="next-button" src={nextButton}></img></button>
                             </div>
                         }

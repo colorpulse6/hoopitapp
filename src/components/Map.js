@@ -8,6 +8,10 @@ import axios from 'axios'
 import config from '../config';
 import {Link} from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
+import nextButton from '../images/next-button.png'
+import userImg from '../images/combined-shape-copy.png'
+import dateImg from '../images/combined-shape.png'
+import group2 from '../images/group-2.png'
 
 
 import {
@@ -219,10 +223,12 @@ export default function Map(props) {
                             return <div className=" each-card card-text map-info">
                                     
                                     
-                                    <Link to={props.loggedInUser.username === game.createdBy?`/${game._id}/admin`: `/game-detail/${game._id}`}>
-                                                <p className="second-font"> <strong>Created By:</strong><br></br> {game.createdBy}</p>
-                                                <p className="second-font"> <strong>Location:</strong><br></br> {game.location}</p>
-                                                <p className="second-font"><strong>Time:</strong><br></br> {game.time}</p>
+                                    
+                                                <p className="second-font"> <img src={userImg}></img> {game.createdBy}</p>
+                                                <p className="second-font"> <img src={group2}></img> {game.location}</p>
+                                                <p className="second-font"><img src={dateImg}></img> {game.date}</p>
+                                                <Link to={props.loggedInUser.username === game.createdBy?`/${game._id}/admin`: `/game-detail/${game._id}`}>
+                                                <button className="card-buttons">More info</button>
                                                 </Link>
                                    
                                         

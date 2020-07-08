@@ -93,7 +93,7 @@ export default class GameAdmin extends React.Component {
 
                     
                     {
-                        savedAsTeam  ? <p className="second-font labels">Team: <br></br>{savedAsTeam}</p> : <div><p className="second-font labels">Players</p>
+                        savedAsTeam  ? <p className="second-font labels">Team: <hr></hr> {savedAsTeam}</p> : <div><p className="second-font labels">Players</p>
                         <hr></hr> 
                         <p className="inputs">{userNames.map((name)=> {
                         return <div>{name}
@@ -103,12 +103,9 @@ export default class GameAdmin extends React.Component {
                     <label className="inputs" for="saveAsTeam">Save as team</label>
                         </div>
                     }
-                    
-
-
-                
-                    
+          
                 </div>
+                
                 <div className=" admin-buttons">
                 {savedAsTeam === undefined? <div><Link to={`/${_id}/admin/team-detail`}><button className="card-buttons" onClick={this.makeTeam} type="submit">Save Group as Team<img className="next-button" src={nextButton}></img></button></Link>
                     <br></br>

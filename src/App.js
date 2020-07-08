@@ -17,6 +17,8 @@ import UserMain from './components/UserMain'
 import CreateGame from './components/CreateGame'
 import GameDetail from './components/GameDetail'
 import GameAdmin from './components/GameAdmin'
+import Profile from './components/Profile'
+
 
 import TeamsInfo from './components/TeamsInfo'
 import TeamDetail from './components/TeamDetail'
@@ -259,11 +261,22 @@ class App extends React.Component {
               error={this.state.error}
               />
             }}/>  
-            <Route path="/edit-profile"  render={() => {
+            <Route exact path="/profile"  render={(routeProps) => {
+              return <Profile 
+              loggedInUser={loggedInUser}
+              games={this.state.games}
+              users={this.state.users}
+              {...routeProps}
+
+              />
+            }}/>
+            <Route path="/edit-profile"  render={(routeProps) => {
               return <EditProfile 
               loggedInUser={loggedInUser}
               games={this.state.games}
               users={this.state.users}
+              {...routeProps}
+
               />
             }}/>
           <Route path="/user-main"  render={() => {

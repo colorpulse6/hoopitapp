@@ -56,7 +56,7 @@ export default class CreateGame extends React.Component {
 
         return(
             <div className="page-containers">
-            <div className="header-texts">
+            <div className="create-header-texts">
                 <h3 class="display-6 second-font">Create your Game</h3>
                 <p className="second-font">Fill in details to create a match</p>
             </div>

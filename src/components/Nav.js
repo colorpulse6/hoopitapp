@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import bball from '../images/b-ball.png'
+import dummyProfile from '../images/profile-dummy.png'
 
 
 export default function Nav(props) {
@@ -24,7 +25,7 @@ export default function Nav(props) {
                 
             {
             props.loggedInUser ? (
-                <div>
+                
                 <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
                 
                 <ul class="navbar-nav navbar-brand">
@@ -38,15 +39,16 @@ export default function Nav(props) {
                     </li>
 
                     <li className="nav-item">
-                       <Link className="nav-link" to="/edit-profile">{props.loggedInUser.username}</Link>
+                       <Link className="nav-link" to="/profile">{props.loggedInUser.username}</Link>
                     </li>
 
                     <li class="nav-item">
                         <button className="logout" onClick={props.onLogout}>Logout</button>
                     </li>
                     </ul>
-                </div>
-                <img className="profileImage" src={props.loggedInUser.imageUrl}></img>
+                
+                
+                
                 </div>
 
                 ) : (
@@ -62,6 +64,11 @@ export default function Nav(props) {
                     </div>
                 )
             }
+            {props.loggedInUser ? !props.loggedInUser.imageUrl ?
+                    <img className="profileImage" src={dummyProfile}></img> :
+                    <img className="profileImage" src={props.loggedInUser.imageUrl}></img>
+                 : null}
+            
             
         </nav>
 

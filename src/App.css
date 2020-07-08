@@ -111,6 +111,7 @@
 }
 
 
+
 /* Navbar */
 
 .profileImage{
@@ -120,7 +121,10 @@
   background-position: center center;
   /* as mentioned by Vad: */
   background-size: cover;
+  margin-right:20px
 }
+
+
 
 #content-wrap {
   flex: 1 0 auto;
@@ -215,9 +219,108 @@ background-color: #AEB3B9;
   align-items:center;
   
 }
-.edit-profile{
-  margin-left:-25px
+
+/* Profile Page */
+
+.profile-page-image{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /*don't forget prefixes*/
+  background-position: center center;
+  /* as mentioned by Vad: */
+  background-size: cover;
+  margin-bottom:29px;
 }
+
+.profile-page-name {
+ 
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.65;
+  letter-spacing: 2.14px;
+  color: #818181;
+}
+.profile-labels {
+  
+  font-family: Nunito;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: 1.29px;
+  color: #818181;
+  
+}
+
+.location-img {
+  margin-right:13px;
+  width:17px;
+  height:23px
+}
+
+.circle-img{
+  margin-right:13px;
+  width:20px;
+  height:20px
+}
+
+.profile-page-text{
+  width:100%;
+  padding:30px 0px 30px 0px
+}
+
+.edit-profile-btn {
+  margin-top:40.2px;
+}
+
+.uploader{
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.uploader + label {
+  color:#fbfbfb;
+  background-color:#C9082A ;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  margin:20px;
+  margin-left:70px;
+  margin-bottom:30px;
+  border-radius: 2px;
+  border:none;
+
+}
+
+/* .uploader:focus + label,
+.uploader + label:hover {
+    background-color: red;
+} */
+
+/* EDIT PROFILE */
+
+.edit-profile-header{
+margin-bottom:40px;
+}
+
+.edit-profile-page-image{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /*don't forget prefixes*/
+  background-position: center center;
+  /* as mentioned by Vad: */
+  background-size: cover;
+  margin-bottom:29px;
+}
+
+
 
 .jumbotron {
   /* background: linear-gradient(142deg, rgba(74,6,144,1) 0%, rgba(201,8,42,1) 97%, rgba(228,134,106,1) 99%); */
@@ -259,6 +362,13 @@ background-color: #AEB3B9;
   
 }
 
+.card-buttons:hover {
+  background-color: #0f1d3a;
+  transition: all .2s ease-in-out;
+  transform: scale(1.04);
+  border-radius:5px
+}
+
 .join-game-button{
   width:120px;
   height: 35px;
@@ -272,6 +382,7 @@ background-color: #AEB3B9;
   line-height: 0.93;
   letter-spacing: 1.5px;
   color: #fbfbfb;
+  
 }
 
 .red-buttons{
@@ -291,6 +402,7 @@ background-color: #AEB3B9;
 
 
 .header-texts{
+
   text-align: center;
   margin-left:-15%
 }
@@ -428,6 +540,14 @@ background-color: #AEB3B9;
 
 /* Create Game Page */
 
+.create-header-texts {
+text-align:center;
+
+}
+.create-header-texts p {
+  margin-top:20px
+}
+
 .create-game-main {
   display:flex;
   flex-direction: column;
@@ -443,6 +563,10 @@ background-color: #AEB3B9;
 .create-game-main label {
   margin-bottom:-30px;
   margin-top:30px;
+}
+
+.create-game-main select{
+  width:160px
 }
 
 .date-time{
@@ -515,11 +639,18 @@ background-color: #AEB3B9;
 .map-info{
   display:flex;
   flex-direction: column;
+  padding:30px
 }
 
 .map-info p{
   text-decoration: none;
   color:black
+}
+
+.map-info button {
+  width:70px;
+  height:23px;
+  margin:10px 0px 5px 80px
 }
 
 .locate-btn {
@@ -572,6 +703,9 @@ background-color: #AEB3B9;
  flex-direction: column;
 align-items: flex-start;
 }
+.scheduled-to-play {
+  margin:20px
+}
 
 .labels {
   
@@ -608,6 +742,10 @@ font-family: Nunito;
   line-height: 1.08;
   letter-spacing: 1.29px;
   color: #818181;
+}
+
+.game-detail-text{
+  padding-bottom:30px
 }
 
 .game-detail-text p {
