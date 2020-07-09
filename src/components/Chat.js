@@ -104,6 +104,11 @@ handleSubmit(event) {
 scrollToBottom() {
   const chat = document.getElementById('chat');
   chat.scrollTop = chat.scrollHeight;
+
+  
+}
+chatStyles = {
+    
 }
 
   render() {
@@ -111,6 +116,8 @@ scrollToBottom() {
       //REDIRECTS USER TO SIGN IN IF NOT LOGGED IN
       return <Redirect to='/sign-in' />
   }
+
+  
     return (
       <div >
         <label  htmlFor="name" className="second-font">

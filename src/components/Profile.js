@@ -13,13 +13,17 @@ export default class Profile extends React.Component {
     render() {
 
         return(
-            <div>
+            
             <div className="page-containers">
+            
             
                 <img className="profile-page-image" src={this.props.loggedInUser.imageUrl}></img>
 
                 <p className="profile-page-name">{this.props.loggedInUser.username}</p>
+                <div className="game-detail-text">
                 <hr></hr>
+
+                    
                 <div className="profile-page-text">
                 
                 <p className="second-font profile-labels"><img className="location-img" src={group2}></img>{this.props.loggedInUser.location}</p> 
@@ -28,15 +32,15 @@ export default class Profile extends React.Component {
                     <p className="second-font profile-labels "><img className="circle-img" src={userImg}></img>{this.props.loggedInUser.email} </p>
                     
                     </div>
-                    <hr></hr>
                     
+                    <hr></hr>
+                    </div>
                     <Link to="/edit-profile"><button className="card-buttons second-font edit-profile-btn">Edit Profile <img className="next-button" src={nextButton}></img></button></Link>
                     
 
 
-               
-            </div>
-            </div>
+                    </div>
+            
         )
 
     }

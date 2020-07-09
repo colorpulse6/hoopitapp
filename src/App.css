@@ -121,7 +121,8 @@
   background-position: center center;
   /* as mentioned by Vad: */
   background-size: cover;
-  margin-right:20px
+  margin-right:20px;
+  
 }
 
 
@@ -255,6 +256,8 @@ background-color: #AEB3B9;
   color: #818181;
   
 }
+
+
 
 .location-img {
   margin-right:13px;
