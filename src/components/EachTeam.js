@@ -14,6 +14,7 @@ export default class EachTeam extends React.Component {
 
     componentDidMount(){
         let id = this.props.match.params.teamId
+       
        axios.get(`${config.API_URL}/each-team/${id}`, {withCredentials: true})
         .then((res) => {
           this.setState({

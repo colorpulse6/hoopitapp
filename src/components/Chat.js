@@ -8,6 +8,9 @@ import config from '../config';
 
 // const URL = 'ws://localhost:3030/wss/'
 // const URL = window.location.origin.replace(/^http/, 'wss')
+
+
+
 class Chat extends Component {
   constructor(props){
     super(props)
@@ -15,7 +18,8 @@ class Chat extends Component {
       chat: [],
       content: '',
       name: this.props.loggedInUser.username,
-      team: ''
+      team: '',
+      imageUrl: this.props.loggedInUser.imageUrl
       
     };
   }
@@ -84,16 +88,20 @@ handleSubmit(event) {
     this.socket.emit('message', {
       name: state.name,
       content: state.content,
-      team: this.props.teamId
+      team: this.props.teamId,
+      imageUrl:state.imageUrl
     });
 
     // Update the chat with the user's message and remove the current message.
     
+    
+    
     return {
       chat: [...state.chat, {
-        name: this.props.loggedInUser.username.split(' ').slice(0, -1).join(' '),
+        name: this.props.loggedInUser.username,
         content: state.content,
-        team: state.team
+        team: state.team,
+        imageUrl: state.imageUrl
       }],
       content: '',
     };
@@ -107,9 +115,7 @@ scrollToBottom() {
 
   
 }
-chatStyles = {
-    
-}
+
 
   render() {
     if (!this.props.loggedInUser) {
@@ -132,6 +138,8 @@ chatStyles = {
               message={message.content}
               name={message.name}
               loggedInUser={this.props.loggedInUser}
+              imageUrl={message.imageUrl}
+             
             />,
           )}
 

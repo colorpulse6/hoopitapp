@@ -3,16 +3,18 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import bball from '../images/b-ball.png'
 
-export default ({ name, message, loggedInUser }) =>
 
-    <div className={loggedInUser.username.split(' ').slice(0, -1).join(' ') === name ? "chat-container" : "chat-container darker"}>
+export default ({ name, message, loggedInUser, imageUrl }) => 
 
-        <img src={loggedInUser.username.split(' ').slice(0, -1).join(' ') === name ? loggedInUser.imageUrl: bball} alt="Avatar" className={loggedInUser.username.split(' ').slice(0, -1).join(' ') === name ? "right" : ""}></img>
-        <p className="second-font">
-        
-        <strong className={loggedInUser.username.split(' ').slice(0, -1).join(' ') === name ? "user-chat-name" : "other-chat-name"}>{name}</strong>:  <em>{message}</em>
-        </p>
+        <div className={loggedInUser.username === name ? "chat-container" : "chat-container darker"}>
 
+        <img src={imageUrl} alt="Avatar" className={loggedInUser.username === name ? "right" : ""}></img>
+
+        <div className="p-container">
+            <p className="second-font">
+            <strong className={loggedInUser.username === name ? "user-chat-name" : "other-chat-name"}></strong>  <em>{message}</em>
+            </p>
+        </div>
     </div>
     
 

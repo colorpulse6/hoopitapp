@@ -19,6 +19,7 @@ export default class ChatInput extends Component {
           e.preventDefault()
           this.props.onSubmitMessage(this.state.message)
           this.setState({ message: '' })
+          console.log(this.state.message.name)
         }}
       >
       <div>
