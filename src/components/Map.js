@@ -62,10 +62,8 @@ export default function Map(props) {
   const isSmallScreen = useMediaQuery({
     query: '(max-width: 768px)'
   })
-  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
-  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
-  console.log(isMediumScreen)
+
 
   let mapContainerStyle;
   if(isDesktopOrLaptop){
