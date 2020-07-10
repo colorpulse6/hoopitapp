@@ -21,6 +21,7 @@
     "react-dom": "^16.13.1",
     "react-fade-in": "^1.1.0",
     "react-google-places-autocomplete": "^2.0.7",
+    "react-load-script": "0.0.6",
     "react-lottie": "^1.2.3",
     "react-responsive": "^8.1.0",
     "react-router-dom": "^5.2.0",

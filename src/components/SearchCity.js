@@ -60,7 +60,7 @@ export default function SearchCity({ panTo }) {
                 }}
                 disabled={!ready} 
                 placeholder = "Enter an address"
-
+                
             />
             <ComboboxPopover>
                 <ComboboxList>

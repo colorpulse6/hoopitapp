@@ -1,10 +1,13 @@
 import React from 'react';
 import bball from '../images/b-ball.png'
 import nextButton from '../images/next-button.png'
+import SearchCity from './SearchCity'
 
 
 
 export default function Signup(props) {
+
+    
     return(
         <div className="page-containers">
 
@@ -22,7 +25,14 @@ export default function Signup(props) {
             </div>
             <div className="form-group">
                 <label htmlFor="exampleInputUsername" className="second-font">City</label>
-                <input type="text" className="form-control input" id="location" name="location" />
+                {/* <input type="text" className="form-control input" id="location" name="location" /> */}
+                <div>
+                
+                <SearchCity 
+                    panTo={props.handleLocationInput}
+                />
+                </div>
+                
             </div>
             <div className="form-group">
                 <label htmlFor="exampleInputPassword1" className="second-font">Password</label>

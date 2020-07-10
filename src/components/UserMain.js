@@ -11,6 +11,8 @@ import dateImg from '../images/combined-shape.png'
 import group2 from '../images/group-2.png'
 
 
+
+
 export default class UserMain extends React.Component {
 
     state = {
@@ -20,7 +22,6 @@ export default class UserMain extends React.Component {
 
     componentDidMount(){
         this.getGames();
-        
 
       }
 
@@ -104,13 +105,14 @@ export default class UserMain extends React.Component {
             
                     <div class="user-main-cards-div">
                 <div className="row">
-                
                     <div>
-
+                    
+                                
                         {/* SHOW GAMES YOU MADE */}
-                        
+                        {this.state.games.length === 0 ?  <p className="second-font">You don't have any games, create one below!</p> : null}
+
                         {
-                            this.state.games.map((el, index) => {
+                            this.state.games.slice(0,1).map((el, index) => {
                                 if (el.createdBy === this.props.loggedInUser.username) {
                                     return <div key={index}><h3 className="main-page-headers second-font">Your Games</h3></div>}})
 
@@ -121,7 +123,7 @@ export default class UserMain extends React.Component {
                                 if (el.createdBy === this.props.loggedInUser.username) {
                                     return <div class="card each-card">
                                     <div  key={index} id="game">
-                                    <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
+                                    <img class="card-img-top" src={el.imageUrl}  alt="..."></img>
                                     <div className="card-content">
                                         <div className="card-text">
                                         <p className="second-font created-by-name"><img src={userImg}></img>{el.createdBy}</p>
@@ -182,7 +184,7 @@ export default class UserMain extends React.Component {
                                     return <div>
                                     <div class="card each-card">
                                     <div key={index} id="game">
-                                    <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
+                                    <img class="card-img-top" src={el.imageUrl}  alt="..."></img>
                                     <div className="card-content">
                                     <div className="card-text">
                                     <p className="second-font created-by-name"><img src={userImg}></img> <strong>{el.createdBy}</strong></p>

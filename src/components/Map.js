@@ -21,21 +21,21 @@ import {
     Marker,
     InfoWindow,
 } from "@react-google-maps/api";
-import { formRelative, formatRelative } from "date-fns";
+// import { formRelative, formatRelative } from "date-fns";
 
-import usePlacesAutoComplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
+// import usePlacesAutoComplete, {
+//     getGeocode,
+//     getLatLng,
+// } from "use-places-autocomplete";
 
-import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-} from "@reach/combobox";
-import "@reach/combobox/styles.css";
+// import {
+//     Combobox,
+//     ComboboxInput,
+//     ComboboxPopover,
+//     ComboboxList,
+//     ComboboxOption,
+// } from "@reach/combobox";
+// import "@reach/combobox/styles.css";
 
 //Import styles
 import mapStyles from "./mapStyles"
@@ -87,9 +87,6 @@ export default function Map(props) {
   }
   
 
-
-
-
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries,
@@ -100,8 +97,19 @@ export default function Map(props) {
     const [selected, setSelected] = React.useState(null);
 
     const [games, setData] = React.useState({ hits: [] });
+    const [user, setUser] = React.useState({});
 
+    React.useEffect( () => {
+        getUser()
+      }, []);
 
+      async function getUser() {
+        const result = await axios(`${config.API_URL}/user`, {withCredentials: true})
+          await result.data 
+          setUser(result.data)
+      }
+
+    //COOL MAP CLICK FUNCTION
     // const onMapClick = React.useCallback((event) => {
     //     console.log(event)
     //     // Get Markers on Click
@@ -119,14 +127,13 @@ export default function Map(props) {
     
         
      
-    console.log(games.data + 'ogugvk')
     //RETAIN STATE WITHOUT CAUSING RERENDERS
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
-        console.log(props.games + 'THESE HERE GAMES!')
         
         //GET GAMES FROM API
+
             axios.get(`${config.API_URL}/user-main`, {withCredentials: true})
               .then((games) => {
                 //   SET GAMES IN HOOK STATE
@@ -156,8 +163,8 @@ export default function Map(props) {
     if (!isLoaded) return "Loading Maps";
 
     const center = {
-        lat: 52.5200,
-        lng: 13.4050,
+        lat: user.lat,
+        lng: user.lng,
     }
     const options = {
         styles: mapStyles,
@@ -190,7 +197,7 @@ export default function Map(props) {
         <GoogleMap 
             styles={styles}
             mapContainerStyle={ mapContainerStyle }
-            zoom={8}
+            zoom={12}
             center={center}
             options={options}
             // onClick={onMapClick}

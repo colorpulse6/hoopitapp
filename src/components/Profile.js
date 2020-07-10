@@ -7,8 +7,22 @@ import nextButton from '../images/next-button.png'
 import userImg from '../images/combined-shape-copy.png'
 import dateImg from '../images/combined-shape.png'
 import group2 from '../images/group-2.png'
+
 export default class Profile extends React.Component {
 
+    state = {
+        user:''
+    }
+
+    componentDidMount() {
+        axios.get(`${config.API_URL}/user`, {withCredentials: true})
+    .then((res) => {
+      // console.log(res + 'ResuLT')
+      this.setState({
+        user: res.data
+      })
+    })
+    }
 
     render() {
 
@@ -17,19 +31,19 @@ export default class Profile extends React.Component {
             <div className="page-containers">
             
             
-                <img className="profile-page-image" src={this.props.loggedInUser.imageUrl}></img>
+                <img className="profile-page-image" src={this.state.user.imageUrl}></img>
 
-                <p className="profile-page-name">{this.props.loggedInUser.username}</p>
+                <p className="profile-page-name">{this.state.user.username}</p>
                 <div className="game-detail-text">
                 <hr></hr>
 
                     
                 <div className="profile-page-text">
                 
-                <p className="second-font profile-labels"><img className="location-img" src={group2}></img>{this.props.loggedInUser.location}</p> 
+                <p className="second-font profile-labels"><img className="location-img" src={group2}></img>{this.state.user.location}</p> 
                    
 
-                    <p className="second-font profile-labels "><img className="circle-img" src={userImg}></img>{this.props.loggedInUser.email} </p>
+                    <p className="second-font profile-labels "><img className="circle-img" src={userImg}></img>{this.state.user.email} </p>
                     
                     </div>
                     

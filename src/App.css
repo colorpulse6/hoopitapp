@@ -198,6 +198,13 @@ background-color: #AEB3B9;
 
 /* Main Styles */
 
+.hide {
+  display:none
+}
+
+.show {
+  display:block;
+}
 
 .next-button {
   width:12px;
@@ -278,15 +285,18 @@ background-color: #AEB3B9;
 
 .edit-profile-btn {
   margin-top:40.2px;
+  
 }
 
 .uploader{
-  width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+width:0;
+height:0;
+z-index:-1;
+position:absolute;
+overflow:hidden;
+opacity:0;
+
+  
 }
 .uploader + label {
   color:#fbfbfb;
@@ -295,11 +305,15 @@ background-color: #AEB3B9;
   cursor: pointer;
   padding: 10px;
   margin:20px;
-  margin-left:70px;
+  
   margin-bottom:30px;
   border-radius: 2px;
   border:none;
 
+}
+.image-uploaded {
+  margin:0 auto;
+  margin-bottom:25px
 }
 
 /* .uploader:focus + label,
@@ -308,7 +322,10 @@ background-color: #AEB3B9;
 } */
 
 /* EDIT PROFILE */
-
+.edit-profile{
+  display:flex;
+  align-items: center;
+}
 .edit-profile-header{
 margin-bottom:40px;
 }
@@ -639,6 +656,7 @@ text-align:center;
   width: 100%;
   
 }
+
 .map-info{
   display:flex;
   flex-direction: column;
@@ -924,10 +942,12 @@ margin-left:20px
 .chat-button{
   width:25%;
   height:30px;
+  
 }
 
 .chatinput{
-  border-radius:2%
+  border-radius:2%;
+  
 }
 /* CHARTS */
 

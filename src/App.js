@@ -28,7 +28,7 @@ import ChatPage from './components/ChatPage'
 import { lastDayOfDecade } from 'date-fns';
 import { object } from 'prop-types';
 import ChatTest from './components/ChatTest'
-
+import "@reach/combobox/styles.css"
 
 
 class App extends React.Component {
@@ -43,7 +43,15 @@ class App extends React.Component {
     lat: null,
     lng: null,
     error: '',
-    isLoading: true
+    isLoading: true,
+    gmapsLoaded: false,
+    imageUrl:''
+  }
+
+  initMap = () => {
+    this.setState({
+      gmapsLoaded: true,
+    })
   }
 
   getUser(){
@@ -80,6 +88,7 @@ class App extends React.Component {
       })  
   }
 
+  randomURL = 'https://source.unsplash.com/400x250/?basketball,court';
   componentDidMount(){
     this.getGames();
     this.getUsers();
@@ -92,8 +101,19 @@ class App extends React.Component {
       // console.log('GOT USER')
     }
     // console.log(this.state.loggedInUser)
+    window.initMap = this.initMap
+  const gmapScriptEl = document.createElement(`script`)
+  gmapScriptEl.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap`
+  document.querySelector(`body`).insertAdjacentElement(`beforeend`, gmapScriptEl)
 
 
+  axios.get(this.randomURL)
+  .then( data => {
+  this.setState({
+    imageUrl: data.request.responseURL
+  })
+  
+  });
   }
 
   handleSignUp = (e) => {
@@ -101,12 +121,17 @@ class App extends React.Component {
     let email = e.target.email.value;
     let username = e.target.username.value
     let password = e.target.password.value
-    let location = e.target.location.value
+    let location = this.state.location
+    let lat = this.state.lat
+    let lng = this.state.lng
     axios.post(`${config.API_URL}/sign-up`, { //FROM CONFIG.JS
       email: email,
       username: username,
       password: password,
-      location: location
+      location: location,
+      lat: lat,
+      lng: lng
+      
       
     }, { withCredentials: true}) //CHECKS COOKIES
     .then((res) => {
@@ -179,7 +204,7 @@ class App extends React.Component {
 
   handleAddGame = (e) => {
     e.preventDefault()
-
+    
     // console.log(this.handleLocationInput())
     let date = e.target.date.value
     let location = this.state.location
@@ -189,6 +214,8 @@ class App extends React.Component {
     let lng = this.state.lng
     let maxPlayers = e.target.maxPlayers.value
     let team;
+    let imageUrl = this.state.imageUrl
+    
     if(e.target.team.value === 'No team selected'){
       team = this.state.loggedInUser._id
     } else{
@@ -203,7 +230,8 @@ class App extends React.Component {
       lng: lng,
       maxPlayers: maxPlayers,
       createdBy: this.state.loggedInUser.username,
-      players: team
+      players: team,
+      imageUrl: imageUrl
     }, {withCredentials: true})
     .then((res) => {
       console.log('GOT GAME')
@@ -259,6 +287,8 @@ class App extends React.Component {
               return <Signup 
               onSignUp = {this.handleSignUp} 
               error={this.state.error}
+              handleLocationInput={this.handleLocationInput}
+
               />
             }}/>  
             <Route exact path="/profile"  render={(routeProps) => {
@@ -275,6 +305,8 @@ class App extends React.Component {
               loggedInUser={loggedInUser}
               games={this.state.games}
               users={this.state.users}
+              handleLocationInput={this.handleLocationInput}
+
               {...routeProps}
 
               />
