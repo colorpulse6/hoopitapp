@@ -31,8 +31,8 @@ export default class RadialChart extends Component {
         const circumference = 2 * 3.14 * circleRadius;
         const strokeLength = setStrokeLength ? circumference / 100 * progress : 0;
         const textStyles = {
-            fontSize: '28px',
-            maxWidth: '5ch',
+            fontSize: '23px',
+            // maxWidth: '2ch',
 
         }
         const numStyles = {

@@ -7,9 +7,10 @@ import dummyProfile from '../images/profile-dummy.png'
 export default function Nav(props) {
     return(
         <div id="content-wrap" >
+        
         <nav class="navbar navbar-expand-lg navbar-custom navbar-light bg-light ">
             
-                
+        
                     
 
                     <div className="collapsed-nav">
@@ -23,7 +24,7 @@ export default function Nav(props) {
                     </div>
                     
                     {props.loggedInUser ? !props.loggedInUser.imageUrl ?
-                <Link to="/profile"><img className="profileImage pull-right " src={dummyProfile}></img></Link> :
+                <Link to="/profile"><img className="profileImage pull-right"  src={dummyProfile}></img></Link> :
                 <Link to="/profile"><img className="profileImage  pull-right" src={!props.loggedInUser ? dummyProfile : props.loggedInUser.imageUrl}></img></Link>
                  : null}
 
@@ -34,7 +35,7 @@ export default function Nav(props) {
                 
                 <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
                 
-                <ul class="navbar-nav navbar-brand">
+                <ul class="navbar-nav navbar-brand items">
                     {/* <li class="nav-item active">
                         <Link className="nav-link" to="/user-main">Home<span class="sr-only">(current)</span></Link>
                     </li> */}
@@ -44,20 +45,20 @@ export default function Nav(props) {
                             
                     </li>
 
-                    
-
                     <li class="nav-item">
                         <button className="logout" onClick={props.onLogout}>Logout</button>
                     </li>
                     </ul>
+                    
                 
                 
                 
                 </div>
+                
 
                 ) : (
                     <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
-                    <ul class="navbar-nav nav-content">
+                    <ul class="navbar-nav nav-content ">
                     <li className="nav-item">
                          <Link className="nav-link" to="/sign-in">Sign in</Link>
                     </li>

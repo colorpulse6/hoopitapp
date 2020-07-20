@@ -64,7 +64,7 @@ export default class UserMain extends React.Component {
           
            
 
-            <h3 className='user-main-header second-font near-you-text'>Discover games around your area</h3>
+            <h3 className='user-main-header second-font near-you-text'>Discover games around your area </h3>
             {/* <p className="second-font take-part-text">Take part in one of the games played near you, get to meet your team for the match of the day</p> */}
 
                 
@@ -142,7 +142,7 @@ export default class UserMain extends React.Component {
                                         progress={el.players.length/el.maxPlayers*100}
                                         color="#C9082A"
                                         number={el.players.length+'/'+el.maxPlayers}
-                                        text={(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  'Almost Full' : 'Full'}
+                                        text={(el.players.length + 2 === el.maxPlayers) || (el.players.length + 1 === el.maxPlayers) ?  'Almost\nFull' : 'Full'}
                                     />
                                     </div>
                                     </div>

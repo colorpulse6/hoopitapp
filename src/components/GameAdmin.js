@@ -52,7 +52,9 @@ export default class GameAdmin extends React.Component {
             .catch((err)=> {
                 console.log('Something went wrong deleting game team on the client side' + err)
             })
-        }     
+        } else {
+            window.location.reload(true); 
+        }    
     }
 
 

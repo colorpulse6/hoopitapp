@@ -1,10 +1,8 @@
 import React from 'react';
-import Map from './Map'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 import config from '../config';
-import hoopitappLogo from '../images/hoopitapp-logo.png'
 import nextButton from '../images/next-button.png'
 import userImg from '../images/combined-shape-copy.png'
 import dateImg from '../images/combined-shape.png'
@@ -49,7 +47,7 @@ export default class Home extends React.Component {
 
                 <div className=" page-containers">
                     
-                        <h3 class="user-main-header second-font near-you-text">Discover games around your area</h3>
+                        <h3 class="user-main-header second-font near-you-text">Discover games around your area </h3>
                             <p class="lead"></p>
                         
                         
@@ -65,7 +63,7 @@ export default class Home extends React.Component {
                                 
                             return <div class="card each-card">
                                     <div  key={index} id="game">
-                                    <img class="card-img-top" src="https://source.unsplash.com/400x250/?basketball,court"  alt="..."></img>
+                                    <img class="card-img-top" src={el.imageUrl}  alt="..."></img>
                                     <div className="card-content">
                                         <div className="card-text">
                                         <p className="second-font created-by-name"><img src={userImg}></img>{el.createdBy}</p>

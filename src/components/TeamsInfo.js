@@ -6,7 +6,7 @@ import EachTeam from './EachTeam'
 import {Switch, Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import nextButton from '../images/next-button.png'
-
+import lonelyCourt from '../images/lonely-court.jpg'
 
 export default class TeamsInfo extends React.Component {
    
@@ -108,7 +108,6 @@ export default class TeamsInfo extends React.Component {
         let uniqueArray = playerNames.filter(function(item, pos, self) {
             return self.indexOf(item) == pos;
         })
-        console.log(playerNames + "IOUBI/ZGUSA")
 
         return(
             <div className="page-containers ">
@@ -117,6 +116,10 @@ export default class TeamsInfo extends React.Component {
                     {/* {uniqueArray.slice(0,1).map((team, index)=> {
             return !team.includes(this.props.loggedInUser.username) ? <h3>Nobody Likes You...</h3> : <p></p>}
             )} */}
+                        {this.state.teams.slice(0,1).map((team)=>{
+                            if (!team.players.includes(this.props.loggedInUser._id)) 
+                            return <p className="second-font not-a-member">You are not a member of any teams.</p> 
+                        })}
                         
                         {this.state.teams.map((team, index)=> {
                             if(team.players.includes(this.props.loggedInUser._id))
