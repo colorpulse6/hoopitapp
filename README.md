@@ -1,7 +1,7 @@
 # hoopitApp
 
 ## Description
-Hoop.It.App is a web and mobile app that allows you to organize basketball games in your city and build teams with your friends.  It is build using react, express and node.js with bcrypt for authentication.  This project represents my first full react project and extends the knowledge from my 2nd project by making use of complex models, routes and multiple user types.  I also took this opportunity to learn Socket.io for the chat function and the Google Maps API and Google Maps Places API.  For extra practice I used both hooks as well as classes for state management and several forms of promise collection.  I also utilized the Cloudinary storage service for image uploading and utilized Zeplin.io for wireframe construction and style implamentation.
+Hoop.It.App is a web and mobile app that allows you to organize basketball games in your city and build teams with your friends.  It is build using react, express and node.js with bcrypt for authentication.  This project represents my first full react project and extends the knowledge from my 2nd project by making use of complex models, routes and multiple user types.  I also took this opportunity to learn Socket.io for the chat function and the Google Maps API and Google Maps Places API.  For extra practice I used both hooks as well as classes for state management and several forms of promise collection.  I also utilized the Cloudinary storage service for image uploading, Zeplin.io for wireframe construction and style implamentation as well as Lottie for the loading GIF creation.
 
 ## User Stories
 
