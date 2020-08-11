@@ -10,6 +10,7 @@ import userImg from "../images/combined-shape-copy.png";
 import dateImg from "../images/combined-shape.png";
 import group2 from "../images/group-2.png";
 
+
 export default class UserMain extends React.Component {
   state = {
     games: [],

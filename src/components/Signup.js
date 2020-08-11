@@ -6,7 +6,7 @@ import SearchCity from "./SearchCity";
 export default function Signup(props) {
   return (
     <div className="page-containers">
-      <form onSubmit={props.onSignUp} className="form-container signup-form">
+      <form onSubmit={props.onSignUp} className="form-container">
         <img className="bball" src={bball} alt="Bball"></img>
         <h2 className="second-font">Join hoop.it.App</h2>
         <div className="form-group">
@@ -37,7 +37,7 @@ export default function Signup(props) {
             City
           </label>
 
-          <div>
+          <div >
             <SearchCity panTo={props.handleLocationInput} />
           </div>
         </div>

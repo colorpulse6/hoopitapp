@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
+
 import nextButton from '../images/next-button.png'
 import userImg from '../images/combined-shape-copy.png'
 import dateImg from '../images/combined-shape.png'

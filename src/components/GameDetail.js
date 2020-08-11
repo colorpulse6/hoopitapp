@@ -156,22 +156,14 @@ export default class GameDetail extends React.Component {
                     );
                   })}
                 </p>
-                <input
-                  type="checkbox"
-                  id="saveAsTeam"
-                  name="saveAsTeam"
-                  value="team"
-                ></input>
-                <label className="inputs" for="saveAsTeam">
-                  Save as team
-                </label>
+                
               </div>
             )}
           </div>
           <div className=" admin-buttons">
             {!userNames.includes(this.props.loggedInUser.username) ? (
               <button
-                className=" join-game-button card-buttons"
+                className="  card-buttons"
                 onClick={this.handleJoinGame}
                 type="submit"
               >

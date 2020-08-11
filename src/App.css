@@ -79,16 +79,7 @@
 
 /* Signin/signup */
 
-.form-container {
-  
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align:left;
-  margin:0 auto;
-  
-  
-}
+
 .form-container input {
   width: 300px;
   margin:20 0;
@@ -102,9 +93,7 @@
   margin-bottom:20px;
 }
 
-.signup-form{
-  
-}
+
 
 .signup-form h2{
   margin-bottom:20px;
@@ -355,8 +344,7 @@ margin-bottom:40px;
   background-image: url("https://images.pexels.com/photos/3634518/pexels-photo-3634518.jpeg?cs=srgb&dl=aerial-photography-of-empty-basketball-court-3634518.jpg&fm=jpg");
   background-size: cover;
   background-position: center;
-  padding:0;
-  height:238px
+  height:250px
 }
 
 .jumbotron h4 {
@@ -371,7 +359,7 @@ margin-bottom:40px;
   letter-spacing: 3px;
   color: #ffffff;
   padding-left:30px;
-  padding-top:27px;
+  padding:30px;
   
 }
 
@@ -617,7 +605,7 @@ text-align:center;
 
 .create-game-butn-div {
   position: relative;
-  width:100%;
+  width:30%;
   padding:50px
 }
 
@@ -697,13 +685,6 @@ text-align:center;
 
 /* Game Detail Pages */
 
-.game-detail-page:not(hr){
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  text-align:center;
-  
-}
 
 .game-detail-page h4 {
   margin-bottom:33px;
@@ -729,7 +710,6 @@ text-align:center;
  
  display:flex;
  flex-direction: column;
-align-items: flex-start;
 }
 .scheduled-to-play {
   margin:20px
@@ -752,7 +732,6 @@ align-items: flex-start;
 
 .dateTime{
 display:flex;
-justify-content: space-around;
 }
 
  hr{
@@ -781,18 +760,12 @@ font-family: Nunito;
   letter-spacing: 1.61px;
 }
 
-
-
-
 .game-detail-text img {
   width:15px;
   height:17px;
   margin-right:14px;
   margin-bottom:5px;
 }
-
-
-
 
 .admin-buttons {
   margin-top:15px;
@@ -1080,16 +1053,8 @@ margin-top:3px
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .jumbotron h4 {
-      font-size: 3.5em;
-      width:600px;
-      margin-top:-60px;
-      
-  }
-  .join-text{
-    margin-bottom:200px;
-    
-  }
+ 
+ 
   .home-container h5 {
     font-size: 3em;
   }

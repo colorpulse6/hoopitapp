@@ -28,6 +28,13 @@ export default function SearchCity({ panTo }) {
     },
   });
 
+  const inputStyles = {
+    borderRadius:'0.25rem',
+    border:'1px solid #ced4da',
+    fontSize:'14px',
+    paddingLeft:'5px'
+  }
+
   return (
     <div className="map-search">
       <Combobox
@@ -42,11 +49,9 @@ export default function SearchCity({ panTo }) {
             const { lat, lng } = await getLatLng(results[0]);
             //PAN TO INPUT
             panTo({ lat, lng, address, value });
-            // console.log(lat, lng)
           } catch (err) {
             console.log(err + "ERROR!");
           }
-          // console.log(address);
         }}
       >
         <ComboboxInput
@@ -57,6 +62,7 @@ export default function SearchCity({ panTo }) {
           }}
           disabled={!ready}
           placeholder="Enter an address"
+          style={inputStyles}
         />
         <ComboboxPopover>
           <ComboboxList>
