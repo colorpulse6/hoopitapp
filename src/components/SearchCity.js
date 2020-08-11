@@ -29,11 +29,18 @@ export default function SearchCity({ panTo }) {
   });
 
   const inputStyles = {
-    borderRadius:'0.25rem',
-    border:'1px solid #ced4da',
-    fontSize:'14px',
-    paddingLeft:'5px'
-  }
+    borderRadius: "0.25rem",
+    border: "1px solid #ced4da",
+    paddingLeft: "5px",
+    fontFamily: "Nunito",
+    fontSize: "1rem",
+    fontWeight: "400",
+    fontStretch: "normal",
+    fontStyle: "normal",
+    lineHeight: "1.08",
+    letterSpacing: "2.79px",
+    color: "#818181",
+  };
 
   return (
     <div className="map-search">
