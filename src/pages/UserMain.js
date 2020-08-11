@@ -234,9 +234,7 @@ export default class UserMain extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="create-game-butn-div">
+            <div>
             <div class="">
               <Link to="/create-game">
                 <button className="card-buttons second-font ">
@@ -246,6 +244,9 @@ export default class UserMain extends React.Component {
               </Link>{" "}
             </div>
           </div>
+          </div>
+
+          
         </div>
       </div>
     );

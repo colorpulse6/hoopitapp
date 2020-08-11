@@ -175,7 +175,7 @@ export default class GameDetail extends React.Component {
                   You are scheduled to play this game.
                 </p>
                 <button
-                  className="red-buttons"
+                  className="card-buttons red-buttons"
                   value={_id}
                   onClick={this.handleQuitGame}
                 >

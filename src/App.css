@@ -214,9 +214,7 @@ background-color: #AEB3B9;
   margin-top:10px;
  
 }
-/* hr {
-  width:110px
-} */
+
 
 .page-containers {
   padding:46px 64px 48px 40px;
@@ -485,10 +483,6 @@ margin-bottom:40px;
   margin-top:50px;
 }
 
-.user-main-cards-div {
- 
-}
-
 .game-cards {
   display:flex;
   flex-direction: row;
@@ -610,11 +604,7 @@ text-align:center;
   margin-bottom:25px
 }
 
-.create-game-butn-div {
-  position: relative;
-  width:30%;
-  padding:50px
-}
+
 
 .create-game-button{
   margin: 0;
