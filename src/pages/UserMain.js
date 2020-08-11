@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import config from "../config";
-import Map from "./Map";
-import RadialChart from "./RadialChart";
+import Map from "../components/Map";
+import RadialChart from "../components/RadialChart";
 import nextButton from "../images/next-button.png";
 import userImg from "../images/combined-shape-copy.png";
 import dateImg from "../images/combined-shape.png";
@@ -41,7 +41,6 @@ export default class UserMain extends React.Component {
     }
     return (
       <div>
-        {/* JUMBOTRON*/}
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
             <h4 class="display-6 second-font welcome-text">

@@ -6,7 +6,7 @@ import nextButton from '../images/next-button.png'
 import userImg from '../images/combined-shape-copy.png'
 import dateImg from '../images/combined-shape.png'
 import group2 from '../images/group-2.png'
-import RadialChart from './RadialChart'
+import RadialChart from '../components/RadialChart'
 
 export default class Home extends React.Component {
 

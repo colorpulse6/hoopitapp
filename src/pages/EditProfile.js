@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import config from "../config";
 import nextButton from "../images/next-button.png";
-import SearchCity from "./SearchCity";
+import SearchCity from "../components/SearchCity";
 
 export default class EditProfile extends React.Component {
   state = {
@@ -136,7 +136,7 @@ export default class EditProfile extends React.Component {
 
   render() {
     return (
-      <div className="page-containers ">
+      <div className="page-containers">
         <div>
           <h3 class="second-font edit-profile-header">Edit Profile</h3>
         </div>
@@ -148,7 +148,7 @@ export default class EditProfile extends React.Component {
         ></img>
 
         <form
-          className="form-container edit-profile"
+          className="form-container"
           onSubmit={this.handleEditProfile}
         >
           <div class="form-group">
@@ -183,10 +183,10 @@ export default class EditProfile extends React.Component {
             id="file"
             name="file"
             accept="image/*"
-            class="uploader"
+            class="uploader "
             onChange={this.showText}
           />
-          <label className="second-font" htmlFor="file">
+          <label className="second-font " htmlFor="file">
             Upload Image
           </label>{" "}
           <p className="second-font image-uploaded hide" id="imageUploaded">

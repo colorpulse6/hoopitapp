@@ -4,7 +4,7 @@ import axios from "axios";
 import config from "../config";
 import nextButton from "../images/next-button.png";
 import "../App.css";
-import SearchCity from "./SearchCity";
+import SearchCity from "../components/SearchCity";
 
 // import usePlacesAutoComplete, {
 //     getGeocode,

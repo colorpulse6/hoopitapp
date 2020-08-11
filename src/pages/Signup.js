@@ -1,7 +1,7 @@
 import React from "react";
 import bball from "../images/b-ball.png";
 import nextButton from "../images/next-button.png";
-import SearchCity from "./SearchCity";
+import SearchCity from "../components/SearchCity";
 
 export default function Signup(props) {
   return (

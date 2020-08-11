@@ -207,6 +207,8 @@ background-color: #AEB3B9;
   margin-left:5px;
   margin-top:-2px
 }
+
+
 .hello-text {
   text-align:center;
   margin-top:10px;
@@ -279,10 +281,11 @@ background-color: #AEB3B9;
   padding:30px 0px 30px 0px
 }
 
-.edit-profile-btn {
-  margin-top:40.2px;
-  
+.edit-profile{
+  display:flex;
+  flex-direction: column;
 }
+
 
 .uploader{
 width:0;
@@ -301,7 +304,7 @@ opacity:0;
   cursor: pointer;
   padding: 10px;
   margin:20px;
-  
+  margin-left:25%;
   margin-bottom:30px;
   border-radius: 2px;
   border:none;
@@ -383,6 +386,10 @@ margin-bottom:40px;
   transform: scale(1.04);
   border-radius:5px
 }
+
+.info-window-button {
+  width:10px;
+  }
 
 .join-game-button{
   width:120px;
@@ -635,16 +642,6 @@ text-align:center;
   letter-spacing: 1.61px;
 }
 
-/* .map-search {
-  position: absolute;
-  top: 15rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 400px;
-  z-index: 10;
-  
-} */
 
 .map-search input {
   font-size: 1rem;
@@ -655,18 +652,20 @@ text-align:center;
 .map-info{
   display:flex;
   flex-direction: column;
-  padding:30px
+  padding:30px;
+  margin-bottom:20px;
 }
 
 .map-info p{
   text-decoration: none;
-  color:black
+  color:black;
+  margin-bottom:10px
 }
 
 .map-info button {
-  width:70px;
+  width:100%;
   height:23px;
-  margin:10px 0px 5px 80px
+  margin-top:20px 
 }
 
 .locate-btn {

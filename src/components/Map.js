@@ -223,7 +223,7 @@ export default function Map(props) {
                                   : "Full"
                               }
                             />
-                          <button className="card-buttons">More info</button>
+                          <button className="card-buttons info-window-button">More info <img className="next-button" src={nextButton} alt="Next"></img></button>
                         </Link>
                       </div>
                     );

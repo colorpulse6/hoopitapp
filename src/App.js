@@ -8,20 +8,21 @@ import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import config from "./config";
 
-import EditProfile from "./components/EditProfile";
-import Home from "./components/Home";
-import Nav from "./components/Nav";
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
-import UserMain from "./components/UserMain";
-import CreateGame from "./components/CreateGame";
-import GameDetail from "./components/GameDetail";
-import GameAdmin from "./components/GameAdmin";
-import Profile from "./components/Profile";
+import EditProfile from "./pages/EditProfile";
+import Home from "./pages/Home";
 
-import TeamsInfo from "./components/TeamsInfo";
-import TeamDetail from "./components/TeamDetail";
-import EachTeam from "./components/EachTeam";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import UserMain from "./pages/UserMain";
+import CreateGame from "./pages/CreateGame";
+import GameDetail from "./pages/GameDetail";
+import GameAdmin from "./pages/GameAdmin";
+import Profile from "./pages/Profile";
+
+import TeamsInfo from "./pages/TeamsInfo";
+import TeamDetail from "./pages/TeamDetail";
+import EachTeam from "./pages/EachTeam";
+import Nav from "./components/Nav";
 import Loading from "./components/Loading";
 
 import "@reach/combobox/styles.css";
