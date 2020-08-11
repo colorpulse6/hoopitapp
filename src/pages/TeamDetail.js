@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import config from "../config";
+import nextButton from "../images/next-button.png";
 
 export default class TeamsDetail extends React.Component {
   state = {
@@ -72,10 +73,10 @@ export default class TeamsDetail extends React.Component {
 
     return (
       <div className="page-containers">
-        <h3 className="second-text">Create New Team</h3>
+        <h3 className="second-font">Create New Team</h3>
 
-        <form onSubmit={this.saveTeam}>
-          <div className="form-group team-details">
+        <form onSubmit={this.saveTeam} className="form-container">
+          <div className="form-group">
             <input
               className="form-control second-text"
               type="text"
@@ -84,18 +85,18 @@ export default class TeamsDetail extends React.Component {
               id="teamName"
               required
             />
-            <div>
-              <div className="team-players-div">
-                <h5 className="second-text">Players:</h5>
+            
+              <div className="team-players">
+              <h4 className="second-font">Players:</h4>
                 {userNames.map((name) => {
-                  return <p className="second-text">{name}</p>;
+                  return <p className="second-font">{name}</p>;
                 })}
               </div>
-
-              <button className="join-game-button card-buttons">
-                Save Team
+                
+                <button className="card-buttons">
+                Save Team <img className="next-button" src={nextButton} alt="Next"></img>
               </button>
-            </div>
+            
           </div>
         </form>
       </div>

@@ -809,22 +809,15 @@ margin-top:50px;
 
 /* Create Team Page */
 
-
-
-.team-details {
-  padding:20px;
-}
-
-.team-details input  {
+.team-players {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin:20px;
 }
-
-.team-players-div h5 {
-  text-align: center;
-  margin:20px;
+.team-players h4 {
+  margin-bottom:20px
 }
-
-
 
 
 
