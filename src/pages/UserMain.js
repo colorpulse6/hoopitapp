@@ -8,9 +8,7 @@ import Map from "../components/Map";
 import EachCard from "../components/EachCard";
 import RadialChart from "../components/RadialChart";
 import nextButton from "../images/next-button.png";
-import userImg from "../images/combined-shape-copy.png";
-import dateImg from "../images/combined-shape.png";
-import group2 from "../images/group-2.png";
+
 
 export default class UserMain extends React.Component {
   state = {
@@ -55,7 +53,7 @@ export default class UserMain extends React.Component {
           </div>
         </div>
 
-        <div class="page-containers">
+        <div className="page-containers">
           <div className="row">
             <div>
               {/* SHOW GAMES YOU MADE */}
