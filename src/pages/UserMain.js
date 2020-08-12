@@ -131,7 +131,7 @@ export default class UserMain extends React.Component {
               <hr></hr><button className="card-buttons second-font create-game-btn ">
                 Create A Game{" "}
                 <img className="next-button" src={nextButton} alt="Next"></img>
-              </button><hr></hr>
+              </button>
             </Link>{" "}
           </div>
         </div>
