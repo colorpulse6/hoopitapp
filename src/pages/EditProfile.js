@@ -142,7 +142,7 @@ export default class EditProfile extends React.Component {
         </div>
 
         <img
-          className="edit-profile-page-image"
+          className="edit-profile-page-image profile-image"
           src={this.props.loggedInUser.imageUrl}
           alt="Profile"
         ></img>

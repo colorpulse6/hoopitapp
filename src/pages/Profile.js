@@ -27,12 +27,12 @@ export default class Profile extends React.Component {
     return (
       <div className="page-containers">
         <img
-          className="profile-page-image"
+          className="profile-image"
           src={this.state.user.imageUrl}
           alt="Profile"
         ></img>
 
-        <p className="profile-page-name">{this.state.user.username}</p>
+        <p className="second-font profile-page-name ">{this.state.user.username}</p>
         <div className="game-detail-text">
           <hr></hr>
 
@@ -42,7 +42,7 @@ export default class Profile extends React.Component {
               {this.state.user.location}
             </p>
 
-            <p className="second-font profile-labels ">
+            <p className="second-font profile-labels">
               <img className="circle-img" src={userImg} alt="User"></img>
               {this.state.user.email}{" "}
             </p>
@@ -51,7 +51,7 @@ export default class Profile extends React.Component {
           <hr></hr>
         </div>
         <Link to="/edit-profile">
-          <button className="card-buttons second-font edit-profile-btn">
+          <button className="card-buttons second-font">
             Edit Profile <img className="next-button" src={nextButton} alt="Next"></img>
           </button>
         </Link>
